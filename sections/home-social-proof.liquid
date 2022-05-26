@@ -1,0 +1,78 @@
+<div class="container ">
+    <h3 class="text-center">{{section.settings.title}}</h3>
+    <div class="row social-proof-carousel">
+        {% for block in section.blocks %}
+            <a href="{{ block.settings.url | default: "http://instagram.com/hsft_official" }}" target="_blank">
+                <img class="lazyload"
+                    data-srcset="{ block.settings.image | product_img_url: '264x' }} 1x, {{ block.settings.image | product_img_url: '528x' }} 2x"
+                    alt="block.settings.url | default: 'http://instagram.com/hsft_official' }}" data-image>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Social Proof",
+    "class": "social-proof",
+    "settings": [{
+            "type": "header",
+            "content": "Social Proof"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Who's wearing HSFT"
+        }
+    ],
+    "blocks": [{
+        "type": "social",
+        "name": "Social Proof",
+        "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "url",
+              "id": "url",
+              "label": "Url",
+              "info": "Social Media Link"
+            }
+        ]
+    }]
+}
+{% endschema %}
+{% style %}
+.social-proof {
+    padding: 24px 0 64px;
+}
+.social-proof h3 {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000000;
+}
+.social-proof .social-proof-carousel {
+    max-width: 1128px;
+    margin: 0 auto;
+}
+.social-proof .social-proof-carousel .owl-item {
+    margin-right: 24px;
+    max-width: fit-content;
+}
+.social-proof .social-proof-carousel .owl-item img {
+    width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 768px) {
+    .social-proof .social-proof-carousel .owl-item {
+        margin-right: 16px;
+    }
+}
+{% endstyle %}

@@ -1,0 +1,85 @@
+<div class="main-nav-carousel" >
+    {% for link in linklists[section.settings.menu].links %}
+        <div class="nav-item">
+            <a href="{{ link.url }}" class="main-nav-carousel__link">
+              <div>
+                {% assign image_name= link.title | replace: " ", "-" | replace: "'", "" |prepend: "nav-" | append: ".png" | downcase %}
+                <img src="{{ image_name | asset_img_url: '80x80' }}" 
+                  width="80"
+                  height="80" 
+                  style="width: 80px; height: 80px;   object-fit: none;"
+                  >
+                
+              </div>
+              <div class="label-wrapper">
+                <label>{{ link.title | upcase | escape }}</label>
+              </div>
+            </a>
+        </div>
+    {%- endfor -%}
+</div>
+
+<style>
+  
+  .main-nav-carousel {
+    margin-top:30px;
+    margin-bottom:5px;
+    padding-left: 15px;
+  }
+
+  .main-nav-carousel .nav-item .label-wrapper{
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .main-nav-carousel .nav-item .main-nav-carousel__link * {
+    pointer-events: none;
+  }
+
+  .main-nav-carousel img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .main-nav-carousel label {
+    font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 133%;
+    /* identical to box height */
+
+    letter-spacing: 0.04em;
+
+    color: #000000;
+  }
+
+  @media (max-width:767px){
+    #site-header {
+      box-shadow:none !important; 
+    }
+  }
+  
+
+</style>
+  
+  {% schema %}
+  {
+    "name": "Mobile Main Nav",
+    "class": "mobile-main-nav",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Mobile Main Nav",
+        "category": "HSFT"
+      }
+    ]
+  }
+  {% endschema %}

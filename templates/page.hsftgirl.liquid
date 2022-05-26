@@ -1,0 +1,82 @@
+<div id="col-main" class="content">
+
+
+	<div class="title-bar custom-font">
+		<h2>{{ page.title }}</h2> 
+		<div class="clear"></div>
+	</div>
+	
+	<div class="row hsftgirl">
+		
+		<div class="col-md-8">
+			{{ page.content }}
+			
+			<div style="margin-top: 50px;">{% include 'getsocial-inline-bar' %}</div>
+		</div>
+	
+		<div class="col-md-4">
+			{% form 'contact' %}
+			
+			{% if form.posted_successfully? %}
+			<p class="success-msg">{{ 'contact.form.post_success' | t }}</p>
+			{% endif %}
+			
+			{% include 'form-errors-custom' %} 
+			
+			<div id="contact-form">
+				
+				<div class="note">* indicates a required field.</div>
+			
+				<div class="form-group">
+					<!-- <label for="name">{{ 'contact.form.name' | t }}</label> -->
+					<input type="text" id="name" class="form-control" name="contact[name]" placeholder="{{ 'contact.form.name' | t }} *" required />
+				</div>
+				
+				<div class="form-group">
+					<!-- <label for="email">{{ 'contact.form.email' | t }}</label> -->
+					<input type="email" id="email" class="form-control" class="email" name="contact[email]" placeholder="{{ 'contact.form.email' | t }} *" required />
+				</div>
+				
+				
+				<div class="form-group">
+					<input type="text" id="i_username" class="form-control" name="contact[Instagram Username]" placeholder="Instagram username *" required />
+				</div>
+				
+				<div class="form-group">
+					<input type="number" id="i_followers" class="form-control" name="contact[Instagram Followers]" placeholder="# of Instagram followers *" required />
+				</div>
+				
+				<div class="form-group">
+					<input type="text" id="fb_url" class="form-control" name="contact[Facebook URL]" placeholder="Facebook URL *" required />
+				</div>
+				
+				<div class="form-group">
+					<input type="number" id="fb_friends" class="form-control" name="contact[Facbook Friends]" placeholder="# of Facebook friends *" required />
+				</div>
+				
+				<div class="form-group">
+					<input type="text" id="personal_url" class="form-control" name="contact[Blog or Website URL]" placeholder="Blog or Website URL" />
+				</div>
+				
+				
+				<div class="form-group">
+					<!-- <label for="message">{{ 'contact.form.message' | t }}</label> -->
+					<textarea id="message" class="form-control" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}"></textarea>
+				</div>
+				
+				<div class="form-group">
+					<input type="submit" class="btn btn-default" value="{{ 'contact.form.send' | t }}" />
+				</div>
+			  
+			</div>
+			{% endform %}
+			
+			<hr />
+			
+			<div id="instafeed"></div>
+			
+		</div>
+	
+	</div>
+
+</div><!-- /#col-main -->

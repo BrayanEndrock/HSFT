@@ -1,0 +1,263 @@
+<article id="{{page.handle}}" class="post hentry">
+	<header class="col-md-9">
+	
+	<div class="title-bar custom-font">
+		<h2>{{ article.title }}</h2>
+		<h3 class="title-bar-sub"><time class="updated" datetime="{{ article.published_at | date: format: 'long' }}" pubdate>{{ article.published_at | date: format: 'long' }}</time></h3>
+		<div class="clear"></div>
+	</div>
+	</header>
+
+	<div class="row">
+	
+	<div class="col-md-9">
+	
+	<section class="entry-content" id="article_content">
+		{{ article.content }}
+		
+		{% include 'blog-tags' %}
+	</section>
+	
+	<div class="social-sharing">
+	
+	  {% if settings.share_facebook %}
+	    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">
+	      <span class="icon icon-facebook"></span>
+	      <span class="share-title">{{ 'general.social.share_on_facebook' | t }}</span>
+	      {% if settings.social_sharing_count %}
+	        <span class="share-count">0</span>
+	      {% endif %}
+	    </a>
+	  {% endif %}
+	
+	  {% if settings.share_twitter %}
+	    <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle | url_param_escape }}" class="share-twitter">
+	      <span class="icon icon-twitter"></span>
+	      <span class="share-title">{{ 'general.social.share_on_twitter' | t }}</span>
+	      {% if settings.social_sharing_count %}
+	        <span class="share-count">0</span>
+	      {% endif %}
+	    </a>
+	  {% endif %}
+	
+	  {% if template contains 'product' %}
+	
+	    {% if settings.share_pinterest %}
+	      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{{ product | img_url: '1024x1024' }}&amp;description={{ shareTitle | url_param_escape }}" class="share-pinterest">
+	        <span class="icon icon-pinterest"></span>
+	        <span class="share-title">{{ 'general.social.share_on_pinterest' | t }}</span>
+	        {% if settings.social_sharing_count %}
+	          <span class="share-count">0</span>
+	        {% endif %}
+	      </a>
+	    {% endif %}
+	
+	    {% if settings.share_fancy %}
+	      <a target="_blank" href="http://www.thefancy.com/fancyit?ItemURL={{ permalinkURL }}&amp;Title={{ shareTitle | url_param_escape }}&amp;Category=Other&amp;ImageURL={{ product | img_url: '1024x1024' }}" class="share-fancy">
+	        <span class="icon icon-fancy"></span>
+	        <span class="share-title">{{ 'general.social.share_on_fancy' | t }}</span>
+	      </a>
+	    {% endif %}
+	
+	  {% endif %}
+	
+	  {% if settings.share_google %}
+	    <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="share-google">
+	      <!-- Cannot get Google+ share count with JS yet -->
+	      <span class="icon icon-google"></span>
+	      {% if settings.social_sharing_count %}
+	        <span class="share-count">+1</span>
+	      {% else %}
+	        <span class="share-title">+1</span>
+	      {% endif %}
+	    </a>
+	  {% endif %}
+	
+	</div>
+	
+	{% if blog.previous_article or blog.next_article %}
+	<div id="paginate">
+		{% if blog.previous_article %}
+			<div class="article-previous-article">
+				<a href="{{ blog.previous_article }}" class="btn btn-default">{{ 'blogs.article.previous_post' | t }}</a>
+			</div>
+		{% endif %}
+	
+		{% if blog.next_article %}
+			<div class="article-next-article">
+				<a href="{{ blog.next_article }}" class="btn btn-default">{{ 'blogs.article.next_post' | t }}</a>
+			</div>
+		{% endif %}
+		
+		<div id="getsocialparent">
+			{% include 'getsocial-inline-bar' %}
+		</div>
+				
+		<div class="clear"></div>
+	</div>
+	{% endif %}
+	
+	{% if settings.blog_author_info %}
+		<div class="title-bar custom-font">
+			<h2>{{ 'blogs.article.author_title' | t }}</h2>
+			<h3 class="title-bar-sub">
+				{{ article.user.first_name }} {{ article.user.last_name }}
+				{% if article.user.homepage != blank %}
+				<a href="{{ article.user.homepage }}" target="_blank">
+					{{ 'white-external-link.png' | asset_url | img_tag }}
+				</a>
+				{% endif %}
+				
+			</h3>
+			
+			<div class="clear"></div>
+		</div>
+		<div id="blog-author-bio">
+			<img src="//www.gravatar.com/avatar/{{ article.user.email | remove: ' ' | strip_newlines | downcase | md5 }}" />
+			
+			{% if article.user.bio == empty %}
+				<p>{{ article.user.bio }}</p>
+			{% endif %}
+			
+			<div class="clear"></div>
+		</div>
+	{% endif %}
+	
+	
+	
+  {% if blog.comments_enabled? %}
+
+	{% paginate article.comments by 3 %}
+    {% if article.comments != blank %}	
+	
+      <div id="comments" class="comments">
+
+	<div class="title-bar custom-font">
+		<h2>{{ 'blogs.article.comments_title' | t }}</h2>
+		<div class="clear"></div>
+	</div>
+
+	<ul>
+        {% comment %} Loop through approved comments: {% endcomment %}        
+        {% for comment in article.comments reversed %}
+          {% include 'comment-template' %}
+        {% endfor %}  
+
+        {% comment %} Show a comment that was *just* submitted {% endcomment %}
+        {% if comment and comment.created_at %}
+          {% include 'comment-template' %}
+        {% endif %}       
+	</ul>
+	
+	{% if paginate.pages > 1 %}
+		{% include 'pagination' %}
+	{% endif %}
+	
+	    </div> <!-- end #comments -->
+	
+	{% endif %}
+	{% endpaginate %} 
+  
+
+
+    {% form article %}
+    <div class="comment_form" id="comment-form" style="margin-bottom: 69px;">
+
+
+	<div class="title-bar custom-font">
+		<h2>{{ 'blogs.comments.title' | t }}</h2>
+		<div class="clear"></div>
+	</div>
+
+      {% if form.posted_successfully? %}
+        {% if blog.moderated? %}
+          <div class="success-msg">
+				{{ 'blogs.comments.moderated' | t }}
+          </div>
+        {% else %}
+          <div class="success-msg">
+          		{{ 'blogs.comments.success' | t }}
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% if form.errors %}
+        <p class="notice error-msg">{{ 'blogs.comments.field_error' | t }}</p>
+      {% endif %}
+
+      <div class="form-group clearfix{% if form.errors contains 'author' %} has-error{% endif %}">
+        <label for="comment_author">{{ 'blogs.comments.name' | t }} <strong class="req">*</strong></label>
+        <input type="text" id="comment_author" name="comment[author]" size="40" value="{{form.author}}" class="text form-control {% if form.errors contains 'author' %}input-error{% endif %}" />
+      </div>
+      <div class="form-group clearfix{% if form.errors contains 'email' %} has-error{% endif %}">
+        <label for="comment_email">{{ 'blogs.comments.email' | t }} <strong class="req">*</strong></label>
+        <input type="text" id="comment_email" name="comment[email]" size="40" value="{{form.email}}" class="text form-control {% if form.errors contains 'email' %}input-error{% endif %}" />
+      </div>
+      <div class="form-group clearfix{% if form.errors contains 'body' %} has-error{% endif %}">
+        <label for="comment_body">{{ 'blogs.comments.comment' | t }} <strong class="req">*</strong></label>
+        <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="text form-control {% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea>
+      </div> 
+
+      <input type="submit" value="{{ 'blogs.comments.post' | t }}" id="comment-submit" class="btn btn-default" />
+
+    </div> <!-- end div.comment_form -->
+    {% endform %}  
+  {% endif %}
+  
+</div>
+
+	<div class="col-md-3">
+	
+		{% include 'blog-sidebar' %}
+	
+	</div>
+	
+	</div>
+
+
+</article>
+
+<script>
+$(document).ready(function() {
+    var imgs = $('#article_content img');
+    console.log(imgs.length);
+    
+    imgs.each(function() {
+        var floaty = $(this).css('float');
+        console.log(floaty);
+        
+        if (floaty == 'left') {
+		    $(this).addClass('half');
+		}
+		if (floaty == 'right') {
+		    $(this).addClass('half');
+		}
+    });
+});
+</script>
+
+<div id="stickLayer" style="display:none;" class="stick_popup">
+	<div class="stick_close" onclick="$.stick_close()">X</div>
+	<div class="stick_content">
+    	<form action="//havesomefuntoday.us10.list-manage.com/subscribe/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline">	
+	  		<div class="form-group">
+	  			<div class="input-group">
+					<input type="email" value="" name="EMAIL" id="mail" class="input-group-field email form-control" aria-label="translation missing: en.general.newsletter_form.newsletter_email" autocorrect="off" autocapitalize="off">
+					<span class="input-group-btn"><input type="submit" class="btn btn-default" name="subscribe" id="subscribe" value="Sign Up"></span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{{ 'stick-to-me.js' | asset_url | script_tag }}
+
+<script>
+$(document).ready(function(){
+	$.stickToMe({
+		layer: '#stickLayer'			
+	});				
+});
+</script>
+
+

@@ -1,0 +1,35 @@
+<div class="indiv-product">
+	<a href="{{ product.url | within: collection }}" title="{{product.title}}">
+		<div class="reveal">
+            <img 
+                class="product--image lazyload" 
+                data-srcset="{{  product.featured_image | product_img_url: '120x' }} 1x, {{  product.featured_image | product_img_url: '240x' }} 2x"
+                data-aspectratio="{{ featured_image.aspect_ratio }}"
+                alt="{{ product.title | escape }}" data-image
+            >
+        </div>
+	</a>
+    <a href="{{ product.url | within: collection }}">
+        <h6 class="indiv-product-title-text">{{ product.title }}</h6>
+    </a>
+	<div class="hp-title">
+        <div class="quick-atc">
+            {% if product.variants.size > 1 %}
+                <button class="upsell-add-to-cart-btn quick-atc__trigger atc" data-product-id="{{ product.id }}">
+                    ADD TO CART
+                </button>
+                <div class="upsell-add-to-cart-variants quick-atc__variants hidden-atc {% if product.variants.size > 5 %}scroll{% endif %}" id="atc-{{ product.id }}">
+                    {% for variant in product.variants %}
+                        {% if variant.available %}
+                            <span class="quick-atc__variant" data-variant-id="{{ variant.id }}">{{ variant.title | replace: "Small","S" | replace: "Medium","M" | replace: "Large","L" | replace: "X-Large","XL" | replace: "X-L","XL" }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <button class="upsell-add-to-cart-btn quick-atc__trigger quick-atc__variant {% unless product.available%}disabled{%endunless%}" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+                    {% unless product.available %}SOLD OUT{% else %}ADD TO CART{% endunless %}
+                </button>
+            {% endif %}
+        </div>      
+	</div>
+</div>

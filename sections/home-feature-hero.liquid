@@ -1,0 +1,82 @@
+<a href="{{ section.settings.url }}">
+    <div class="home-feature-hero--template" data-title="{{ section.settings.title }}">
+        <div class="home-feature-hero--container">
+            <h1>{{ section.settings.title }}</h1>  
+        </div> 
+    </div> 
+</a>      
+
+<style> 
+    .home-feature-hero--template {
+        background-image: url({{ section.settings.hero-desktop | img_url: 'master' }});
+        background-position: right;                       
+        background-repeat: no-repeat;
+        background-size: cover;             
+        height: 576px;           
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+        .home-feature-hero--template {
+            background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
+            background-position: center;                      
+            background-repeat: no-repeat;
+            background-size: cover;           
+            height: 832px;           
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .home-feature-hero--template {  
+            background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
+            background-position: center;                      
+            background-repeat: no-repeat;
+            background-size: cover;         
+            height: 447px;           
+        }
+    }
+</style>
+
+{% stylesheet 'scss' %}
+    .home-feature-hero {  
+        margin-top: -64px;  
+        @media screen and (max-width: 768px) {
+            margin-top: 0;
+            padding: 0 20px;
+        }                    
+        .home-feature-hero--template {      
+            .home-feature-hero--container {
+                h1 {
+                    display: none;
+                }
+            }
+        }
+    }
+{% endstylesheet %}     
+
+{% schema %}
+    {
+        "name": "Home Feature Hero",
+        "class": "home-feature-hero",    
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "hero-desktop",
+                "label": "Hero Desktop"
+            },
+            {
+                "type": "image_picker",
+                "id": "hero-mobile",
+                "label": "Hero Mobile"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Hero Title",
+                "default": "The Beach Bum Gets an Upgrade"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Hero Url"
+            }
+        ]
+    }
+{% endschema %}

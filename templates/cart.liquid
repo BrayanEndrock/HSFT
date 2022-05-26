@@ -1,0 +1,168 @@
+<div class="title-bar custom-font">
+	<h2>{{ 'cart.general.title' | t }}</h2>
+	<div class="clear"></div>
+</div>
+
+{% if cart.item_count == 0 %}
+	<h3 class="empty-cart">{{ 'cart.general.empty' | t }}, <a href="/collections/all">{{ 'cart.general.continue_browsing_html' | t }}</a></h3>
+{% else %}
+
+	<script type="text/javascript">
+		function remove_item(id) {
+			document.getElementById('updates_'+id).value = 0;
+			document.getElementById('cartform').submit();
+		}
+	</script>
+
+	<form action="/cart" method="post" id="cartform">
+              <input type="hidden" name="discount" id="discount" value="" />
+
+		<table summary="list of all the products in your basket" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr class="odd">
+					<th colspan="2"></th>
+					<th>{{ 'cart.general.price' | t }}</th>
+					<th>{{ 'cart.general.quantity' | t }}</th>
+					<th>{{ 'cart.general.total' | t }}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in cart.items %}
+               {% include 'saw_compute_discount' with item.product %}
+        {% include 'saw_variant' with item.variant %}
+
+					<tr class="{% cycle 'even', 'odd' %}">
+						<td class="cart-table-image col-md-2">
+							<a class="cart_thumb" href="{{item.product.url}}" title="View {{item.title}} Page">
+								<img src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}" />
+							</a>
+						</td>
+						<td class="cart-table-title col-md-3">
+							<a href="{{item.url}}" title="View {{item.title | escape }}">{{ item.title }}</a>
+						</td>
+						<td class="cart-table-price col-md-2">
+
+              {% if saw_discount == 1 %}
+	          {{ item.price | money }}
+              {% else %}
+                  {{ saw_variant_price | money }}<br>
+                  <del>{{ saw_variant_compare_at_price | money }}</del>
+
+                  <!-- line_price:
+                {{saw_variant_price | times: item.quantity | money }}<br>
+		<del>{{ saw_variant_compare_at_price  | times: item.quantity | money }}</del>
+                  -->
+              {% endif %}
+
+						</td>
+						<td class="cart-table-quantity col-md-2">
+							<input class="number" type="text" size="2" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" value="{{item.quantity}}"
+                                   {% unless item.variant.inventory_management == blank or item.variant.inventory_policy == 'continue' %} max="{{ item.variant.inventory_quantity }}" {% endunless %}
+/>
+						</td>
+						<td class="cart-table-line-price col-md-2">
+
+              {% if saw_discount == 1 %}
+
+							{{item.line_price | money }}
+              {% else %}
+                {{saw_variant_price | times: item.quantity | money }}<br>
+		<del>{{ saw_variant_compare_at_price  | times: item.quantity | money }}</del>
+              {% endif %}
+
+
+						</td>
+						<td class="cart-table-delete-button col-md-1">
+							<a class="delete-button" href="#" onclick="remove_item({{ item.variant.id }}); return false;">&nbsp;</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+		</table>
+
+		<div class="col-md-12 cart-bottom-box">
+			<div class="title-bar custom-font">
+				<div id="cart-total-final-price"><span class="saw-cart-original-total">{{ cart.total_price | money }}</span><br>
+<span class="saw-cart-total"></span>
+</div>
+				<div id="cart-total-header">{{ 'cart.general.total' | t }}</div>
+				<div class="clear"></div>
+			</div>
+
+<div style="text-align: right;">
+	<span class="saw-discount-info "></span>
+  	<span class="saw-extra-note "></span>
+</div>
+
+		<div class="row">
+	      <div id="checkout-add-note" class="col-md-6">
+		{% if settings.allow_note %}
+	        <h6>{{ 'cart.general.note' | t }}&hellip;</h6>
+	        <textarea id="note" name="note" class="form-control">{{ cart.note }}</textarea>
+	      {% endif %}
+		&nbsp;
+	      </div>
+
+			<div id="checkout-buttons" class="col-md-6">
+				<button type="button" class="btn btn-default" onclick="javascript:location.replace('/');" style="margin-right: 7px; margin-bottom: 10px;">Keep Shopping</button>
+				<input id="update_quantities" type="submit" value="{{ 'cart.general.update' | t }}" title="{{ 'cart.general.update' | t }}" name="update" class="btn btn-default" style="margin-bottom: 10px;" />
+				<input id="cart_submit" type="submit" value="{{ 'cart.general.checkout' | t }}" name="checkout" class="btn btn-default" style="margin-left: 7px; margin-bottom: 10px;" />
+
+
+
+{% if customer.tags == blank %}
+				{% if additional_checkout_buttons %}
+				<div id="additional-checkout-buttons">
+				  <span id="additional-checkout-buttons-label">{{ 'cart.general.alt_checkout' | t }}:</span>
+				 {{ content_for_additional_checkout_buttons }}
+				</div>
+				{% endif %}
+{% else %}
+{% endif %}
+
+			</div>
+		</div>
+		</div>
+
+	</form>
+
+{% endif %}
+
+
+<script>
+  function SAWOrderNote(note) {
+	if (note.toLowerCase().indexOf("invoice") > -1) {
+		//return ""
+	}
+	note = note.replace("some text to replace",
+                        "new text");
+ 	return note
+  }
+  function SAWComplete(res) {
+    if (res.warning_note != "") {
+      $("input[name=checkout]").css("display", "none");
+      $("button[name=checkout]").css("display", "none");
+      $("#purchase-benefits").css("display", "none");
+    }
+    return
+  }
+</script>
+
+{% include 'saw_cart' %}
+
+<script>
+  if (typeof BuyXSubmit == "function") {
+    var buyx_checkout_selectors = ["input[name='checkout']", "button[name='checkout']", "input[name='goto_pp']", "button[name='goto_pp']", "input[name='goto_gc']", "button[name='goto_gc']", "[href$='checkout']", "#purchase-benefits"];
+    window.buyx_cart_global = {{ cart | json }}
+    buyx_checkout_selectors.forEach(function(selector) {
+        jQuery(selector).bind("click", function() {
+          console.log("click")
+            return BuyXSubmit(window.buyx_cart_global, "updates_{variant_id}");
+        })
+    });
+  }
+/*use appropriate selector for your theme, e.g.
+      return BuyXSubmit({{cart | json}}, "input[data-id={variant_id}]");
+*/
+</script>

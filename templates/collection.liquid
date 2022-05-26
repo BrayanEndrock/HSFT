@@ -1,0 +1,138 @@
+<div id="collections-main" class="{{ collection.handle }}">
+	
+{% if settings.show_collection_promobox %}
+
+<div class="collection-promo-box">
+
+	{{ 'promobox-item-5.jpg' | asset_url | img_tag: settings.advert_item_5_alt_text | link_to: settings.advert_item_5_link }}
+	
+</div>
+
+{% endif %}	
+	
+<div class="title-bar custom-font collection-header">
+	{% if collection.handle == 'all' %}
+		<h2>{{ 'products.general.products_title' | t }}</h2>
+	{% else %}
+		<h2>{{ collection.title }}</h2>
+	{% endif %}
+	<div class="clear"></div>
+</div>
+{% if collection.metafields.global.mobile_banner.value != blank and collection.metafields.global.banner.value != blank %}
+	<img data-srcset="{{collection.metafields.global.banner.value | img_url: '1128x'}} 1x, {{collection.metafields.global.banner.value | img_url: '2256x'}} 2x" class="desktop-image lazyload" alt="{{collection.title}}" >
+	<img data-srcset="{{collection.metafields.global.mobile_banner.value | img_url: '710x'}} 1x, {{collection.metafields.global.mobile_banner.value | img_url: '1420x'}} 2x" class="mobile-image lazyload" alt="{{collection.title}}" >
+	<style>
+		.desktop-image,
+		.mobile-image {
+		    width: 100%;
+    height: auto;
+		}
+		.mobile-image {
+			display:none;
+			visibility: hidden;
+		}
+		@media screen and (max-width: 768px){
+			.desktop-image {
+				display:none;
+				visibility: hidden;
+			}
+		.mobile-image {
+			display:initial;
+			visibility: visible;
+		}
+		}
+	</style>
+{% elsif collection.image != empty %}
+<div id="collection-description">
+
+	{% if collection.handle == 'all' %}
+		{% if collection.image %}
+			{{ collection.image.src | collection_img_url: 'small' | img_tag: "collection.image.alt" }}
+		{% endif %}
+	{% elsif collection.handle %}
+		{% if collection.image %}
+			{{ collection.image.src | collection_img_url: 'small' | img_tag: "collection.image.alt" }}
+		{% endif %}
+	{% elsif collection.all_products_count > 0 and collection.products.first.type == collection.title %}
+	{% elsif collection.all_products_count > 0 and collection.products.first.vendor == collection.title %}
+		{% if collection.image %}
+			{{ collection.image.src | collection_img_url: 'small' | img_tag: "collection.image.alt" }}
+		{% endif %}
+	{% endif %}
+	
+	{% if collection.description == empty %}
+		<div class="clear"></div>
+	{% endif %}
+
+{% endif %}
+
+
+{% if collection.description != empty %}
+	
+		<div class="description-content">{{ collection.description }}</div>
+		
+		<div class="clear"></div>
+		
+	{% endif %}
+</div>
+
+{% if settings.show-collections-tags %}
+	{% if collection.all_tags.size > 0 %}
+	<div class="sixteen columns product-tags-wrapper alpha omega">
+	<ul class="product-tags clearfix">
+	  <li{% unless current_tags %} class="active"{% endunless %}>
+	    {% if collection.handle %}
+	    {% comment %}Good for /collections/all collection and regular collections{% endcomment %}
+	    <a href="/collections/{{ collection.handle }}">{{ 'collections.tags.tags_all' | t }}</a>
+	    {% comment %}Good for automatic type collections{% endcomment %}
+	    {% elsif collection.products.first.type == collection.title %}
+	    <a href="{{ collection.title | url_for_type }}">{{ 'collections.tags.tags_all' | t }}</a>
+	    {% comment %}Good for automatic vendor collections{% endcomment %}
+	    {% elsif collection.products.first.vendor == collection.title %}
+	    <a href="{{ collection.title | url_for_vendor }}">{{ 'collections.tags.tags_all' | t }}</a>
+	    {% endif %}
+	  </li> 
+	  {% for tag in collection.all_tags %}
+	  {% if current_tags contains tag %}
+	  <li class="active">
+	    {{ tag | link_to_remove_tag: tag }}
+	  </li>
+	  {% else %}
+	  <li>
+	    {{ tag | link_to_add_tag: tag }}
+	  </li>
+	  {% endif %}
+	  {% endfor %}  
+	</ul>
+	</div>
+	{% endif %}
+{% endif %}	
+
+  <section class="clearfix">
+
+    {% paginate collection.products by settings.collection-products-per-page %}
+      {% if collection.products.size > 0 %}
+    
+        <ul class="product-grid clearfix">
+        {% for product in collection.products %}
+			{% if settings.collection-products-per-row == '4' %}
+				<li class="col-md-3{% cycle ' alpha', '', '', ' omega' %} col-sm-3 col-xs-12">
+			{% else %}
+				<li class="col-md-4{% cycle ' alpha', '', ' omega' %} col-sm-4 col-xs-12">		
+			{% endif %}
+			
+	  		{% include 'product-grid' %}
+	  		
+			</li>
+        {% endfor %}
+        </ul>
+
+        {% include 'pagination' %}
+      
+      {% else %}    
+        <div class="no-products-found">{{ 'collections.general.no_matches' | t }}</div>
+      {% endif %}
+    {% endpaginate %}
+  </section>
+  
+</div> <!-- /#col-main -->

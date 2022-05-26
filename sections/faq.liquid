@@ -1,0 +1,407 @@
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h2>{{ page.title }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <h3 class="hidden-xs">Contents</h3>
+            <div class="tab-menu_wrapper">
+                <input type="checkbox" id="faq-tab-menu" class="hidden-md hidden-lg hidden-xl">
+                <label for="faq-tab-menu" class="hidden-md hidden-lg hidden-xl">Contents<svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L9.5 9L18 1" stroke="black" stroke-linejoin="round"/>
+                    </svg>
+                    </label>
+                <ul class="tab-menu">
+                    <li><span data-href="shipping-policy" class="active">Shipping Policy</span></li>
+                    <li><span data-href="returns-policy">Returns Policy</span></li>
+                    <li><span data-href="privacy-policy">Privacy Policy</span></li>
+                    <li><span data-href="contact">Contact</span></li>
+                    
+                </ul>
+            </div>            
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="tab-panels">
+                <section id="shipping-policy" class="tab-panel active">
+                    {%for block in section.blocks%}
+                        {%if block.type == 'shipping_policy'%}
+                            {% include 'faq-qa' %}
+                        {%endif%}
+                    {%endfor%}
+                </section>
+                <section id="returns-policy" class="tab-panel">
+                    {%for block in section.blocks%}
+                        {%if block.type == 'returns_policy'%}
+                            {% include 'faq-qa' %}
+                        {%endif%}
+                    {%endfor%}
+                </section>
+                <section id="privacy-policy" class="tab-panel">
+                    {%for block in section.blocks%}
+                        {%if block.type == 'privacy_policy'%}
+                            {% include 'faq-qa' %}
+                        {%endif%}
+                    {%endfor%}
+                </section>
+                <section id="contact" class="tab-panel">
+                    {%for block in section.blocks%}
+                        {%if block.type == 'contact'%}
+                            {% include 'faq-qa' %}
+                        {%endif%}
+                    {%endfor%}
+                </section>
+            </div>            
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+   "name":"FAQ",
+   "class":"hsft-faq",
+   "blocks":[
+   {
+       "type": "shipping_policy",
+       "name": "Shipping Policy",
+       "settings":[
+           {
+               "type": "text",
+               "id": "faq_question",
+               "label": "Question"
+           },
+           {
+               "type": "richtext",
+               "id": "faq_answer",
+               "label": "answer"
+           }
+       ]
+   },
+   {
+       "type": "returns_policy",
+       "name": "Returns Policy",
+       "settings":[
+           {
+               "type": "text",
+               "id": "faq_question",
+               "label": "Question"
+           },
+           {
+               "type": "richtext",
+               "id": "faq_answer",
+               "label": "answer"
+           }
+       ]
+   },
+   {
+       "type": "privacy_policy",
+       "name": "Privacy Policy",
+       "settings":[
+           {
+               "type": "text",
+               "id": "faq_question",
+               "label": "Question"
+           },
+           {
+               "type": "richtext",
+               "id": "faq_answer",
+               "label": "answer"
+           }
+       ]
+   },
+   {
+       "type": "contact",
+       "name": "Contact",
+       "settings":[
+           {
+               "type": "text",
+               "id": "faq_question",
+               "label": "Question"
+           },
+           {
+               "type": "richtext",
+               "id": "faq_answer",
+               "label": "answer"
+           }
+       ]
+   }   
+]   
+}
+{% endschema %}
+
+{% style %}
+
+
+.hsft-faq h2 {
+    font-weight: 600;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.2;
+    text-align: center;
+    color: #000000;
+    margin: 48px 0 56px;
+}
+.hsft-faq h3 {
+    font-weight: 700;
+    font-size: clamp(18px, 1.6vw, 24px);
+    line-height: 1.2;
+    color: #000000;
+    margin: 0 0 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #c4c4c4;
+    max-width: 264px;
+}
+
+.hsft-faq details {
+    border-bottom: 1px solid #c4c4c4;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    transition: all ease-in-out 0.25s;
+}
+
+.hsft-faq details:last-child {
+    border-bottom: 0;
+}
+
+.hsft-faq summary {
+    position: relative;
+}
+.hsft-faq details,
+.hsft-faq details summary {
+background-image:none;
+-webkit-appearance:none;
+}
+.hsft-faq  details summary::-webkit-details-marker {
+    display:none;
+}
+.hsft-faq summary .headline {
+    font-size: clamp(16px, 1.125vw, 18px);
+    line-height: 1.7;
+    text-transform: capitalize;
+    font-weight: 900;
+    cursor: pointer;
+    color: #000000;
+}
+
+.hsft-faq summary svg {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    transition: all ease-in-out .25s;
+}
+
+.hsft-faq details .summary-wrapper {
+    max-width: 90%;
+}
+
+.hsft-faq details .indent-content {
+    margin-top: 8px;
+    max-width: 90%;
+}
+
+.hsft-faq details .indent-content p {
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.7;
+    color: #1e1e1e;
+    text-align: left;
+}
+.hsft-faq details .indent-content p a {
+   text-decoration: underline;
+}
+
+.hsft-faq details[open] summary svg {
+    transform: rotate(180deg);
+}
+
+.tab-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.tab-menu li {
+    list-style: none;
+    margin: 0 0 10px;
+}
+
+.tab-menu li span {
+    position: relative;
+    padding: 0 8px 0 0;
+    border-bottom: 0;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-right: 32px;
+    color: #979797;
+    transition: all ease-in-out 0.25s;
+}
+
+
+.tab-menu li:last-child span {
+    margin-right: 0;
+}
+
+
+.tab-menu li span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    border-radius: 4px;
+    background: #fff;
+    left: 0;
+    transition: all ease-in-out 0.25s;
+}
+
+.tab-menu li span:hover,
+.tab-menu li span:focus,
+.tab-menu li span.active {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tab-menu li span:hover::after,
+.tab-menu li span:focus::after,
+.tab-menu li span.active::after {
+    background: #000000;
+    width: 100%;
+}
+
+.tab-panels .tab-panel {
+    display: none;
+}
+
+.tab-panels .tab-panel.active {
+    display: block;
+}
+
+@media screen and (max-width: 991px) {
+
+    .hsft-faq h2 {
+        margin-bottom: 32px;
+        margin-top: 32px;
+    }
+    .hsft-faq h3 {
+        display: none;
+        visibility: hidden;
+    }
+
+    .tab-panels {
+        width: auto;
+        position: relative;
+        left: 0;
+        right: 0;
+        padding-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tab-menu_container {
+        padding-top: 30px;
+        background-color: var(--color-grey);
+    }
+
+    .tab-menu_wrapper {
+        background: #fff;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        padding: 20px 16px 10px;
+        margin-bottom: 32px;
+    }
+
+    .tab-menu_wrapper input[type="checkbox"] {
+        font-size: 0;
+        display: none;
+    }
+
+    .tab-menu_wrapper label {
+        font-size: clamp(18px, 1.6vw, 24px);
+        line-height: 1.125;
+        text-transform: uppercase;
+        color: #000000;
+        position: relative;
+        display: block;
+    }
+
+    .tab-menu_wrapper label svg {
+        position: absolute;
+        right: 0;
+        transition: all ease-in-out .25s;
+    }
+
+    .tab-menu_wrapper input[type="checkbox"]~ul {
+        height: 0;
+        transform: scaleY(0);
+    }
+
+    .tab-menu_wrapper input[type="checkbox"]:checked~ul {
+        height: 100%;
+        transform-origin: top;
+        transition: transform .2s ease-out;
+        transform: scaleY(1);
+    }
+
+    .tab-menu_wrapper input[type="checkbox"]:checked+label svg {
+        transform: rotate(180deg);
+    }
+
+    .tab-menu {
+        margin-top: 8px;
+    }
+
+    .tab-menu li {
+        display: block;
+        margin: 4px 0 8px;
+    }
+
+    .tab-menu li span {
+        padding-left: 0;
+        margin-right: 0;
+        font-size: 12px;
+    }
+    .hsft-faq details {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .hsft-faq details .summary-wrapper {
+        max-width: 80%;
+    }
+    
+}
+{% endstyle %}
+<script>
+const removeTabLinkActive = () => {
+    const tabContainer = document.querySelectorAll(
+        '.tab-panel'
+    );
+    const tabLink = document.querySelectorAll(
+        '.tab-menu span'
+    );
+    Array.prototype.forEach.call(tabContainer, function (el) {
+        el.classList.remove("active");
+    });
+    Array.prototype.forEach.call(tabLink, function (el) {
+        el.classList.remove("active");
+    });
+
+}
+window.addEventListener("load", () => {
+    const tabMenuLink = document.querySelectorAll(
+        '.tab-menu span'
+    );
+    if (tabMenuLink) {
+        Array.prototype.forEach.call(tabMenuLink, function (el) {
+            el.addEventListener("click", (e) => {
+                e.preventDefault();
+                let tabToActivate = e.target.getAttribute('data-href');
+                removeTabLinkActive();
+                e.target.classList.add('active');
+                document.getElementById(tabToActivate).classList.add('active');
+            });
+        });
+    }
+});
+</script>

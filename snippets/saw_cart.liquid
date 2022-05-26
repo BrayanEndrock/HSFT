@@ -1,0 +1,192 @@
+{% if cart.item_count == 0 or customer.email == blank or customer.tags == blank %}
+{% else %}
+<style>
+.saw-extra-note {
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;  
+  background-color: #ffd400;
+}
+.saw-extra-note:empty {
+  display: none;
+}
+.saw-highlight {
+  background-color: #ffd400;
+}
+  
+.saw-cart-total {
+  padding: 0px !important;
+  font-weight: bold;
+  display: inline-block;  
+  margin-top: 5px;
+}
+
+.sam-add-address-error, a.sam-add-address-error:visited {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff0000;
+}
+</style>
+
+
+  <script>
+
+        function SAWCartCheck() {
+            var saw_shop_domain = "{{shop.permanent_domain}}"
+            jQuery.ajax({
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                type: "POST",
+                url: 'https://sawholesale.herokuapp.com/api/v1/cart-check-discounts',
+                data: JSON.stringify({
+                    shop_slug: saw_shop_domain.replace(".myshopify.com", ""),
+                    cart: window.saw_cart,
+                    customer: window.saw_customer
+                }),
+                success: function(res) {
+                  if (res.warning_note.indexOf("Maximum") > -1) {
+                    res.warning_note = ""
+                  }
+                  if (typeof SAWComplete == "function") {
+                    SAWComplete(res)
+                  }
+
+                  //show discounted total, even if warnings
+                  if (res.saw_total_price_format != "") {
+                    jQuery(".saw-cart-original-total").css("text-decoration", "line-through")
+                    jQuery(".saw-cart-original-total").css("opacity", "0.6")
+                    jQuery(".saw-cart-total").html(res.saw_total_price_format)
+                    setTimeout(function() {
+                        jQuery(".cart__total").html(res.saw_total_price_format)
+                    }, 500)
+                    setTimeout(function() {
+                        jQuery(".cart__total").html(res.saw_total_price_format)
+                    }, 1500)
+                  }
+                  
+                  if (res.warning_note != "") {                    
+                    if (typeof SAWOrderNote == "function") {
+                      res.warning_note = SAWOrderNote(res.warning_note)
+                    }
+                    jQuery(".saw-extra-note").html(res.warning_note)
+                    jQuery(".saw-extra-note").addClass("saw-highlight")
+                    return
+                  }
+                  if (res.price_difference == 0) {
+                    return
+                  }
+                                    
+                  var checkout_selectors = ["input[name='checkout']", "button[name='checkout']", "[href$='checkout']","input[name='goto_pp']", "button[name='goto_pp']", "input[name='goto_gc']", "button[name='goto_gc']", ".google-wallet-button-holder", ".amazon-payments-pay-button"];
+                  checkout_selectors.forEach(function(selector) {
+                      jQuery(selector).bind("click", function(ev) {
+                        ev.preventDefault()
+                        //console.log("click")
+                        SAWCheckout()
+                      })
+                  })
+
+                  if (typeof res.extra_note == "string") {
+                  	jQuery(".saw-extra-note").html(res.extra_note)
+                  }
+
+                 
+                }
+            })
+        }
+
+
+        function SAWCheckout() {
+          var saw_shop_domain = "{{shop.permanent_domain}}"
+
+          var note_attributes = []
+          jQuery( "[name^='attributes']" ).each(function() {
+            //console.log(this, jQuery(this).attr("name"), jQuery(this).val())
+            var name = jQuery(this).attr("name")
+            name = name.replace(/^attributes\[/i, ""). replace(/\]$/i, "")
+            var v = { 
+              name : name,
+              value: jQuery(this).val()
+            }
+            note_attributes.push(v)
+          })
+
+          for (var i=0; i<window.saw_cart.items.length; i++) {
+            var item = window.saw_cart.items[i]
+            var el = document.querySelectorAll("[id='updates_" + item.key + "']")
+            if (el.length != 1) {
+              el = document.querySelectorAll("[id='updates_" + item.variant_id + "']")
+            }
+            if (el.length == 1) {
+              window.saw_cart.items[i].quantity = el[0].value
+            }
+          }
+
+          var note = ""
+          if (jQuery("[name='note']").length) {
+            note = jQuery("[name='note']")[0].value
+          }
+
+          jQuery.ajax({
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            type: "POST",
+            url: 'https://sawholesale.herokuapp.com/api/v1/cart-check-discounts?checkout=draft',
+            data: JSON.stringify({
+              shop_slug: saw_shop_domain.replace(".myshopify.com", ""),
+              cart: window.saw_cart,
+              customer: window.saw_customer,
+              note: note,
+              note_attributes: note_attributes
+            }),
+            success: function(res) {
+              //console.log(res)
+              if (res.status == "OK") {                 
+                var params = []
+                if (typeof window.currentLanguageCode == "string" && window.currentLanguageCode.length > 1 && window.currentLanguageCode.length < 9) {
+                  params.push({name: "locale", value: window.currentLanguageCode})
+                }
+                if (params.length > 0) {
+                  res.invoice_url += "?"
+                  for (var i=0; i<params.length; i++) {
+                    res.invoice_url += params[i].name + "=" + params[i].value + "&"
+                  }
+                }
+                //console.log(res.invoice_url)
+                window.location.href = res.invoice_url
+              } else {
+                alert(res.status)
+              }
+            }
+          })
+        }
+
+
+        window.saw_cart = {{cart | json}}
+        window.saw_cart.items = []
+        {% for item in cart.items %}
+        	var itemjs = {{item | json}} //includes properties            
+            itemjs.variant_title = "{{ item.variant.title | strip_newlines | escape }}"
+            itemjs.compare_at_price = {% if item.variant.compare_at_price == blank %} null {% else %} {{item.variant.compare_at_price}} {% endif %}
+            itemjs.sawholesale = {{item.product.metafields.sawholesale | json}};
+            
+            delete itemjs.image
+            delete itemjs.url
+            window.saw_cart.items.push(itemjs)
+        {% endfor %}
+        //console.log({{cart | json}})
+        window.saw_customer = {id: {{customer.id}}, email: "{{customer.email | escape}}" }
+
+        SAWCartCheck()
+
+  </script>
+{% endif %}
+
+
+  
+{% assign current_language_id = cart.attributes.language %}
+{% assign current_language_code = shop.metafields.language_codes[current_language_id] %}
+<script>
+window.currentLanguageCode = '{{ current_language_code }}';
+</script>
+

@@ -1,0 +1,69 @@
+<div class="ribbon">
+    <div class="container ">
+        <div class="row ribbon-carousel">
+            {% for block in section.blocks %}
+                <div class="col text-center">{{ block.settings.free_shipping_text }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Free Shipping message",
+    "settings": [{
+            "type": "header",
+            "content": "Free Shipping message"
+        },
+        {
+            "type": "color",
+            "id": "free_shipping_bg",
+            "label": "Ribbon Background",
+            "default": "#00000d"
+        },
+        {
+            "type": "color",
+            "id": "free_shipping_color",
+            "label": "Ribbon Font Color",
+            "default": "#ffffff"
+        }
+    ],
+    "blocks": [{
+        "type": "ribbon",
+        "name": "Ribbon",
+        "settings": [
+
+            {
+                "type": "richtext",
+                "id": "free_shipping_text",
+                "label": "Text"
+            }
+        ]
+    }],
+    "presets": [{
+        "name": "Mobile Main Nav",
+        "category": "HSFT"
+    }]
+}
+{% endschema %}
+{% style %}
+.ribbon {
+    background-color: {{settings.free_shipping_bg}};
+    position: relative;
+    z-index: 99999999;
+    max-width: 100%;
+}
+.ribbon p, 
+.ribbon a {
+    color: {{settings.free_shipping_color}};
+}
+@keyframes leftAnimation {
+  0%   {margin-left: 0;}
+  100% {margin-left: -200px;}
+}
+.sidr-mobile-open .ribbon {
+    animation-name: leftAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+{% endstyle %}

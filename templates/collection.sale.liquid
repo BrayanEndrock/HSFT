@@ -1,0 +1,93 @@
+<div id="collections-main" class="{{ collection.handle }} sale-page">
+	
+<div class="sale-welcome custom-font">
+
+Sale
+
+</div>
+
+</div>
+
+<ul>
+{% for product_vendor in collection.all_vendors %}
+	<li>{{ product_vendor | link_to_vendor }}</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for product_type in collection.all_types %}
+	<li>{{ product_type | link_to_type }}</li>
+{% endfor %}
+</ul>
+
+
+{% if collection.all_vendors.size > 1 %}
+<h3>{{ 'collections.sidebar.vendors' | t }}</h3>
+<ul>
+{% for vendor in collection.all_vendors %}
+{% if collection.current_vendor == vendor %}
+<li class="filter--active">
+{{ vendor }}
+</li>
+{% else %}
+<li>
+{{ vendor | link_to_vendor }}
+</li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if collection.handle == null %}
+ Browsing products lovingly crafted 
+ by {{ collection.products[0].vendor }}.
+{% endif %}
+
+  <section class="clearfix">
+
+    {% paginate collection.products by settings.products-per-page %}
+      {% if collection.products.size > 0 %}
+    
+        <ul class="product-grid clearfix">
+        {% for product in collection.products %}
+			<li class="col-md-3{% cycle ' alpha', '', ' mobile', ' omega' %} col-sm-6">
+	  			<div class="indiv-product">
+	
+					<a href="{{ product.url | within: collection }}" title="{{product.title}}">
+						<img src="{{ product.featured_image | product_img_url: 'large' }}'" alt="{{product.title}}">
+					</a>
+			   		<div class="hp-title">
+						<a href="{{ product.url | within: collection }}">
+						<div class="indiv-product-title-text">{{product.title}}</div>
+						
+						{% if product.compare_at_price_max > product.price %}
+							<div class="sale-badge">{{ 'products.general.sale' | t }}</div>
+						{% endif %}
+						
+							<span class="money-styling custom-font">
+							{% if product.compare_at_price_max > product.price %}
+								<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+							{% endif %}
+						  {% if product.price_varies %}
+						    <small>{{ 'products.general.from' | t }}</small> {{ product.price_min | money }}
+						  {% else %}
+						    {{ product.price_min | money }}
+						  {% endif %}
+						</span>
+						</a>
+					</div>
+					
+				</div>
+			</li>
+        {% endfor %}
+        </ul>
+
+        {% include 'pagination' %}
+      
+      {% else %}    
+        <div class="no-products-found">{{ 'collections.general.no_matches' | t }}</div>
+      {% endif %}
+    {% endpaginate %}
+  </section>
+
+</div> <!-- /#col-main -->

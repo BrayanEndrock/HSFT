@@ -1,0 +1,96 @@
+{% for block in section.blocks %} 
+    {% if block.settings.url != blank %}
+        <li class="dropdown">
+            <a href="{{block.settings.url.url}}" class="dropdown-toggle">
+                <span class="nav-label"> {{block.settings.title}} </span>
+            </a>
+        </li>   
+    {% else %}
+        <li class="dropdown">
+            <a href="#" onclick="toggleElment('.custom-menu-{{ forloop.index0 }}'); return false;" data-toggle="product-nav-wrapper-main" class="dropdown-toggle">
+                <span class="nav-label"> {{block.settings.title}} </span><span class="caret"></span>
+            </a>
+        </li>   
+    {% endif %}
+{% endfor %}
+<div class="dropdown-elements">
+{% for block in section.blocks %}
+    <div class="row hidden custom-menu-tabs custom-menu-{{ forloop.index0 }} " loop-handle="{{linklists[block.settings.option].handle}}">
+        <div class="product-nav-wrapper-main col-md-12">
+            <div id="product-nav-wrapper" class="custom-font">
+                <ul class="nav nav-pills" data-handle="{{linklists[block.settings.option].handle}}">
+                    {% for link in linklists[block.settings.option].links %}
+                        {% assign child_list_handle = link.title | handleize %}
+                        {% if linklists[child_list_handle].links != blank %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="nav-label">{{ link.title | escape }}</span>
+                                </a>
+                                <!-- <ul class="dropdown-menu">
+                                    {% for childlink in linklists[child_list_handle].links %}
+                                        <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                                    {% endfor %}
+                                </ul> -->
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ link.url }}" class="subnav-label">
+                                    {% if linklists[block.settings.option].handle == 'shop' %}
+                                        {% if link.object.metafields.global.menu.value %}
+                                            {{ link.object.metafields.global.menu.value | img_url: '80x' | img_tag }}
+                                        {% else %}
+                                            {{ link.object.featured_image | img_url: '80x' | img_tag }}
+                                        {% endif %}
+                                    {% endif %}
+                                    {{ link.title | escape }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}     
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% schema %}
+{
+	"name":"Menu",
+	"class": "menu",
+	"settings":[],
+    "blocks":
+    [
+        {
+            "name":"Option menu",
+            "type":"option",
+            "settings":
+            [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label":"Title Menu"
+                },    
+                {
+                    "type": "link_list",
+                    "id": "option",
+                    "label":"Menu",
+                    "default": "main-menu"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link"
+                }                       
+            ]            
+        }
+    ],    
+    "presets":
+    [
+        {
+            "name": "Menu",
+            "category": "Componentes Menu"
+        }    
+    ]
+}
+{% endschema %}

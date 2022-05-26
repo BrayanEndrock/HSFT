@@ -1,0 +1,102 @@
+<div class="indiv-product">
+	<a href="{{ product.url | within: collection }}" title="{{product.title}}">
+        {% include 'corner-treatments', tags: product.tags %}
+		    <div class="reveal">
+            {%if collection.handle == 'celebrities' and product.metafields.global.plp-celeb.value != blank %}
+            <img class="lazyload hide img-primary img-product-{{ product.handle }} lazyload" alt="{{ product.title }}"
+              data-srcset="{{ product.featured_image | product_img_url: '360x' | split:'?' | first }} 1x, {{ product.featured_image | product_img_url: '720x' | split:'?' | first }} 2x" />
+            {% elsif product.images.size > 1 %}
+            <img class="lazyload hide img-primary img-product-{{ product.handle }} lazyload" alt="{{ product.title }}"
+              data-srcset="{{ product.images.last | product_img_url: '360x' | split:'?' | first }} 1x, {{ product.images.last | product_img_url: '720x' | split:'?' | first }} 2x" />
+            {%endif%}
+            {%if collection.handle == 'celebrities' and product.metafields.global.plp-celeb.value != blank %}
+            <img class="product--image lazyload" data-srcset="{{  product.metafields.global.plp-celeb.value != blank | img_url: '360x' }} 1x, {{ product.metafields.global.plp-celeb.value != blank | img_url: '720x' }} 2x"
+              data-aspectratio="{{ featured_image.aspect_ratio }}"
+              alt="{{ product.title | escape }}" data-image>
+            {%else%}
+            <img class="product--image lazyload" data-srcset="{{  product.featured_image | product_img_url: '360x' }} 1x, {{  product.featured_image | product_img_url: '720x' }} 2x"
+              data-aspectratio="{{ featured_image.aspect_ratio }}"
+              alt="{{ product.title | escape }}" data-image>
+            {%endif%}
+          </div>
+	</a>
+	
+  
+{% include 'saw_compute_discount' with product %}
+
+  
+	<div class="hp-title">
+		<a href="{{ product.url | within: collection }}">
+			<div class="indiv-product-title-text">{{product.title}}</div>
+			
+			{% if product.compare_at_price_max > product.price and saw_discount == 1 %}
+				<div class="sale-badge">{{ 'products.general.sale' | t }}</div>
+			{% endif %}
+		
+			<span class="money-styling custom-font">
+		
+              
+  {% if saw_discount == 1 %}
+          <!-- original prices here -->
+              
+                    {% if product.compare_at_price_max > product.price %}
+                        <h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+                    {% endif %}
+
+                    {% if product.available %}	
+                        {% if product.price_varies %}
+                            <small>{{ 'products.general.from' | t }}</small> {{ product.price_min | money }}
+                        {% else %}
+                            {{ product.price_min | money }}
+                        {% endif %}
+                    {% else %}
+                        <p class="product-dets-sold-out">{{ 'products.product.sold_out' | t }}</p>
+                    {% endif %}
+  {% else %}
+              
+                        <h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
+
+                    {% if product.available %}	
+                        {% if product.price_varies %}
+                            <small>{{ 'products.general.from' | t }}</small> {{ saw_product_price | money }}
+                        {% else %}
+                            {{ saw_product_price | money }}
+                        {% endif %}
+                    {% else %}
+                        <p class="product-dets-sold-out">{{ 'products.product.sold_out' | t }}</p>
+                    {% endif %}
+	
+  {% endif %}
+
+
+
+			</span>
+		</a>
+    <div class="quick-atc">
+        {% if product.variants.size > 1 %}
+            <button class="quick-atc__trigger atc" data-product-id="{{ product.id }}">ADD TO CART
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6.5" cy="6.5" r="6" stroke="black"/>
+                    <rect x="6" y="4" width="1" height="5" fill="black"/>
+                    <rect x="9" y="6" width="1" height="5" transform="rotate(90 9 6)" fill="black"/>
+                </svg>
+            </button>
+            <div class="quick-atc__variants hidden-atc {% if product.variants.size > 5 %}scroll{% endif %}" id="atc-{{ product.id }}">
+                {% for variant in product.variants %}
+                    {% if variant.available %}
+                        <span class="quick-atc__variant" data-variant-id="{{ variant.id }}">{{ variant.title | replace: "Small","S" | replace: "Medium","M" | replace: "Large","L" | replace: "X-Large","XL" | replace: "X-L","XL" }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <button class="quick-atc__trigger quick-atc__variant {% unless product.available%}disabled{%endunless%}" data-variant-id="{{ product.selected_or_first_available_variant.id }}">{% unless product.available%}SOLD OUT{%else%}ADD TO CART{%endunless%}
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6.5" cy="6.5" r="6" stroke="black"/>
+                    <rect x="6" y="4" width="1" height="5" fill="black"/>
+                    <rect x="9" y="6" width="1" height="5" transform="rotate(90 9 6)" fill="black"/>
+                </svg>
+            </button>
+        {% endif %}
+    </div>      
+	</div>
+</div>

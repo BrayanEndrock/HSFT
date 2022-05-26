@@ -1,0 +1,920 @@
+{
+  "presets": {
+    "Stockholm": {
+      "typography-heading-font": "typography-heading-monserrat",
+      "typography-body-font": "typography-body-helvetica",
+      "menu-case": "menu-upper-case",
+      "font-colour": "#000",
+      "link-colour": "#000",
+      "active-link-colour": "#000",
+      "header-background-colour": "#ebebeb",
+      "header-text-colour": "#AAB1B4",
+      "header-link-colour": "#AAB1B4",
+      "header-active-link-colour": "#000000",
+      "title-bar-styling": "title-bar-diagonal-background",
+      "body_bg_img": "none",
+      "body_bg_alignment": "tile",
+      "bg_colour": "#ffffff",
+      "remove-all-bg-colour": false,
+      "indiv_product_shadowing": true,
+      "remove-product-box-bg-colour": true,
+      "block_pinterest": false,
+      "allow_note": false,
+      "logo_image": "nologo.png",
+      "title_text": "",
+      "logo_colour": "#252525",
+      "logo_hover_colour": "#000",
+      "header_font_size": "48px",
+      "header_font_style": "normal",
+      "which-linklist-header-menu": "main-menu",
+      "which-linklist-main-menu": "main-menu",
+      "which-linklist-main-menu-test": "about",
+      "which-linklist-footer-menu": "footer",
+      "which-linklist-mobile-menu": "main-menu",
+      "show_slider": true,
+      "show_carousel_item_1": true,
+      "carousel_item_1_alt_text": "",
+      "carousel_item_1_caption": "",
+      "carousel_item_1_link": "",
+      "show_carousel_item_2": true,
+      "carousel_item_2_alt_text": "",
+      "carousel_item_2_caption": "",
+      "carousel_item_2_link": "",
+      "show_carousel_item_3": true,
+      "carousel_item_3_alt_text": "",
+      "carousel_item_3_caption": "",
+      "carousel_item_3_link": "",
+      "show_carousel_item_4": false,
+      "carousel_item_4_alt_text": "",
+      "carousel_item_4_caption": "",
+      "carousel_item_4_link": "",
+      "show_carousel_item_5": false,
+      "carousel_item_5_alt_text": "",
+      "carousel_item_5_caption": "",
+      "carousel_item_5_link": "",
+      "show_carousel_item_6": false,
+      "carousel_item_6_alt_text": "",
+      "carousel_item_6_caption": "",
+      "carousel_item_6_link": "",
+      "number_of_promoboxs": "two",
+      "show_promobox_item_1": true,
+      "promobox_item_1_alt_text": "",
+      "promobox_item_1_link": "",
+      "show_promobox_item_2": true,
+      "promobox_item_2_alt_text": "",
+      "promobox_item_2_link": "",
+      "show_promobox_item_3": false,
+      "promobox_item_3_alt_text": "",
+      "promobox_item_3_link": "",
+      "which-collection": "frontpage",
+      "show_blog_promobox": false,
+      "promobox_item_4_alt_text": "",
+      "promobox_item_4_link": "",
+      "blog_author_info": false,
+      "blogfeed_facebook": false,
+      "blogfeed_facebook_username": "http:\/\/facebook.com\/shopify",
+      "show_fb_comments": false,
+      "share_prod_on_twitter": true,
+      "share_prod_on_facebook": true,
+      "share_prod_on_pinterest": true,
+      "show-collections-tags": false,
+      "products-per-page": "12",
+      "show_collection_promobox": false,
+      "promobox_item_5_alt_text": "",
+      "promobox_item_5_link": "",
+      "show_designed_by": true,
+      "sm_facebook": true,
+      "sm_facebook_link": "http:\/\/facebook.com",
+      "sm_twitter": true,
+      "sm_twitter_link": "http:\/\/twitter.com",
+      "sm_youtube": true,
+      "sm_youtube_link": "http:\/\/youtube.com",
+      "sm_flickr": true,
+      "sm_flickr_link": "http:\/\/flickr.com",
+      "sm_pinterest": true,
+      "sm_pinterest_link": "http:\/\/pinterest.com",
+      "sm_tumblr": true,
+      "sm_tumblr_link": "http:\/\/tumblr.com",
+      "sm_instagram": true,
+      "sm_instagram_link": "http:\/\/instagram.com",
+      "show_amex": true,
+      "show_discover": true,
+      "show_visa": true,
+      "show_mastercard": true,
+      "show_maestro": true,
+      "show_cirrus": true,
+      "show_paypal": true,
+      "show_google": true,
+      "pop-up-selection": "none",
+      "pop-up-text-background-colour": "#ffffff",
+      "pop-up-text-header-text": "Join our Mailing List!",
+      "pop-up-text-header-text-colour": "#000",
+      "pop-up-text-header-text-size": "30px",
+      "pop-up-text-description-text": "Join today for 10% off your first order!",
+      "pop-up-text-description-text-colour": "#000",
+      "pop-up-text-description-text-size": "14px",
+      "homepage-products-per-page": "4",
+      "collection-products-per-page": "12",
+      "homepage-products-per-row": "4",
+      "customer_layout": "theme"
+    },
+    "Oslo": {
+      "typography-heading-font": "typography-heading-lato",
+      "typography-body-font": "typography-body-lato",
+      "menu-case": "menu-normal-case",
+      "font-colour": "#000",
+      "link-colour": "#000",
+      "active-link-colour": "#000",
+      "header-background-colour": "#292929",
+      "header-text-colour": "#ffffff",
+      "header-link-colour": "#AAB1B4",
+      "header-active-link-colour": "#fff",
+      "title-bar-styling": "title-bar-minimal",
+      "body_bg_img": "none",
+      "body_bg_alignment": "tile",
+      "bg_colour": "#f6f6f6",
+      "remove-all-bg-colour": false,
+      "indiv_product_shadowing": true,
+      "remove-product-box-bg-colour": true,
+      "block_pinterest": false,
+      "allow_note": false,
+      "logo_image": "nologo.png",
+      "title_text": "",
+      "logo_colour": "#252525",
+      "logo_hover_colour": "#000",
+      "header_font_size": "48px",
+      "header_font_style": "normal",
+      "which-linklist-header-menu": "main-menu",
+      "which-linklist-main-menu": "main-menu",
+      "which-linklist-main-menu-test": "about",
+      "which-linklist-footer-menu": "footer",
+      "which-linklist-mobile-menu": "main-menu",
+      "show_slider": true,
+      "show_carousel_item_1": true,
+      "carousel_item_1_alt_text": "",
+      "carousel_item_1_caption": "",
+      "carousel_item_1_link": "",
+      "show_carousel_item_2": true,
+      "carousel_item_2_alt_text": "",
+      "carousel_item_2_caption": "",
+      "carousel_item_2_link": "",
+      "show_carousel_item_3": true,
+      "carousel_item_3_alt_text": "",
+      "carousel_item_3_caption": "",
+      "carousel_item_3_link": "",
+      "show_carousel_item_4": false,
+      "carousel_item_4_alt_text": "",
+      "carousel_item_4_caption": "",
+      "carousel_item_4_link": "",
+      "show_carousel_item_5": false,
+      "carousel_item_5_alt_text": "",
+      "carousel_item_5_caption": "",
+      "carousel_item_5_link": "",
+      "show_carousel_item_6": false,
+      "carousel_item_6_alt_text": "",
+      "carousel_item_6_caption": "",
+      "carousel_item_6_link": "",
+      "number_of_promoboxs": "one",
+      "show_promobox_item_1": true,
+      "promobox_item_1_alt_text": "",
+      "promobox_item_1_link": "",
+      "show_promobox_item_2": false,
+      "promobox_item_2_alt_text": "",
+      "promobox_item_2_link": "",
+      "show_promobox_item_3": false,
+      "promobox_item_3_alt_text": "",
+      "promobox_item_3_link": "",
+      "which-collection": "frontpage",
+      "show_blog_promobox": false,
+      "promobox_item_4_alt_text": "",
+      "promobox_item_4_link": "",
+      "blog_author_info": false,
+      "blogfeed_facebook": false,
+      "blogfeed_facebook_username": "http:\/\/www.facebook.com\/shopify",
+      "show_fb_comments": false,
+      "share_prod_on_twitter": true,
+      "share_prod_on_facebook": true,
+      "share_prod_on_pinterest": true,
+      "show-collections-tags": false,
+      "products-per-page": "12",
+      "show_collection_promobox": false,
+      "promobox_item_5_alt_text": "",
+      "promobox_item_5_link": "",
+      "show_designed_by": true,
+      "sm_facebook": true,
+      "sm_facebook_link": "http:\/\/www.facebook.com",
+      "sm_twitter": true,
+      "sm_twitter_link": "http:\/\/www.twitter.com",
+      "sm_youtube": true,
+      "sm_youtube_link": "http:\/\/www.youtube.com",
+      "sm_flickr": true,
+      "sm_flickr_link": "http:\/\/www.flickr.com",
+      "sm_pinterest": true,
+      "sm_pinterest_link": "http:\/\/www.instagram.com",
+      "sm_instagram": true,
+      "show_amex": true,
+      "show_discover": true,
+      "show_visa": true,
+      "show_mastercard": true,
+      "show_maestro": true,
+      "show_cirrus": true,
+      "show_paypal": true,
+      "show_google": true,
+      "pop-up-selection": "none",
+      "pop-up-text-background-colour": "#ffffff",
+      "pop-up-text-header-text": "Join our Mailing List!",
+      "pop-up-text-header-text-colour": "#000",
+      "pop-up-text-header-text-size": "30px",
+      "pop-up-text-description-text": "Join today for 10% off your first order!",
+      "pop-up-text-description-text-colour": "#000",
+      "pop-up-text-description-text-size": "14px",
+      "homepage-products-per-page": "3",
+      "collection-products-per-page": "9",
+      "collection-products-per-row": "3",
+      "homepage-products-per-row": "3",
+      "customer_layout": "theme"
+    },
+    "Copenhagen": {
+      "typography-heading-font": "typography-heading-roboto",
+      "typography-body-font": "typography-body-roboto",
+      "menu-case": "menu-lower-case",
+      "font-colour": "#000",
+      "link-colour": "#000",
+      "active-link-colour": "#000",
+      "header-background-colour": "#ebebeb",
+      "header-text-colour": "#AAB1B4",
+      "header-link-colour": "#AAB1B4",
+      "header-active-link-colour": "#000",
+      "title-bar-styling": "title-bar-lowercase",
+      "body_bg_img": "none",
+      "body_bg_alignment": "tile",
+      "bg_colour": "#ffffff",
+      "remove-all-bg-colour": true,
+      "indiv_product_shadowing": true,
+      "remove-product-box-bg-colour": true,
+      "block_pinterest": false,
+      "allow_note": false,
+      "logo_image": "nologo.png",
+      "title_text": "",
+      "logo_colour": "#252525",
+      "logo_hover_colour": "#000",
+      "header_font_size": "48px",
+      "header_font_style": "normal",
+      "which-linklist-header-menu": "main-menu",
+      "which-linklist-main-menu": "main-menu",
+      "which-linklist-main-menu-test": "about",
+      "which-linklist-footer-menu": "footer",
+      "which-linklist-mobile-menu": "main-menu",
+      "show_slider": true,
+      "show_carousel_item_1": true,
+      "carousel_item_1_alt_text": "",
+      "carousel_item_1_caption": "",
+      "carousel_item_1_link": "",
+      "show_carousel_item_2": true,
+      "carousel_item_2_alt_text": "",
+      "carousel_item_2_caption": "",
+      "carousel_item_2_link": "",
+      "show_carousel_item_3": true,
+      "carousel_item_3_alt_text": "",
+      "carousel_item_3_caption": "",
+      "carousel_item_3_link": "",
+      "show_carousel_item_4": false,
+      "carousel_item_4_alt_text": "",
+      "carousel_item_4_caption": "",
+      "carousel_item_4_link": "",
+      "show_carousel_item_5": false,
+      "carousel_item_5_alt_text": "",
+      "carousel_item_5_caption": "",
+      "carousel_item_5_link": "",
+      "show_carousel_item_6": false,
+      "carousel_item_6_alt_text": "",
+      "carousel_item_6_caption": "",
+      "carousel_item_6_link": "",
+      "number_of_promoboxs": "three",
+      "show_promobox_item_1": true,
+      "promobox_item_1_alt_text": "",
+      "promobox_item_1_link": "",
+      "show_promobox_item_2": true,
+      "promobox_item_2_alt_text": "",
+      "promobox_item_2_link": "",
+      "show_promobox_item_3": true,
+      "promobox_item_3_alt_text": "",
+      "promobox_item_3_link": "",
+      "which-collection": "frontpage",
+      "show_blog_promobox": false,
+      "promobox_item_4_alt_text": "",
+      "promobox_item_4_link": "",
+      "blog_author_info": false,
+      "blogfeed_facebook": false,
+      "blogfeed_facebook_username": "http:\/\/www.facebook.com\/shopify",
+      "show_fb_comments": false,
+      "share_prod_on_twitter": true,
+      "share_prod_on_facebook": true,
+      "share_prod_on_pinterest": true,
+      "show-collections-tags": false,
+      "products-per-page": "12",
+      "show_collection_promobox": false,
+      "promobox_item_5_alt_text": "",
+      "promobox_item_5_link": "",
+      "show_designed_by": true,
+      "sm_facebook": true,
+      "sm_facebook_link": "http:\/\/www.facebook.com",
+      "sm_twitter": true,
+      "sm_twitter_link": "http:\/\/www.twitter.com",
+      "sm_youtube": true,
+      "sm_youtube_link": "http:\/\/www.youtube.com",
+      "sm_flickr": true,
+      "sm_flickr_link": "http:\/\/www.flickr.com",
+      "sm_pinterest": true,
+      "sm_pinterest_link": "http:\/\/www.instagram.com",
+      "sm_instagram": true,
+      "show_amex": true,
+      "show_discover": true,
+      "show_visa": true,
+      "show_mastercard": true,
+      "show_maestro": true,
+      "show_cirrus": true,
+      "show_paypal": true,
+      "show_google": true,
+      "pop-up-selection": "none",
+      "pop-up-text-background-colour": "#ffffff",
+      "pop-up-text-header-text": "Join our Mailing List!",
+      "pop-up-text-header-text-colour": "#000",
+      "pop-up-text-header-text-size": "30px",
+      "pop-up-text-description-text": "Join today for 10% off your first order!",
+      "pop-up-text-description-text-colour": "#000",
+      "pop-up-text-description-text-size": "14px",
+      "homepage-products-per-page": "6",
+      "collection-products-per-page": "12",
+      "homepage-products-per-row": "3",
+      "customer_layout": "theme"
+    },
+    "Gothenburg": {
+      "typography-heading-font": "typography-heading-istok-web",
+      "typography-body-font": "typography-body-pontano-sans",
+      "menu-case": "menu-upper-case",
+      "font-colour": "#ffffff",
+      "link-colour": "#ffffff",
+      "active-link-colour": "#ffffff",
+      "header-background-colour": "#333333",
+      "header-text-colour": "#ffffff",
+      "header-link-colour": "#ffffff",
+      "header-active-link-colour": "#ffffff",
+      "title-bar-styling": "title-bar-lowercase",
+      "body_bg_img": "none",
+      "body_bg_alignment": "tile",
+      "bg_colour": "#333333",
+      "remove-all-bg-colour": false,
+      "indiv_product_shadowing": false,
+      "remove-product-box-bg-colour": false,
+      "block_pinterest": false,
+      "allow_note": false,
+      "logo_image": "logo.png",
+      "logo_colour": "#ffffff",
+      "logo_hover_colour": "#ffffff",
+      "header_font_size": "48px",
+      "header_font_style": "normal",
+      "which-linklist-header-menu": "main-menu",
+      "which-linklist-main-menu": "main-menu",
+      "which-linklist-main-menu-test": "about",
+      "which-linklist-footer-menu": "footer",
+      "which-linklist-mobile-menu": "main-menu",
+      "show_slider": true,
+      "show_carousel_item_1": true,
+      "show_carousel_item_2": true,
+      "show_carousel_item_3": true,
+      "show_carousel_item_4": false,
+      "show_carousel_item_5": false,
+      "show_carousel_item_6": false,
+      "number_of_promoboxs": "two",
+      "show_promobox_item_1": true,
+      "show_promobox_item_2": true,
+      "show_promobox_item_3": false,
+      "show_blog_promobox": false,
+      "blog_author_info": false,
+      "blogfeed_facebook": false,
+      "show_fb_comments": false,
+      "share_prod_on_twitter": true,
+      "share_prod_on_facebook": true,
+      "share_prod_on_pinterest": true,
+      "show-collections-tags": false,
+      "show_collection_promobox": false,
+      "show_designed_by": true,
+      "sm_facebook": true,
+      "sm_twitter": true,
+      "sm_youtube": true,
+      "sm_flickr": true,
+      "sm_pinterest": true,
+      "sm_instagram": true,
+      "show_amex": true,
+      "show_discover": true,
+      "show_visa": true,
+      "show_mastercard": true,
+      "show_maestro": true,
+      "show_cirrus": true,
+      "show_paypal": true,
+      "show_google": true,
+      "pop-up-selection": "none",
+      "pop-up-text-background-colour": "#ffffff",
+      "pop-up-text-header-text-colour": "#000000",
+      "pop-up-text-header-text-size": "30px",
+      "pop-up-text-description-text-colour": "#000000",
+      "pop-up-text-description-text-size": "14px",
+      "checkout_use_header_image": false,
+      "checkout_banner_background_color": "#ffffff",
+      "checkout_accent_color": "#2a9dcc",
+      "checkout_button_color": "#2a9dcc",
+      "checkout_call_to_action_color": "#8fc243",
+      "homepage-products-per-page": "9",
+      "collection-products-per-page": "12",
+      "homepage-products-per-row": "3",
+      "customer_layout": "theme"
+    }
+  },
+  "current": {
+    "typography-heading-font": "typography-heading-monserrat",
+    "typography-body-font": "typography-body-open-sans",
+    "menu-case": "menu-upper-case",
+    "font-colour": "#000",
+    "link-colour": "#000",
+    "active-link-colour": "#000",
+    "header-background-colour": "#ebebeb",
+    "header-text-colour": "#aab1b4",
+    "header-link-colour": "#aab1b4",
+    "header-active-link-colour": "#000000",
+    "title-bar-styling": "title-bar-diagonal-background",
+    "body_bg_img": "none",
+    "body_bg_alignment": "tile",
+    "bg_colour": "#ffffff",
+    "remove-all-bg-colour": false,
+    "indiv_product_shadowing": false,
+    "remove-product-box-bg-colour": true,
+    "block_pinterest": true,
+    "allow_note": true,
+    "free_shipping_text": "<p>Use code  <a href=\"\/collections\/womens\" title=\"Women's Tops\"><strong>EMPOWERWOMEN15<\/strong><\/a>  at checkout to get 15% off your purchase of anything in our women’s collection!<\/p>",
+    "promo_code_text": "",
+    "logo_image": "logo.png",
+    "tagline_text": "",
+    "title_text": "Women's Fashion Brand | Have Some Fun Today | HSFT",
+    "logo_colour": "#252525",
+    "logo_hover_colour": "#000",
+    "header_font_size": "48px",
+    "header_font_style": "normal",
+    "which-linklist-header-menu": "main-menu",
+    "which-linklist-main-menu": "shop",
+    "which-linklist-footer-menu": "footer",
+    "which-linklist-mobile-menu": "mobile-menu",
+    "show_slider": false,
+    "slider-animation": "fade",
+    "slider-slide-time": "5000",
+    "show_carousel_item_1": true,
+    "carousel_item_1_alt_text": "",
+    "carousel_item_1_caption": "",
+    "carousel_item_1_link": "\/collections\/bags",
+    "show_carousel_item_2": false,
+    "carousel_item_2_alt_text": "",
+    "carousel_item_2_caption": "",
+    "carousel_item_2_link": "",
+    "show_carousel_item_3": false,
+    "carousel_item_3_alt_text": "",
+    "carousel_item_3_caption": "",
+    "carousel_item_3_link": "",
+    "show_carousel_item_4": false,
+    "carousel_item_4_alt_text": "",
+    "carousel_item_4_caption": "",
+    "carousel_item_4_link": "",
+    "show_carousel_item_5": false,
+    "carousel_item_5_alt_text": "",
+    "carousel_item_5_caption": "",
+    "carousel_item_5_link": "",
+    "show_carousel_item_6": false,
+    "carousel_item_6_alt_text": "",
+    "carousel_item_6_caption": "",
+    "carousel_item_6_link": "",
+    "number_of_promoboxs": "three",
+    "show_promobox_item_1": true,
+    "promobox_item_1_alt_text": "Womens",
+    "promobox_item_1_link": "\/collections\/womens\/",
+    "show_promobox_item_2": true,
+    "promobox_item_2_alt_text": "Accessories",
+    "promobox_item_2_link": "\/collections\/accessories\/",
+    "show_promobox_item_3": true,
+    "promobox_item_3_alt_text": "Bags",
+    "promobox_item_3_link": "\/collections\/bags",
+    "which-collection": "best-seller",
+    "homepage-products-per-page": "8",
+    "homepage-products-per-row": "4",
+    "show_blog_promobox": false,
+    "promobox_item_4_alt_text": "",
+    "promobox_item_4_link": "",
+    "blog_author_info": false,
+    "blogfeed_facebook": true,
+    "blogfeed_facebook_username": "https:\/\/facebook.com\/HSFTofficial",
+    "add-to-cart-background-colour": "#000000",
+    "add-to-cart-background-hover-colour": "#555555",
+    "add-to-cart-text-colour": "#fff",
+    "share_prod_on_twitter": true,
+    "share_prod_on_facebook": true,
+    "share_prod_on_pinterest": true,
+    "share_prod_on_googleplus": true,
+    "show-collections-tags": false,
+    "collection-products-per-page": "12",
+    "collection-products-per-row": "3",
+    "show_collection_promobox": false,
+    "promobox_item_5_alt_text": "",
+    "promobox_item_5_link": "",
+    "show_designed_by": false,
+    "sm_facebook": true,
+    "sm_facebook_link": "https:\/\/facebook.com\/HSFTofficial",
+    "sm_twitter": true,
+    "sm_twitter_link": "http:\/\/twitter.com\/hsft_official",
+    "sm_youtube": false,
+    "sm_youtube_link": "http:\/\/youtube.com",
+    "sm_flickr": false,
+    "sm_flickr_link": "http:\/\/flickr.com",
+    "sm_pinterest": true,
+    "sm_pinterest_link": "http:\/\/pinterest.com\/HSFTofficial",
+    "sm_tumblr": false,
+    "sm_tumblr_link": "http:\/\/hsftcouture.tumblr.com",
+    "sm_instagram": true,
+    "sm_instagram_link": "http:\/\/instagram.com\/hsft_official",
+    "show_amex": true,
+    "show_discover": true,
+    "show_visa": true,
+    "show_mastercard": true,
+    "show_maestro": false,
+    "show_cirrus": false,
+    "show_paypal": true,
+    "show_google": false,
+    "show_amazon": true,
+    "pop-up-selection": "none",
+    "pop-up-text-background-colour": "#ffffff",
+    "show-side-image": true,
+    "pop-up-text-header-text": "Join today for 25% off your first order!",
+    "pop-up-text-header-text-colour": "#000",
+    "pop-up-text-header-text-size": "30px",
+    "pop-up-text-description-text": "Share your email with us and receive inspiration in your inbox! Meet incredibly inspiring women, enjoy fashion and beauty inspiration and benefit from members-only sales, too! Be a part of the FUN!",
+    "pop-up-text-description-text-colour": "#777777",
+    "pop-up-text-description-text-size": "14px",
+    "show-social-media-popup": true,
+    "checkout_header_image": "shopify:\/\/shop_images\/hsft-copyright-2.jpg",
+    "checkout_use_storefront_logo": false,
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#2a9dcc",
+    "checkout_button_color": "#2a9dcc",
+    "checkout_error_color": "#ff6d6d",
+    "which-linklist-main-menu-test": "about",
+    "footer-mailchimp-url": "\/\/havesomefuntoday.us10.list-manage.com\/subscribe\/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc",
+    "pop-up-mailchimp-url": "\/\/havesomefuntoday.us10.list-manage.com\/subscribe\/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc",
+    "checkout_use_header_image": true,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "products-per-page": "12",
+    "customer_layout": "theme",
+    "checkout_banner_background_color": "#ffffff",
+    "checkout_headline": "",
+    "checkout_call_to_action_color": "#8fc243",
+    "show_fb_comments": false,
+    "sections": {
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "91165c32-6086-4030-ae54-2b28229d904d": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "Shipment processing time",
+              "faq_answer": "<p>All orders are processed within 2-3 business days. Orders received before 12pm it may be processed the same day. Orders processed after 12 pm will be processed the next day unless it is Friday. Orders are not shipped or delivered on weekends or holidays.<br\/><br\/>If we are experiencing a high volume of orders, shipments may be delayed by a few days. Please allow additional days in transit for delivery. If there will be a significant delay in shipment of your order, we will contact you via email or telephone.<\/p>"
+            }
+          },
+          "3d8f710c-c532-4208-986d-7df08e4c128e": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "Shipping Rates & Delivery Estimates",
+              "faq_answer": "<p>Shipping charges for your order will be calculated and displayed at checkout.<\/p><p><strong>Free shipping<\/strong> is offered on all U.S. orders over <strong>$150.00 <\/strong>(5 -12 business days)<\/p><p>Standard Shipping – UPS ground, (1-3lb) - $16.00<\/p><p>UPS Ground (3.1 – 5lbs) - $19.00<\/p><p>UPS 3 day select – calculated at checkout.<\/p>"
+            }
+          },
+          "e15155bb-0371-49b0-972d-0d4a40f13163": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "Shipment To P.O. Boxes",
+              "faq_answer": "<p>Have Some Fun Today ships to addresses within the U.S. &  U.S. Territories<\/p><p>We ship to some P.O. Boxes in the U.S.<\/p>"
+            }
+          },
+          "dcc30598-e434-40f9-bbf1-31c56e2c5fb3": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "Shipment Confirmation & Order Tracking",
+              "faq_answer": "<p>You will receive a Shipment Confirmation email once your order has shipped containing your order number. Tracking information is sent by request only at this time.<\/p>"
+            }
+          },
+          "505fe8a9-e0e8-4042-b5c6-2092fc74aa4b": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "Customs, Duties And Taxes",
+              "faq_answer": "<p>Have Some Fun Today is not responsible for any customs and taxes applied to your order. All fees imposed during or after shipping are the responsibility of the customer (tariffs, taxes, etc.).<\/p>"
+            }
+          },
+          "de39b9b6-5a0d-4057-9777-6ae23dabeefb": {
+            "type": "shipping_policy",
+            "settings": {
+              "faq_question": "International Shipping Policy",
+              "faq_answer": "<p>We ship via DHL to the following countries outside the U.S. contact us for shipping info.<\/p><p>Bahamas, Bermuda, Brazil, Canada, Cayman Islands, Denmark, France, Italy, Mexico, St. Barthélemy, Spain, United Arab Emirates, United Kingdom, U.S. Outlying Islands, British Virgin Islands, Costa Rica, Dominican Republic, St. Lucia, St. Martin, Australia, Germany, Netherlands, Japan, Portugal, Argentina, Aruba, Barbados, Belgium, Belize, Greece, Ireland, New Zealand, Norway, Russia, Saudi Arabia, Switzerland, Croatia, Iceland, Monaco, Slovenia, Sweden, Turkey, Ukraine, Morocco, South Africa, Anguilla, Antigua & Barbuda, Jamaica, Martinique, Sint Maarten, St. Kitts & Nevis, Turks & Caicos Islands, Caribbean Netherlands, Fiji.<\/p>"
+            }
+          },
+          "da505a46-1e24-4dfb-b519-ba3625d227dc": {
+            "type": "returns_policy",
+            "settings": {
+              "faq_question": "Returns",
+              "faq_answer": "<p>All eligible returns & exchanges are free. We accept returns & exchanges within 30 days of purchase of unworn merchandise, returned in the original packaging with all tags on.<\/p><p>For return\/exchange instructions visit the <a href=\"https:\/\/havesomefuntodaycout.returnly.com\/\" target=\"_blank\" title=\"https:\/\/havesomefuntodaycout.returnly.com\/\">Returnly<\/a> page or direct your questions to the chat.<\/p>"
+            }
+          },
+          "582b7cc3-dfe4-4a2b-8d01-6c42e5c64ae5": {
+            "type": "returns_policy",
+            "settings": {
+              "faq_question": "Damages",
+              "faq_answer": "<p>Have Some Fun Today is not liable for any products damaged or lost during shipping. If you received your order damaged, please contact the shipment carrier to file a claim.<\/p><p>Please save all packaging materials and damaged goods before filing a claim.<\/p>"
+            }
+          },
+          "6ec6f6ad-0bb4-439b-82c1-1f0cdded69ad": {
+            "type": "privacy_policy",
+            "settings": {
+              "faq_question": "Privacy Policy",
+              "faq_answer": "<p>Protecting your private information is our priority. This statement of privacy applies to https:\/\/havesomefuntoday.com and Have Some Fun Today and governs data collection and usage. For the purposes of this privacy policy, unless otherwise noted, all references to Have Some Fun Today include https:\/\/www.havesomefuntoday.com. The Have Some Fun Today website is an ecommerce site. By using the Have Some Fun Today website, you consent to the data practices described in this statement.<\/p><p><strong>COLLECTION OF YOUR PERSONAL INFORMATION<\/strong><\/p><p>Have Some Fun Today may collect personally identifiable information, such as your name. If you purchase Have Some Fun Today's products and services, we collect billing and credit card information. This information is used to complete the purchase transaction. We may gather additional personal or non-personal information in the future.<\/p><p>Information about your computer hardware and software may be automatically collected by Have Some Fun Today. This information can include: your ip address, browser type, domain names, access times and referring website addresses. This information is used for the operation of the service, to maintain quality of the service, and to provide general statistics regarding use of the Have Some Fun Today website.<\/p><p>Have Some Fun Today encourages you to review the privacy statements of websites you choose to link to from Have Some Fun Today so that you can understand how those websites collect, use and share your information. Have Some Fun Today is not responsible for the privacy statements or other content on websites outside of the Have Some Fun Today website.<\/p><p><strong>USE OF YOUR PERSONAL INFORMATION<\/strong><\/p><p>Have Some Fun Today collects and uses your personal information to operate its website(s) and deliver the services you have requested.<\/p><p>Have Some Fun Today may also use your personally identifiable information to inform you of other products or services available from have some fun today and its affiliates. Have Some Fun Today may also contact you via surveys to conduct research about your opinion of current services or of potential new services that may be offered.<\/p><p>Have Some Fun Today does not sell, rent or lease its customer lists to third parties.<\/p><p>Have Some Fun Today may share data with trusted partners to help perform statistical analysis, send you email or postal mail, provide customer support, or arrange for deliveries. All such third parties are prohibited from using your personal information except to provide these services to Have Some Fun Today, and they are required to maintain the confidentiality of your information.<\/p><p>Have Some Fun Today may keep track of the websites and pages our users visit within Have Some Fun Today, in order to determine what Have Some Fun Today services are the most popular. This data is used to deliver customized content and advertising within Have Some Fun Today to customers whose behavior indicates that they are interested in a particular subject area.<\/p><p>Have Some Fun Today will disclose your personal information, without notice, only if required to do so by law or in the good faith belief that such action is necessary to: (a) conform to the edicts of the law or comply with legal process served on Have Some Fun Today or the site; (b) protect and defend the rights or property of Have Some Fun Today; and, (c) act under exigent circumstances to protect the personal safety of users of Have Some Fun Today, or the public.<\/p><p><strong>USE OF COOKIES<\/strong><\/p><p>The Have Some Fun Today website may use \"cookies\" to help you personalize your online experience. A cookie is a text file that is placed on your hard disk by a web page server.Cookies cannot be used to run programs or deliver viruses to your computer. cookies are uniquely assigned to you, and can only be read by a web server in the domain that issued the cookie to you. <\/p><p>One of the primary purposes of cookies is to provide a convenience feature to save you time. The purpose of a cookie is to tell the web server that you have returned to a specific page. For example, if you personalize Have Some Fun Today pages, or register with Have Some Fun Today site or services, a cookie helps Have Some Fun Today to recall your specific information on subsequent visits. This simplifies the process of recording your personal information, such as billing addresses, shipping addresses, and so on. When you return to the same Have Some Fun Today website, the information you previously provided can be retrieved, so you can easily use the Have Some Fun Today features that you customized.<\/p><p>You have the ability to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. If you choose to decline cookies, you may not be able to fully experience the interactive features of the Have Some Fun Today services or websites you visit. <\/p><p><strong>SECURITY OF YOUR PERSONAL INFORMATION<\/strong><\/p><p>Have Some Fun Today secures your personal information from unauthorized access, use or disclosure.<\/p><p><strong>CHILDREN UNDER THIRTEEN<\/strong><\/p><p>Have Some Fun Today does not knowingly collect personally identifiable information from children under the age of thirteen. If you are under the age of thirteen, you must ask your parent or guardian for permission to use this website.<\/p><p><strong>OPT-OUT & UNSUBSCRIBE<\/strong><\/p><p>We respect your privacy and give you an opportunity to opt-out of receiving announcements of certain information. users may opt-out of receiving any or all communications from Have Some Fun Today by contacting us here:<\/p><p>Email: info@havesomefuntoday.com<\/p><p><strong>CHANGES TO THIS STATEMENT<\/strong><\/p><p>Have Some Fun Today will occasionally update this statement of privacy to reflect company and customer feedback. Have some fun today encourages you to periodically review this statement to be informed of how Have Some Fun Today is protecting your information.<\/p><p><strong>CONTACT INFORMATION<\/strong><\/p><p>Have Some Fun Today welcomes your questions or comments regarding this statement of privacy. if you believe that Have Some Fun Today has not adhered to this statement, please contact Have Some Fun Today at:   <\/p><p>Email address: support@havesomefuntoday.com<\/p><p>Effective as of august 1, 20116.<\/p>"
+            }
+          },
+          "a8627114-a528-44c9-a648-f878d6074a6b": {
+            "type": "contact",
+            "settings": {
+              "faq_question": "Contact Us",
+              "faq_answer": "<p><a href=\"https:\/\/havesomefuntoday.com\/pages\/contact-us?_pos=1&_sid=6b0cdedca&_ss=r\" title=\"https:\/\/havesomefuntoday.com\/pages\/contact-us?_pos=1&_sid=6b0cdedca&_ss=r\">Contact Us <\/a><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "91165c32-6086-4030-ae54-2b28229d904d",
+          "3d8f710c-c532-4208-986d-7df08e4c128e",
+          "e15155bb-0371-49b0-972d-0d4a40f13163",
+          "dcc30598-e434-40f9-bbf1-31c56e2c5fb3",
+          "505fe8a9-e0e8-4042-b5c6-2092fc74aa4b",
+          "de39b9b6-5a0d-4057-9777-6ae23dabeefb",
+          "da505a46-1e24-4dfb-b519-ba3625d227dc",
+          "582b7cc3-dfe4-4a2b-8d01-6c42e5c64ae5",
+          "6ec6f6ad-0bb4-439b-82c1-1f0cdded69ad",
+          "a8627114-a528-44c9-a648-f878d6074a6b"
+        ],
+        "settings": {}
+      },
+      "custom-menu": {
+        "type": "custom-menu",
+        "blocks": {
+          "a084c614-94f3-4efd-b1e0-2b323bcd94a9": {
+            "type": "option",
+            "settings": {
+              "title": "Shop",
+              "option": "shop",
+              "url": ""
+            }
+          },
+          "70f24f7e-b73a-477a-bace-703e92320e82": {
+            "type": "option",
+            "settings": {
+              "title": "Best Sellers",
+              "option": "main-menu",
+              "url": "shopify:\/\/collections\/best-sellers"
+            }
+          },
+          "a2a5543a-1e17-4e61-9f15-90a2b038f11d": {
+            "type": "option",
+            "settings": {
+              "title": "Wholesale",
+              "option": "wholesale",
+              "url": ""
+            }
+          },
+          "2e43d5a4-1342-4128-9af6-312b060020bb": {
+            "type": "option",
+            "settings": {
+              "title": "Celebrities",
+              "option": "main-menu",
+              "url": "shopify:\/\/collections\/celebrities"
+            }
+          },
+          "cb07d7f3-e94d-45aa-8eff-0376e4c8ae1f": {
+            "type": "option",
+            "settings": {
+              "title": "About",
+              "option": "about",
+              "url": ""
+            }
+          },
+          "91fcd7da-0190-40cd-bda3-37f40705b0f3": {
+            "type": "option",
+            "disabled": true,
+            "settings": {
+              "title": "Blog",
+              "option": "",
+              "url": "shopify:\/\/blogs\/news"
+            }
+          },
+          "681d828d-50d3-4d17-98c8-184f7e491210": {
+            "type": "option",
+            "disabled": true,
+            "settings": {
+              "title": "Contact",
+              "option": "contact",
+              "url": ""
+            }
+          },
+          "c5ffe8ad-b4e9-4dd4-af5a-c44b24597687": {
+            "type": "option",
+            "disabled": true,
+            "settings": {
+              "title": "Press",
+              "option": "lookbooks-new",
+              "url": "shopify:\/\/blogs\/news"
+            }
+          }
+        },
+        "block_order": [
+          "a084c614-94f3-4efd-b1e0-2b323bcd94a9",
+          "70f24f7e-b73a-477a-bace-703e92320e82",
+          "a2a5543a-1e17-4e61-9f15-90a2b038f11d",
+          "2e43d5a4-1342-4128-9af6-312b060020bb",
+          "cb07d7f3-e94d-45aa-8eff-0376e4c8ae1f",
+          "91fcd7da-0190-40cd-bda3-37f40705b0f3",
+          "681d828d-50d3-4d17-98c8-184f7e491210",
+          "c5ffe8ad-b4e9-4dd4-af5a-c44b24597687"
+        ],
+        "settings": {}
+      },
+      "mobile-main-nav": {
+        "type": "mobile-main-nav",
+        "settings": {
+          "menu": "mobile-main-nav"
+        }
+      },
+      "sticky-ribbon": {
+        "type": "sticky-ribbon",
+        "blocks": {
+          "57e1c8b2-1f30-4bcf-b95c-6f291731a6a4": {
+            "type": "ribbon",
+            "settings": {
+              "free_shipping_text": "<p>Free shipping on orders over $150 or more in the continental US<\/p>"
+            }
+          },
+          "459ede49-9c3d-4b1e-8f78-f3d0fb00935a": {
+            "type": "ribbon",
+            "disabled": true,
+            "settings": {
+              "free_shipping_text": "<p>Use code  <a href=\"\/collections\/womens\" title=\"Women's Tops\"><strong>EMPOWERWOMEN15<\/strong><\/a>  at checkout to get 15% off your purchase of anything in our women’s collection!<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "57e1c8b2-1f30-4bcf-b95c-6f291731a6a4",
+          "459ede49-9c3d-4b1e-8f78-f3d0fb00935a"
+        ],
+        "settings": {
+          "free_shipping_bg": "#00000d",
+          "free_shipping_color": "#ffffff"
+        }
+      },
+      "home-social-proof": {
+        "type": "home-social-proof",
+        "blocks": {
+          "411fb795-5274-49ad-b376-b115d15599f4": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-01.png",
+              "url": ""
+            }
+          },
+          "a428c729-e86a-42f4-bf17-22cc4ebacb82": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-02.png",
+              "url": ""
+            }
+          },
+          "9fc03d08-19ec-4347-a87a-a659f60d078e": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-03.png",
+              "url": ""
+            }
+          },
+          "7ee142ea-a51a-4c8c-bd43-b37233cdafaa": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-04.png",
+              "url": ""
+            }
+          },
+          "b30218e6-eacc-4407-bd9f-08944610f78b": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-05.png",
+              "url": ""
+            }
+          },
+          "5e5a5a1d-d454-4cfd-934b-efc3253bfaeb": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-06.png",
+              "url": ""
+            }
+          },
+          "db3f009a-a6f8-47ce-b23d-f1cf5d23d639": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-08.png",
+              "url": ""
+            }
+          },
+          "054c3144-e1c1-4e9d-a8c1-1969cd41ea43": {
+            "type": "social",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/img-sp-07.png",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "411fb795-5274-49ad-b376-b115d15599f4",
+          "a428c729-e86a-42f4-bf17-22cc4ebacb82",
+          "9fc03d08-19ec-4347-a87a-a659f60d078e",
+          "7ee142ea-a51a-4c8c-bd43-b37233cdafaa",
+          "b30218e6-eacc-4407-bd9f-08944610f78b",
+          "5e5a5a1d-d454-4cfd-934b-efc3253bfaeb",
+          "db3f009a-a6f8-47ce-b23d-f1cf5d23d639",
+          "054c3144-e1c1-4e9d-a8c1-1969cd41ea43"
+        ],
+        "settings": {
+          "title": "Who's wearing <strong>HSFT<\/strong>"
+        }
+      },
+      "go-cart": {
+        "type": "go-cart",
+        "settings": {
+          "title": "Your Cart",
+          "message": "FREE SHIPPING ON ORDERS OF $150 OR MORE IN THE CONTINENTAL U.S."
+        }
+      },
+      "home-value-proposition": {
+        "type": "home-value-proposition",
+        "blocks": {
+          "ac134783-bb8c-48e4-972d-91025382b9dc": {
+            "type": "proposition",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icon-vp-01.png",
+              "proposition": "Tote Bags canvas are made<br> from recycled canvas"
+            }
+          },
+          "055ecdec-7ab8-4e72-bb1f-2ec3651e58df": {
+            "type": "proposition",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icon-vp-02.png",
+              "proposition": "Using 100% natural<br> leather"
+            }
+          },
+          "60b5759c-4b3b-4db3-b61b-ee1b44f444a0": {
+            "type": "proposition",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icon-vp-03.png",
+              "proposition": "The linings we use is<br> recycled cotton"
+            }
+          }
+        },
+        "block_order": [
+          "ac134783-bb8c-48e4-972d-91025382b9dc",
+          "055ecdec-7ab8-4e72-bb1f-2ec3651e58df",
+          "60b5759c-4b3b-4db3-b61b-ee1b44f444a0"
+        ],
+        "settings": {
+          "background": "#ffffff",
+          "font_color": "#000000"
+        }
+      },
+      "home-feature-hero": {
+        "type": "home-feature-hero",
+        "settings": {
+          "hero-desktop": "shopify:\/\/shop_images\/desktop-hero.png",
+          "hero-mobile": "shopify:\/\/shop_images\/mobile-hero.png",
+          "title": "The Beach Bum Gets an Upgrade",
+          "url": "shopify:\/\/collections\/bags"
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

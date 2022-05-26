@@ -1,0 +1,377 @@
+{% if settings.show_slider %}
+	<div class="row">
+		<div class="flexslider-container col-lg-12 hero-option-a "  >
+			<div class="flexslider">
+			<ul class="slides">
+
+				{% if settings.show_carousel_item_1 %}
+				<li >
+					{% if settings.carousel_item_1_link != empty %}
+						{{ 'carousel-item-1.jpg' | asset_url | img_tag: settings.carousel_item_1_alt_text | link_to: settings.carousel_item_1_link }}
+					{% else %}
+						{{ 'carousel-item-1.jpg' | asset_url | img_tag: settings.carousel_item_1_alt_text }}
+					{% endif %}
+						{% if settings.carousel_item_1_caption != empty %}
+							{% if settings.carousel_item_1_link != empty %}
+								<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_1_link }}">{{ settings.carousel_item_1_caption }}</a></h4></div>
+							{% else %}
+								<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_1_caption }}</h4></div>		
+							{% endif %}
+					{% endif %}
+				</li>
+					
+				{% endif %}
+				
+				{% if settings.show_carousel_item_2 %}
+				<li>
+				{% if settings.carousel_item_2_link != empty %}
+				{{ 'carousel-item-2.jpg' | asset_url | img_tag | link_to: settings.carousel_item_2_link }}
+				{% else %}
+				{{ 'carousel-item-2.jpg' | asset_url | img_tag }}
+				{% endif %}
+
+					{% if settings.carousel_item_2_caption != empty %}
+						{% if settings.carousel_item_2_link != empty %}
+							<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_2_link }}">{{ settings.carousel_item_2_caption }}</a></h4></div>
+						{% else %}
+							<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_2_caption }}</h4></div>		
+						{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+				
+				{% if settings.show_carousel_item_3 %}
+					<li>
+					{% if settings.carousel_item_3_link != empty %}
+						{{ 'carousel-item-3.jpg' | asset_url | img_tag | link_to: settings.carousel_item_3_link }}
+					{% else %}
+						{{ 'carousel-item-3.jpg' | asset_url | img_tag }}
+					{% endif %}
+
+					{% if settings.carousel_item_3_caption != empty %}
+						{% if settings.carousel_item_3_link != empty %}
+							<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_3_link }}">{{ settings.carousel_item_3_caption }}</a></h4></div>
+						{% else %}
+							<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_3_caption }}</h4></div>		
+						{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+				
+				{% if settings.show_carousel_item_4 %}
+				<li>
+				{% if settings.carousel_item_4_link != empty %}        
+				{{ 'carousel-item-4.jpg' | asset_url | img_tag | link_to: settings.carousel_item_4_link }}
+				{% else %}
+					{{ 'carousel-item-4.jpg' | asset_url | img_tag }}
+				{% endif %}
+					{% if settings.carousel_item_4_caption != empty %}
+						{% if settings.carousel_item_4_link != empty %}
+							<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_4_link }}">{{ settings.carousel_item_4_caption }}</a></h4></div>
+						{% else %}
+							<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_4_caption }}</h4></div>		
+						{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+				
+				{% if settings.show_carousel_item_5 %}
+				<li>
+				{% if settings.carousel_item_5_link != empty %}        
+				{{ 'carousel-item-5.jpg' | asset_url | img_tag | link_to: settings.carousel_item_5_link }}
+				{% else %}
+					{{ 'carousel-item-5.jpg' | asset_url | img_tag }}
+				{% endif %}
+					{% if settings.carousel_item_5_caption != empty %}
+						{% if settings.carousel_item_5_link != empty %}
+							<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_5_link }}">{{ settings.carousel_item_5_caption }}</a></h4></div>
+						{% else %}
+							<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_5_caption }}</h4></div>		
+						{% endif %}
+					{% endif %}
+				</li>
+				{% endif %}
+			
+				{% if settings.show_carousel_item_6 %}
+				<li>
+				{% if settings.carousel_item_6_link != empty %}      
+				{{ 'carousel-item-6.jpg' | asset_url | img_tag | link_to: settings.carousel_item_6_link }}
+				{% else %}
+					{{ 'carousel-item-6.jpg' | asset_url | img_tag }}
+				{% endif %}
+				{% if settings.carousel_item_6_caption != empty %}
+					{% if settings.carousel_item_6_link != empty %}
+						<div class="slider-caption custom-font"><h4><a href="{{ settings.carousel_item_6_link }}">{{ settings.carousel_item_6_caption }}</a></h4></div>
+					{% else %}
+						<div class="slider-caption custom-font"><h4>{{ settings.carousel_item_6_caption }}</h4></div>		
+					{% endif %}
+				{% endif %}
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+		
+		</div>
+	</div>
+{% endif %}
+
+<div>
+	{% render 'featured-in-snippet' %}
+</div>
+
+{% case settings.number_of_promoboxs %}
+{% when 'one' %}
+<div id="hp-one-promobox" class="row">
+
+<div class="col-md-12">
+
+      {% if settings.promobox_item_1_link != empty %}
+        {{ 'promobox-item-1.jpg' | asset_url | img_tag: settings.promobox_item_1_alt_text | link_to: settings.promobox_item_1_link }}
+      {% else %}
+        {{ 'promobox-item-1.jpg' | asset_url | img_tag: settings.promobox_item_1_alt_text }}
+      {% endif %}
+      
+</div>      
+
+</div>
+
+
+
+
+
+{% when 'two' %}
+<div id="hp-two-promoboxs" class="row">
+	<div class="col-md-6 col-sm-6 col-xs-6">
+    {% if settings.promobox_item_1_link != empty %}
+    	<div class="title-bar custom-font">
+			<h2>{{ settings.promobox_item_1_alt_text }}</h2>
+			<div class="clear"></div>
+		</div>
+    	<a href="{{ settings.promobox_item_1_link }}" title="{{ settings.promobox_item_1_alt_text }}">
+	    	{{ 'promobox-item-1.jpg' | asset_url | img_tag: settings.promobox_item_1_alt_text }}
+		</a>
+    {% else %}
+      {{ 'promobox-item-1.jpg' | asset_url | img_tag: settings.promobox_item_1_alt_text }}
+    {% endif %}
+	</div>
+
+	<div class="col-md-6 col-sm-6 col-xs-6">
+    {% if settings.promobox_item_2_link != empty %}
+    	<div class="title-bar custom-font">
+			<h2>{{ settings.promobox_item_2_alt_text }}</h2>
+			<div class="clear"></div>
+		</div>
+    	<a href="{{ settings.promobox_item_2_link }}" title="{{ settings.promobox_item_2_alt_text }}">
+	    	{{ 'promobox-item-2.jpg' | asset_url | img_tag: settings.promobox_item_2_alt_text }}
+		</a>
+    {% else %}
+      {{ 'promobox-item-2.jpg' | asset_url | img_tag: settings.promobox_item_2_alt_text }}
+    {% endif %}
+	</div>
+</div>
+
+
+
+
+
+{% when 'three' %}
+<div id="hp-three-promoboxs" class="row">
+    <div class="promo-box">
+        <h3>{{ settings.promobox_item_1_alt_text }}</h3>
+        {% if settings.promobox_item_1_link != empty %}
+            {{ 'promobox-item-1.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_1_alt_text | link_to: settings.promobox_item_1_link }}
+        {% else %}
+            {{ 'promobox-item-1.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_1_alt_text }}
+        {% endif %}
+    </div>
+    <div class="promo-box">
+        <h3>{{ settings.promobox_item_2_alt_text }}</h3>
+        {% if settings.promobox_item_2_link != empty %}
+            {{ 'promobox-item-2.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_2_alt_text | link_to: settings.promobox_item_2_link }}
+        {% else %}
+            {{ 'promobox-item-2.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_2_alt_text }}
+        {% endif %}
+    </div>
+    <div class="promo-box">
+        <h3>{{ settings.promobox_item_3_alt_text }}</h3>
+        {% if settings.promobox_item_3_link != empty %}
+            {{ 'promobox-item-3.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_3_alt_text | link_to: settings.promobox_item_3_link }}
+        {% else %}
+            {{ 'promobox-item-3.jpg' | asset_img_url: '396x497' | img_tag: settings.promobox_item_3_alt_text }}
+        {% endif %}
+    </div>
+</div>
+{% endcase %}
+
+<div id="featured" class="">
+
+	<div class="title-bar custom-font">
+		<h2>{{ 'general.homepage.featured_products' | t }}</h2>
+		<div class="clear"></div>
+	</div>
+
+	<div class="row">
+	
+		<ul class="featured-products">
+		{% for product in collections[settings.which-collection].products limit:settings.homepage-products-per-page %}
+		
+		{% if settings.homepage-products-per-row == '4' %}
+		<li class="{% cycle ' alpha', '', '', ' omega' %}">
+		{% else %}
+		<li class="{% cycle ' alpha', '', ' omega' %}">		
+		{% endif %}
+		
+		{% include 'product-grid' %}
+		
+	   	</li>
+		{% endfor %}
+		</ul>
+	</div>
+	
+</div>
+{% section 'home-value-proposition' %}
+{% section 'home-social-proof' %}
+{% if settings.show-instagram-homepage %}
+
+<div class="instagram-wrapper">
+
+	<div class="title-bar custom-font">
+		<h2>Instagram</h2>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="instafeed" class="row"></div>
+  	<div id="instagram-feed" class="row"></div>
+
+</div>
+
+<div style="margin: 60px 0 50px 0;">{% include 'getsocial-inline-bar' %}</div>
+
+{% endif %}
+
+
+
+<style>
+	.hero-mobile {
+		display: none;
+	}
+
+	.hero-tab {
+		display: none;
+	}
+
+	.banner-button:hover{
+		color: white !important;
+	}
+	
+	.banner-button {
+		background-color: black;
+		border: 0;
+		
+		font-family: 'Myriad Pro';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #FFFFFF;
+
+		padding-left: 30px;
+		padding-right: 30px;
+
+		padding-top: 10px;
+		padding-bottom: 10px;
+
+		position: relative;
+		top: -260px;
+		left: 85px;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		width: fit-content;
+		
+	}
+
+	@media (max-width:1199px) {
+		.banner-button {
+			top: -220px;
+			left: 70px;
+		}
+	}
+
+	@media (max-width:991px) {
+		.banner-button {
+			top: -170px;
+			left: 55px;
+			font-size: 12px;
+		}
+	}
+
+	@media (max-width:767px) {
+		.hero-mobile {
+			display: none;
+		}
+
+		.hero-tab {
+			display: block;
+		}
+
+		.hero-desktop {
+			display: none;
+		}
+
+		.banner-button {
+			top: -20vw;
+    		left: 12vw;
+			font-size: 12px;
+			padding-left: 10px;
+    		padding-right: 10px
+		}
+	}
+
+	@media (max-width:523px) {
+		.banner-button {
+			font-size: 10px;
+		}
+	}
+
+	@media (max-width:425px) {
+		.hero-mobile {
+			display: block;
+		}
+
+		.hero-tab {
+			display: none;
+		}
+
+		.hero-desktop {
+			display: none;
+		}
+
+		.banner-button {
+			font-family: Myriad Pro;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 5vw;
+    		line-height: 133%;
+			/* identical to box height */
+
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			white-space: nowrap;
+
+			bottom: 5%;
+			left: 5%;
+			right: 5%;
+			top: 80%;;
+			position: absolute;
+
+			width: unset;
+
+		}
+	}
+
+</style>

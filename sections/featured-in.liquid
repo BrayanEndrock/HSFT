@@ -1,0 +1,35 @@
+
+
+{% schema %}
+{
+	"name": "featured in",
+	"class": "featured-in",
+	"settings":[
+        {
+            "type": "text",
+            "id": "label",
+            "label":"Element Title"
+        }
+    ],
+    "blocks":
+    [
+        {
+            "name":"Featured-element",
+            "type":"option",
+            "settings":
+            [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label":"Element Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Element Image"
+                }
+            ]            
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,109 @@
+<div class="container">
+    {% for block in section.blocks %}
+    <div class="proposition">
+        {% assign image_width = block.settings.icon.width | divided_by: 2 | append: 'x' %}
+        <img data-srcset="{{block.settings.icon | img_url: image_width}} 1x, {{block.settings.icon | img_url: image_width, scale: 2}} 2x"
+            class="lazyload" alt="{{block.settings.proposition | escape }}" />
+        {{block.settings.proposition}}
+    </div>
+    {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Value Proposition",
+  "class": "product-value-proposition",
+  "settings": [
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background Color",
+          "default": "#C5E7DA"
+        },
+        {
+          "type": "color",
+          "id": "font_color",
+          "label": "Font Color",
+          "default": "#42446C"
+        }
+  ],
+  "blocks": [
+    {
+        "type": "proposition",
+        "name": "Proposition",
+        "settings": [      
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "proposition",
+        "label": "Proposition"
+      }
+        ]
+    }
+  ]
+}
+{% endschema %}
+
+{%style%}
+.product-value-proposition {
+    padding: 16px 0;
+    background-color: {{section.settings.background}};
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+}
+
+.product-value-proposition .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 744px;
+    padding: 0;
+}
+
+.product-value-proposition .proposition {
+    font-size: 14px;
+    line-height: 1.5;
+    color: {{section.settings.font_color}};
+    text-align: center;
+}
+
+.product-value-proposition .proposition img {
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .product-value-proposition {
+        padding-left: 16px;
+    }
+    .product-value-proposition .container {
+        display: grid;
+        overflow: scroll;
+        grid-auto-flow: column;
+        grid-gap: 0 8px;
+        grid-template-columns: repeat(auto-fit, minmax(184px, 1fr));
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-color: transparent transparent;
+        scrollbar-width: 0;
+        scrollbar-width: none;
+    }
+
+    .product-value-proposition .container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .product-value-proposition .container>* {
+        scroll-snap-align: start;
+    }
+
+    .product-value-proposition .container .proposition {
+        min-width: 184px;
+    }
+}
+{%endstyle%}

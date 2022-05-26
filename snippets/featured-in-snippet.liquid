@@ -1,0 +1,145 @@
+<div class="featured-in-container" >
+    <div class="fd-header">
+        <div class="fd-left">
+            <hr>
+        </div>
+        <div class="fd-title">
+            <div>FEATURED IN</div>
+        </div>
+        <div class="fd-right">
+            <hr>
+        </div>
+    </div>
+    <div class="fd-wrapper">
+        <div class="fd-element">
+            <div>
+                <img src="{{ 'fd-philadelphia.png' || asset_img_url: 'master' }}" alt="">
+            </div>
+        </div>
+        <div class="fd-element">
+            <div>
+                <img src="{{ 'fd-living.png' || asset_img_url: 'master' }}" alt="">
+            </div>
+        </div>
+        <div class="fd-element">
+            <div>
+                <img src="{{ 'fd-w2w.png' || asset_img_url: 'master' }}" alt="">
+            </div>
+        </div>
+        <div class="fd-element">
+            <div>
+                <img src="{{ 'fd-style.png' || asset_img_url: 'master' }}" alt="">
+            </div>
+        </div>
+        <div class="fd-element">
+            <div>
+                <img src="{{ 'fd-purpose.png' || asset_img_url: 'master' }}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="fd-footer">
+        <hr>
+    </div>
+</div>
+
+<style>
+    .featured-in-container {
+        width:100%;
+        /* height: 150px; */
+    }
+
+    .featured-in-container .slick-navigation{
+        background-color: transparent;
+        border: 0;
+        position: absolute;
+        top:40%;
+        font-weight: 700;
+        height: 16px;
+        width: 4px;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+
+    .featured-in-container .slick-left{
+        background-image: url({{ 'fd-previous.svg' | asset_url}});
+    }
+
+    .featured-in-container .slick-right{
+        right: 0;
+        background-image: url({{ 'fd-next.svg' | asset_url}});
+    }
+
+    .fd-wrapper .fd-element {
+        padding-right: 30px;
+        height: 70px;
+        display: inline-flex;
+    }
+
+    .fd-wrapper .fd-element div{
+        margin: auto;
+    }
+
+    .fd-wrapper {
+        text-align: center;
+    }
+
+    .fd-footer hr{
+        border: 1px solid #A0A8AB;
+        background-color: #A0A8AB;
+    }
+
+    .fd-header div {
+        display: inline-grid;
+        width: 50%;
+    }
+
+    .fd-header .fd-title div{
+        font-family: 'Myriad Pro Regular'; 
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 133%;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #A0A8AB;
+        /* padding-left: 10px; */
+        /* padding-right: 10px; */
+        white-space: nowrap;
+        width: 100%;
+        height: fit-content;
+        margin: auto;
+    }
+
+    .fd-header .fd-title {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 150px;
+    }
+
+    .fd-header .fd-left hr {
+        border: 1px solid #A0A8AB;
+        background-color: #A0A8AB;
+        width: 100%;
+    }
+
+    .fd-header .fd-right hr {
+        border: 1px solid #A0A8AB;
+        background-color: #A0A8AB;
+        width: 100%;
+    }
+
+    .fd-header {
+        text-align: center;
+        display: flex;
+    }
+
+    .fd-footer {
+        height: 5px;
+    }
+
+    .fd-wrapper {
+        /* height: 70px; */
+    }
+
+    
+</style>

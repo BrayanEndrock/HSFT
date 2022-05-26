@@ -1,0 +1,184 @@
+{% layout settings.customer_layout %}
+
+<div id="template">
+    <div id="customer">
+        <!-- Create Customer -->
+        <div id="create-customer">
+
+            <div class="row" style="padding-top: 20px;">
+
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+                    <div class="title-bar custom-font">
+                        <!-- <h2>{{ page.title }}</h2> -->
+                        <h2 id="heading">Create an Account</h2>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div id="wholesale-text" style="display: none;">
+	                    <p>Please complete the following form to setup an account with Have Some Fun Today.</p>
+						<p>Please submit your Resale Certificate via email to us <a href="mailto:info@havesomefuntoday.com" style="color: #fe2f73;">by clicking here.</a> Please note, you must be a qualified Distributor, Decorator or Manufacturer to apply for a wholesale account with Have Some Fun Today.</p>
+                      <p>Once you have completed the form and sent in your documentation, please <a href="mailto:info@havesomefuntoday.com" style="color: #fe2f73;">email us</a> and we will verify your account. Then you will receive a welcome email confirming your approval with ordering instructions.</p>
+                      	<p>USA and Canada use this form.<br />All other International countries please <a href="mailto:info@havesomefuntoday.com" style="color: #fe2f73;">click here to email us.</a></p>
+	                </div>
+
+                    {% form 'create_customer' %}
+
+                        {{ form.errors | default_errors }}
+
+                        <p style="margin-top: 40px; font-size: 90%; color: #999; text-align: right;"><i>* indicates a required field</i></p>
+
+                        <input type="hidden" id="customer_tags" name="customer[tags]" value="" />
+
+                        <div class="clearfix large_form">
+                            <label for="first_name" class="login">{{ 'customer.register.first_name' | t }} *</label>
+                            <input type="text" class="form-control"  name="customer[first_name]" id="first_name" class="large" required />
+                        </div>
+
+                        <div class="clearfix large_form">
+                            <label for="last_name" class="login">{{ 'customer.register.last_name' | t }} *</label>
+                            <input type="text" class="form-control"  name="customer[last_name]" id="last_name" class="large" required />
+                        </div>
+
+                        <div class="clearfix large_form">
+                            <label for="email" class="login">{{ 'customer.register.email' | t }} *</label>
+                            <input type="email" class="form-control"  name="customer[email]" id="email" class="large" required />
+                        </div>
+
+                        <div class="clearfix large_form">
+                            <label for="password" class="login">{{ 'customer.register.password' | t }} *</label>
+                            <input type="password" class="form-control" name="customer[password]" id="password" required />
+                        </div>
+
+                        <div id="wholesale-fields" style="display: none;">
+
+                            <div class="clearfix large_form">
+                                <label for="phone_number" class="login">Phone Number *</label>
+                                <input type="text" class="form-control"  name="customer[note][phone]" id="phone_number" class="large" />
+                            </div>
+
+                            <div class="clearfix large_form">
+                                <label for="business_name" class="login">Business Name *</label>
+                                <input type="text" class="form-control"  name="customer[note][company]" id="business_name" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="business_website" class="login">Business Website *</label>
+                                <input type="text" class="form-control"  name="customer[note][website]" id="business_website" class="large" />
+                            </div>
+                            
+                            
+                            
+                            <div class="clearfix large_form">
+                                <label for="address1" class="login">Street Address Line 1 *</label>
+                                <input type="text" class="form-control"  name="customer[note][address1]" id="address1" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="address2" class="login">Street Address Line 2</label>
+                                <input type="text" class="form-control"  name="customer[note][address2]" id="address2" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="city" class="login">City *</label>
+                                <input type="text" class="form-control"  name="customer[note][city]" id="city" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="state" class="login">State *</label>
+                                <input type="text" class="form-control"  name="customer[note][state]" id="state" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="zip" class="login">Zip *</label>
+                                <input type="text" class="form-control"  name="customer[note][zip]" id="zip" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="country" class="login">Country *</label>
+                                <input type="text" class="form-control"  name="customer[note][country]" id="country" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form">
+                                <label for="resale_tax_id" class="login">Resale Tax ID *</label>
+                                <input type="text" class="form-control"  name="customer[note][resale_tax_id]" id="resale_tax_id" class="large" />
+                            </div>
+                            
+                            <div class="clearfix large_form" style="margin-top: 40px;">
+                                <label for="referred_by" class="login">How did you hear about us?&nbsp; </label>
+                                <!-- <input type="text" class="form-control"  name="customer[note][company]" id="business_name" class="large" /> -->
+                                <select id="referred_by" name="customer[note][referred_by]">
+									<option value="">Select One</option>
+									<option value="facebook">Facebook</option>
+									<option value="instagram">Instagram</option>
+									<option value="word of mouth">Word of Mouth</option>
+									<option value="customer referral">Customer Referral</option>
+								</select>
+                            </div>
+                            
+                            <div class="clearfix large_form" style="margin-top: 40px; margin-bottom: 40px;">
+                                <label for="primary_business" class="login">What best describes your primary business activities?&nbsp; </label>
+                                <!-- <input type="text" class="form-control"  name="customer[note][company]" id="business_name" class="large" /> -->
+                                <select id="primary_business" name="customer[note][primary_business]">
+									<option value="">Select One</option>
+									<option value="clothing boutique">Clothing Boutique</option>
+									<option value="salon/store">Salon/Store</option>
+									<option value="gift/home">Gift/Home</option>
+									<option value="resort/spa boutique">Resort/Spa Boutique</option>
+									<option value="other">Other</option>
+								</select>
+                            </div>
+                          
+                          	<div class="clearfix large_form">
+                            	<label for="message" class="login">Message</label>
+                            	<textarea class="form-control"  name="customer[note][message]" id="message" class="large" rows="5"></textarea>
+                        	</div>
+
+                        </div><!-- /#wholesale-fields -->
+
+                        <div class="action_bottom" style="margin-top: 40px;">
+                            <input class="btn btn-success" type="submit" value="{{ 'customer.register.submit' | t }}" />
+                        </div>
+
+                    {% endform %}
+
+                    <p>&nbsp;</p>
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /#create-customer -->
+    </div>
+</div>
+
+<script>
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+$(document).ready(function() {
+	
+	if (getUrlParameter('type') == 'wholesale') {
+		console.log('let\'s do this');
+		
+		$('#wholesale-text').css('display', 'block');
+		$('#wholesale-fields').css('display', 'block');
+		$('#heading').html('Create a Wholesale Account');
+		
+		$('#customer_tags').val('wholesale application');
+      	
+		$('#create_customer').submit(function(event) {
+			$.post('https://us10.api.mailchimp.com/2.0/lists/subscribe.json?apikey=b9810a18c55a4159ed900b3c8f6b10fe-us10&id=b07a08df23&email[email]=' + $('#email').val() + '&merge_vars[FNAME]=' + $('#first_name').val() + '&merge_vars[LNAME]=' + $('#last_name').val() + '&double_optin=false&send_welcome=false');
+	  	});
+
+    } // if
+	else {
+		$('#wholesale-fields').remove();
+		
+    } // else
+    
+});
+
+</script>

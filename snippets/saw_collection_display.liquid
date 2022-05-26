@@ -1,0 +1,19 @@
+{% assign saw_display_c = "Show" %}
+
+{% assign collection_title_downcase = saw_collection_display.title | downcase %}
+{% assign saw_show_tag_downcase = saw_show_tag | downcase %}
+{% assign tag_hide = saw_show_tag_downcase | append: '-hide' %}
+
+{% if collection_title_downcase contains tag_hide %}
+  {% if customer.tags contains saw_show_tag %}
+	  {% assign saw_display_c = 'Hide' %}
+  {% else %}
+  {% endif %}
+{% else %}
+  {% if collection_title_downcase contains saw_show_tag_downcase %}
+    {% if customer.tags contains saw_show_tag %}
+    {% else %}
+      {% assign saw_display_c = "Hide" %}
+    {% endif %}
+  {% endif %}
+{% endif %}

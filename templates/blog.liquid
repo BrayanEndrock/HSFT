@@ -1,0 +1,113 @@
+<section id="blog_posts" class="collection">
+	{% paginate blog.articles by 6 %}
+	
+	<div class="title-bar custom-font">
+		<h2>{{blog.title}}</h2>
+		{% if blog.all_tags != blank %}
+		{% for tag in blog.all_tags %}
+		{% if current_tags contains tag %}
+		<h3 class="title-bar-sub">
+    		{{ tag }}
+		</h3>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		<div class="clear"></div>
+	</div>
+	
+	<div class="row">
+	
+	<div class="col-md-9 blog-main">
+
+		<ul>
+			{% for article in blog.articles %}
+				<li style="clear: both; margin-bottom: 69px;">
+				<div class="title-bar custom-font">
+					<h2><a href="{{article.url}}">{{ article.title }}</a></h2>
+					<h3 class="title-bar-sub-blog"><time class="updated" datetime="{{ article.published_at | date: format: 'long' }}" pubdate>{{ article.published_at | date: format: 'long' }}</time></h3>
+					<div class="clear"></div>
+				</div>
+				<div>
+					{{ article.excerpt_or_content }}
+					
+					{% include 'blog-tags' %}
+					
+					<p><a href="{{article.url}}" id="blog-main-view-post-btn" class="btn btn-default">{{ 'blogs.article.view_post' | t }}</a></p>
+				</div>
+				
+				<div id="getsocialparent">
+					{% include 'getsocial-inline-bar' %}
+				</div>
+				
+				</li>
+			{% endfor %}
+		</ul>
+		
+		
+		</div>
+		
+		<div class="col-md-3">
+		
+			{% include 'blog-sidebar' %}
+		
+		</div>
+		
+		</div>
+		
+		<div class="row">
+		
+		<div class="col-md-12">
+		{% if paginate.pages > 1 %}
+			{% include 'pagination' %}
+		{% endif %}
+		</div>
+		
+		</div>
+		
+	{% endpaginate %}
+</section>
+
+<script>
+$(document).ready(function() {
+    var imgs = $('#blog_posts .blog-main > ul > li > div:first-child + div img');
+    console.log(imgs.length);
+    
+    imgs.each(function() {
+        var floaty = $(this).css('float');
+        console.log(floaty);
+        
+        if (floaty == 'left') {
+		    $(this).addClass('half');
+		}
+		if (floaty == 'right') {
+		    $(this).addClass('half');
+		}
+    });
+});
+</script>
+
+<div id="stickLayer" style="display:none;" class="stick_popup">
+	<div class="stick_close" onclick="$.stick_close()">X</div>
+	<div class="stick_content">
+    	<form action="//havesomefuntoday.us10.list-manage.com/subscribe/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline">	
+	  		<div class="form-group">
+	  			<div class="input-group">
+					<input type="email" value="" name="EMAIL" id="mail" class="input-group-field email form-control" aria-label="translation missing: en.general.newsletter_form.newsletter_email" autocorrect="off" autocapitalize="off">
+					<span class="input-group-btn"><input type="submit" class="btn btn-default" name="subscribe" id="subscribe" value="Sign Up"></span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{{ 'stick-to-me.js' | asset_url | script_tag }}
+
+<script>
+$(document).ready(function(){
+	$.stickToMe({
+		layer: '#stickLayer'			
+	});				
+});
+</script>
+
+

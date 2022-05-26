@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+<meta name="facebook-domain-verification" content="ufl3mngkkb7qz3mlznjcv2q7jniyya" />
+{%comment%}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61569270-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-61569270-1');
+</script>
+{%endcomment%}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-K6KKW9S');</script>
+<!-- End Google Tag Manager -->
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-TMHW7FL"></script>
+<meta name="google-site-verification" content="_B3n-XEVfeXFPJWpkW7vo7Wwg8BgUb9OZyFeef67Nuo" />
+  
+  <meta name="facebook-domain-verification" content="8w5im94osiny2a9ojl4jmwzjxli5dc" />
+
+
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]>
+		<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	{% if template == 'index' %}
+	<title>{{ shop.name }}{% if settings.title_text != empty %} | {{ settings.title_text }}{% endif %}</title>
+	{% elsif template == '404' %}
+	<title>Page Not Found | {{ shop.name }}</title>
+	{% else %}
+	<title>{{ page_title }} | {{ shop.name }}</title>
+	{% endif %}
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ 'hsft-logo-76.png' | asset_url }}" />
+	<link rel="apple-touch-icon" sizes="120x120" href="{{ 'hsft-logo-120.png' | asset_url }}" />
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ 'hsft-logo-152.png' | asset_url }}" />
+	<link rel="apple-touch-icon" sizes="167x167" href="{{ 'hsft-logo-167.png' | asset_url }}" />
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ 'hsft-logo-180.png' | asset_url }}" />
+
+	<link rel="canonical" href="{{ canonical_url }}" />
+
+    <script src="https://kit.fontawesome.com/81bbcda6ef.js" crossorigin="anonymous"></script>
+
+	<meta name="title" content="Have Some Fun Today" />
+	{% if page_description %}
+	<meta name="description" content="{{ page_description | escape }}" />
+	{% endif %}
+	{% if template == "product" %}
+	<meta name="keywords" content="{% for tag in product.tags %}{{tag}}, {% endfor %}" />
+	{% else %}
+	<meta name="keywords" content="{% for tag in collections['all'].all_tags %}{{ tag }}, {% endfor %}" />
+	{% endif %}
+
+	<!-- facebook -->
+	<meta property="og:title" content="{{ shop.name }}{% if page_title != empty %}| {{ page_title }}{% endif %}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https:{% if template == 'product' %}{{ product.featured_image | img_url: 'large' }}{% elsif template == 'article' %}{{ article.image | img_url: 'large' }}{% else %}{{ 'carousel-item-1.jpg' | asset_url }}{% endif %}" />
+	<meta property="og:url" content="{{ canonical_url }}" />
+	<meta property="og:site_name" content="Have Some Fun Today" />
+	<meta property="og:description" content="{{ page_description | escape }}" />
+
+	<!-- twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@hsft_official" />
+	<meta name="twitter:title" content="{{ shop.name }}{% if page_title != empty %}| {{ page_title }}{% endif %}" />
+	<meta name="twitter:description" content="{{ page_description | escape }}" />
+	<meta name="twitter:creator" content="@dustincaruso" />
+	<meta name="twitter:image:src" content="https:{% if template == 'product' %}{{ product.featured_image | img_url: 'large' }}{% elsif template == 'article' %}{{ article.image | img_url: 'large' }}{% else %}{{ 'carousel-item-1.jpg' | asset_url }}{% endif %}" />
+
+  	<!-- pinterest -->
+  	<meta name="p:domain_verify" content="a4de27809d83d619eeaa1525ea18bdb7"/>
+
+
+<meta name="pinterest" content="nopin" />
+
+{{ 'jquery-1.11.0.min.js' | asset_url | script_tag }}
+{{ 'lazysizes.min.js' | asset_url | script_tag }}
+{{ 'MyFontsWebfontsKit.js' | asset_url | script_tag }}
+
+<!-- CSS -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:600,400,300' rel='stylesheet' type='text/css'>
+
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+
+{{ 'style.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'gocart.css' | asset_url | stylesheet_tag }}
+<!-- {{ '//fonts.googleapis.com/css?family=Montserrat' | stylesheet_tag }} -->
+{{ '//fonts.googleapis.com/css?family=Work+Sans:100,300|Montserrat' | stylesheet_tag }}
+
+{% case settings.typography-heading-font %}
+
+	{% when 'typography-heading-bree-serif' %}
+		{{ '//fonts.googleapis.com/css?family=Bree+Serif' | stylesheet_tag }}
+
+	{% when 'typography-heading-raleway' %}
+		{{ '//fonts.googleapis.com/css?family=Raleway' | stylesheet_tag }}
+
+	{% when 'typography-heading-lato' %}
+		{{ '//fonts.googleapis.com/css?family=Lato' | stylesheet_tag }}
+
+	{% when 'typography-heading-bevan' %}
+		{{ '//fonts.googleapis.com/css?family=Bevan' | stylesheet_tag }}
+
+	{% when 'typography-heading-abril-fatface' %}
+		{{ '//fonts.googleapis.com/css?family=Abril+Fatface' | stylesheet_tag }}
+
+	{% when 'typography-heading-playfair-display' %}
+		{{ '//fonts.googleapis.com/css?family=Playfair+Display' | stylesheet_tag }}
+
+	{% when 'typography-heading-sansita-one' %}
+		{{ '//fonts.googleapis.com/css?family=Sansita+One' | stylesheet_tag }}
+
+	{% when 'typography-heading-istok-web' %}
+		{{ '//fonts.googleapis.com/css?family=Istok+Web' | stylesheet_tag }}
+
+	{% when 'typography-heading-pacifico' %}
+		{{ '//fonts.googleapis.com/css?family=Pacifico' | stylesheet_tag }}
+
+	{% when 'typography-heading-nixie-one' %}
+		{{ '//fonts.googleapis.com/css?family=Nixie+One' | stylesheet_tag }}
+
+	{% when 'typography-heading-cantana-one' %}
+		{{ '//fonts.googleapis.com/css?family=Cantata+One' | stylesheet_tag }}
+
+	{% when 'typography-heading-rancho' %}
+		{{ '//fonts.googleapis.com/css?family=Rancho' | stylesheet_tag }}
+
+	{% when 'typography-heading-roboto' %}
+		{{ '//fonts.googleapis.com/css?family=Roboto:400,700,400italic,900' | stylesheet_tag }}
+
+{% endcase %}
+
+{% case settings.typography-body-font %}
+	{% when 'typography-body-open-sans' %}
+		{{ '//fonts.googleapis.com/css?family=Open+Sans' | stylesheet_tag }}
+
+	{% when 'typography-body-lato' %}
+		{{ '//fonts.googleapis.com/css?family=Lato' | stylesheet_tag }}
+
+	{% when 'typography-body-pontano-sans' %}
+		{{ '//fonts.googleapis.com/css?family=Pontano+Sans' | stylesheet_tag }}
+
+	{% when 'typography-body-average' %}
+		{{ '//fonts.googleapis.com/css?family=Average' | stylesheet_tag }}
+
+	{% when 'typography-body-muli' %}
+		{{ '//fonts.googleapis.com/css?family=Muli' | stylesheet_tag }}
+
+	{% when 'typography-body-kameron' %}
+		{{ '//fonts.googleapis.com/css?family=Kameron' | stylesheet_tag }}
+
+	{% when 'typography-body-lora' %}
+		{{ '//fonts.googleapis.com/css?family=Lora' | stylesheet_tag }}
+
+	{% when 'typography-body-arimo' %}
+		{{ '//fonts.googleapis.com/css?family=Arimo' | stylesheet_tag }}
+
+	{% when 'typography-body-ledger' %}
+		{{ '//fonts.googleapis.com/css?family=Ledger' | stylesheet_tag }}
+
+	{% when 'typography-body-imprima' %}
+		{{ '//fonts.googleapis.com/css?family=Imprima' | stylesheet_tag }}
+
+	{% when 'typography-body-gudea' %}
+		{{ '//fonts.googleapis.com/css?family=Gudea' | stylesheet_tag }}
+
+	{% when 'typography-body-roboto' %}
+		{{ '//fonts.googleapis.com/css?family=Roboto:400,700,400italic,900' | stylesheet_tag }}
+
+{% endcase %}
+
+<link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+{{ content_for_header }}
+
+{% if template contains 'customers' %}
+{{ "shopify_common.js" | shopify_asset_url | script_tag }}
+{{ "customer_area.js"  | shopify_asset_url | script_tag }}
+{% endif %}
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '984836918276257'); // HSFT
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=984836918276257&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Facebook Pixel Code -->
+<script>
+
+fbq('init', '804038319704906'); // KGM
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=804038319704906&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<script type="text/javascript">
+!function(e){if(!window.pintrk){window.pintrk=function()
+{window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+n=window.pintrk;n.queue=[],n.version="3.0";var
+t=document.createElement("script");t.async=!0,t.src=e;var
+r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}
+("https://s.pinimg.com/ct/core.js");
+
+pintrk('load','2621220312197', { em: '{{ customer.email }}', });
+pintrk('page');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt=""
+src="https://ct.pinterest.com/v3/?tid=2621220312197&noscript=1" />
+</noscript>
+
+{{ '2021.scss.css' | asset_url | stylesheet_tag }}
+  
+  <!-- ShareASale -->
+  <script src='https://www.dwin1.com/124731.js' type='text/javascript' defer='defer'></script>
+  <!-- END: ShareASale -->
+  {% render 'judgeme_core' %}
+</head>
+<body style="visibility: hidden">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6KKW9S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="mobile-navigation">
+    <nav class="nav">
+      <ul>
+        <li><strong><a href="/cart">{{ 'cart.general.checkout_mobile' | t }}</a></strong></li>
+
+        {% if settings.which-linklist-mobile-menu != '' %}
+        {% for link in linklists[settings.which-linklist-mobile-menu].links %}
+
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+        <li>
+          <a href="{{ link.url }}" title="a">
+            <span class="nav-label">{{ link.title | escape }}</span><span class="caret"></span>
+          </a>
+
+          <ul>
+	      {% for collection in collections %}
+		  	<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+		  {% endfor %}
+		  </ul>
+
+        </li>
+        {% else %}
+        <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if linklists.mobile-menu-2.links.size > 0 %}
+        {% for link in linklists.mobile-menu-2.links %}
+
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+        <li class="mobilemenunew" title="b">
+          <a href="{{ link.url }}">
+            <span class="nav-label">{{ link.title | escape }}</span><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            {% for childlink in linklists[child_list_handle].links %}
+            <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        <li class="mobilemenunew"><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        {% if shop.customer_accounts_enabled %}
+        <li><a href="/account">{{ 'customer.account.title' | t }}</a></li>
+        <li>{{ 'layout.customer.log_out' | t | customer_logout_link }}</li>
+
+        {% endif %}
+
+      </ul>
+    </nav>
+  </div>
+
+{% if shop.customer_accounts_enabled %}
+	{% if customer %}
+		<div id="customer-top-header">
+			<div class="container">
+				<div class="row">
+					<div class="sixteen columns">
+						<ul>
+							<li><h4>{{ 'layout.customer.welcome' | t: name: customer.first_name }}</h4></li>
+							<li><h4><a href="/account">{{ 'customer.account.title' | t }}</a></h4></li>
+							<li><h4>{{ 'layout.customer.log_out' | t | customer_logout_link }}</h4></li>
+				      		<li class="visible-xs"><a href="/cart">{{ 'cart.general.checkout_mobile' | t }}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- #customer-top-header -->
+	{% endif %}
+{% endif %}
+{%- section 'go-cart' -%}  
+{%section 'sticky-ribbon'%}
+<header id="site-header" class="clearfix custom-font">
+	<div class="header-social hidden-xs">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<div id="sm-icons" class="sm-icons col">
+							{%if settings.sm_twitter %}<a href="{{settings.sm_twitter_link}}" class="fab fa-twitter"
+								target="_blank"></a>{% endif %}
+							{%if settings.sm_facebook %}<a href="{{settings.sm_facebook_link}}" class="fab fa-facebook"
+								target="_blank"></a>{% endif %}
+							{%if settings.sm_pinterest %}<a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest"
+								target="_blank"></a>{% endif %}
+							{%if settings.sm_instagram %}<a href="{{settings.sm_instagram_link}}" class="fab fa-instagram"
+								target="_blank"></a>{% endif %}
+						</div>
+						<div class="hashtags col">
+							<a href="https://instagram.com/explore/tags/hsft" target="_blank">#HSFT</a>
+							<a href="https://instagram.com/explore/tags/havesomefuntoday"
+								target="_blank">#HaveSomeFunToday</a>
+						</div>
+					</div>
+				</div>
+
+				{% if shop.customer_accounts_enabled %}
+				<div class="col-md-6 text-right">
+					{% if customer %}
+					{{ 'My Account' | customer_account_link }}
+					{% else %}
+					<!-- {{ 'layout.customer.log_in' | t | customer_login_link }} -->
+					{{ 'Sign In' | customer_login_link }}
+					{% endif %}
+				</div>
+
+				{% endif %}
+			</div>
+		</div>
+	</div>
+    <div class="container visible-xs">
+        <div class="row mobile-header-row">
+
+            <div class="col-xs-2">
+                <a id="responsive-menu-button" href="#sidr-mobile">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-3x"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class=""></path></svg>
+                </a>
+            </div>
+
+            <div class="col-xs-8 text-center">
+                <form id="search" class="xs-search" action="/search">
+                    <div id="search-wrapper">
+                        <input id="search_text" name="q" type="text" size="20" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="{{ 'layout.header.search_box_text' | t }}"/>
+                        <input id="search_submit" type="submit" border="0" value="&#xf002;" />
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <a href="/" title="Home" class="logo-mobile">
+					{% if settings.logo_image == "logo.png" %}
+					  <img src="{{ 'logo.png' | asset_img_url: '168x' }}" alt="{{ shop.name | escape }}" data-pin-no-hover="true" />
+					{% else %}
+					  {{ shop.name | escape }}
+					{% endif %}
+					<span>{{ settings.tagline_text }}</span>
+				  </a>
+            </div>
+
+            <div class="col-xs-2">
+                <a id="responsive-cart-button" href="/cart">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-bag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-shopping-bag fa-w-14 fa-3x"><path fill="currentColor" d="M352 128C352 57.421 294.579 0 224 0 153.42 0 96 57.421 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 32c52.935 0 96 43.065 96 96H128c0-52.935 43.065-96 96-96zm192 400c0 26.467-21.533 48-48 48H80c-26.467 0-48-21.533-48-48V160h64v48c0 8.837 7.164 16 16 16s16-7.163 16-16v-48h192v48c0 8.837 7.163 16 16 16s16-7.163 16-16v-48h64v272z" class=""></path></svg>
+                </a>
+            </div>
+
+        </div><!-- /.row -->
+		
+    </div><!-- /.container -->
+
+	<div class="visible-xs">
+		{% section 'mobile-main-nav' %}
+	</div>
+
+    <div class="container hidden-xs">
+        <div class="row d-flex">
+			<div class="col-xs-12 col-sm-2">
+				<h1 id="site-title">
+					<a href="/" title="Home">
+					  {% if settings.logo_image == "logo.png" %}
+						<img src="{{ 'logo.png' | asset_img_url: '168x' }}" alt="{{ shop.name | escape }}" data-pin-no-hover="true" />
+					  {% else %}
+						{{ shop.name | escape }}
+					  {% endif %}
+					  <span>{{ settings.tagline_text }}</span>
+					</a>
+				  </h1>
+			</div>
+           
+            <div class="col-xs-12 col-sm-7 text-center">
+                <ul class="nav navbar-nav" role="navigation">
+
+					{% section 'custom-menu' %}
+
+                </ul>
+            </div>
+
+			
+			
+            <div class="col-xs-12 col-sm-3 header-actions">
+				<div id="search-box" class="hidden-xs">
+				<form id="search" class="sm-search" action="/search">
+					<div id="search-wrapper">
+						<input id="search_text" name="q" type="text" size="20" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="{{ 'layout.header.search_box_text' | t }}"/>
+						<input id="search_submit" type="submit" border="0" value="&#xf002;" />
+					</div>
+				</form>
+			</div>
+			{%- include "go-cart-button" -%}
+			{% comment %} <a class="custom-font slide-menu" aria-label="{{ 'layout.header.your_cart' | t }}" ><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-bag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-shopping-bag fa-w-14 fa-3x"><path fill="currentColor" d="M352 128C352 57.421 294.579 0 224 0 153.42 0 96 57.421 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 32c52.935 0 96 43.065 96 96H128c0-52.935 43.065-96 96-96zm192 400c0 26.467-21.533 48-48 48H80c-26.467 0-48-21.533-48-48V160h64v48c0 8.837 7.164 16 16 16s16-7.163 16-16v-48h192v48c0 8.837 7.163 16 16 16s16-7.163 16-16v-48h64v272z" class=""></path></svg></a> {% endcomment %}
+            </div><!-- /.col-md-4 -->
+
+        </div><!-- /.row -->
+    </div><!-- .container -->
+
+</header>
+
+<div id="sidr" style="display: none;">
+	<div>
+		<h4><span class="cart-item-count">{{ cart.item_count }}</span></h4>
+		<span class="cart-item-count-text">{{ 'layout.cart.item_count' | t: count: cart.item_count }}</span>
+	</div>
+
+	<div>
+		<h4><span class="cart-item-price">{{ cart.total_price | money }}</span></h4>
+		<span class="cart-item-price-text">{{ 'layout.cart.total_cart_value' | t }}</span>
+	</div>
+
+	<div class="slide-checkout-buttons">
+		<a href="#sidr" class="btn btn-default slide-menu">{{ 'layout.cart.continue_shopping' | t }}</a><br />
+		<a href="/cart" class="btn btn-default">{{ 'cart.general.title' | t }}</a>
+	</div>
+</div>
+
+<div class="container hidden product-menu" id="page-layout">
+    <div class="row">
+		{%comment%}
+        <nav id="sm-icons" class="sm-icons">
+            {%if settings.sm_twitter %}<a href="{{settings.sm_twitter_link}}" class="fab fa-twitter" target="_blank"></a>{% endif %}
+            {%if settings.sm_facebook %}<a href="{{settings.sm_facebook_link}}" class="fab fa-facebook" target="_blank"></a>{% endif %}
+            {%if settings.sm_pinterest %}<a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest" target="_blank"></a>{% endif %}
+            {%if settings.sm_instagram %}<a href="{{settings.sm_instagram_link}}" class="fab fa-instagram" target="_blank"></a>{% endif %}
+        </nav>
+
+    	<div id="hashtags">
+    		<a href="https://instagram.com/explore/tags/hsft" target="_blank">#HSFT</a>
+    		<a href="https://instagram.com/explore/tags/havesomefuntoday" target="_blank">#HaveSomeFunToday</a>
+    	</div>
+    	<div id="search-box" class="
+    		{% if settings.which-linklist-header-menu != '' %}
+    			col-md-3 col-sm-6
+    		{% else %}
+    			col-md-9 col-sm-6
+    		{% endif %}
+    	hidden-xs">
+    		<form id="search" class="sm-search" action="/search">
+    			<div id="search-wrapper">
+    				<input id="search_text" name="q" type="text" size="20" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="{{ 'layout.header.search_box_text' | t }}"/>
+    				<input id="search_submit" type="submit" border="0" value="&#xf002;" />
+    			</div>
+    		</form>
+          <p class="freeship">{{ settings.free_shipping_text }}</p>
+    	</div>
+
+		{%endcomment%}
+
+        <div id="code-box">{{ settings.promo_code_text }}</div>
+		{%comment%}
+    	<h1 id="site-title">
+    	  <a href="/" title="Home">
+    	    {% if settings.logo_image == "logo.png" %}
+    	      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name | escape }}" data-pin-no-hover="true" />
+    	    {% else %}
+    	      {{ shop.name | escape }}
+    	    {% endif %}
+    	    <span>{{ settings.tagline_text }}</span>
+    	  </a>
+    	</h1>
+		{%endcomment%}
+
+    </div>
+	
+</div>
+
+<div id="main" role="main">
+
+	{% if template == 'index' %}
+		{% section 'home-feature-hero' %}
+	{% endif %}
+
+	<div class="container">
+		{% if template == 'list-collections' %}
+			{% include 'collection-listing' %}
+		{% else %}
+			{{ content_for_layout }}
+		{% endif %}
+	</div>
+	
+	<div id="instagram-feed">
+		<style>
+		#instagram-feed {
+			padding: 56px 0 64px;
+			background: #f1ecec;
+		}
+		#instagram-feed .title-bar {
+			padding: 0;
+		}
+		#instagram-feed h2 { 
+			font-weight: 400;
+			font-size: 24px;
+			background: #f1ecec;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: #000000;
+			display: block;
+			padding: 0;
+		}
+		#instagram-feed h2 small {
+			display: block;
+			font-weight: normal;
+			font-size: 18px;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: #000000;
+		}
+
+		#rap__med__instabox {
+			padding: 10px !important;
+		}
+		</style>
+		<div  class="container">
+		<div class="title-bar custom-font">
+			<h2>Instagram<small>FOLLOW US! <a href="http://instagram.com/hsft_official" target="_blank">@HSFT_OFFICIAL</a></small></h2>
+		</div>
+    	<div id="insta-feed">
+			<div id="rap__med__instagram"></div>
+			<script async src="https://theraptormedia.com/instagram/embed.js" data-id="hfst-couture.myshopify.com" defer="defer"></script>
+		</div>
+		</div>
+	</div>
+
+</div>
+
+<footer>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-6 col-sm-6">
+
+	{% assign article = pages.frontpage %}
+	{% if article.content != "" %}
+		<div id="frontpage-article">
+			<div class="article">
+              <h3>#HSFTwomen (def): </h3>
+	  			<div class="article-body textile">
+		  			{{ article.content }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+</div>
+
+<div class="col-md-3 col-sm-6 mailing-list-footer">
+
+	<h3>{{ 'general.newsletter_form.header' | t }}</h3>
+
+	<form action="https://havesomefuntoday.us10.list-manage.com/subscribe/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline">
+	  <div class="form-group">
+	  	<label for="newsletter-email">{{ 'general.newsletter_form.header_text' | t }}</label>
+	  	<div class="input-group">
+			<input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_text' | t }}" name="EMAIL" id="mail" class="input-group-field email form-control" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+			<span class="input-group-btn"><input type="submit" class="btn btn-default" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}"></span>
+		</div>
+	</div>
+	</form>
+
+	<p>&nbsp;</p>
+
+  <p><a class="baa"href="/pages/shipping-policy">Shipping Policy</a></p>
+  <p><a class="baa"href="/apps/enzuzo/privacy">Privacy Policy</a></p>
+  <p><a class="baa"href="/apps/enzuzo/tos">Terms of Service</a></p>
+
+	<p><a class="baa" href="https://www.shareasale.com/shareasale.cfm?merchantID=124731" target="_blank">Become an Affiliate</a></p>
+
+</div>
+
+<div class="col-md-3 col-sm-6">
+
+	{% if settings.show_amex or settings.show_discover or settings.show_visa or settings.show_mastercard or settings.show_maestro or settings.show_cirrus or settings.show_paypal or settings.show_google or settings.show_amazon %}
+
+	<h3>{{ 'layout.footer.accepted_payments' | t }}</h3>
+
+	<div id="footer-payment-methods">
+	  {% if settings.show_amex %}       {{ 'card-american-express.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_discover %}   {{ 'card-discover.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_visa %}       {{ 'card-visa.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_mastercard %} {{ 'card-mastercard.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_maestro %}    {{ 'card-maestro.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_cirrus %}     {{ 'card-cirrus.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_paypal %}     {{ 'card-paypal.png' | asset_url | img_tag }} {% endif %}
+	  {% if settings.show_google %}     {{ 'card-google.png' | asset_url | img_tag }} {% endif %}
+      {% if settings.show_amazon %}     {{ 'card-amazon.png' | asset_url | img_tag }} {% endif %}
+	</div>
+	{% endif %}
+
+	{%if settings.sm_facebook or settings.sm_twitter or settings.sm_youtube or settings.sm_flickr or settings.sm_pinterest %}
+
+	<h3>{{ 'layout.footer.social_title' | t }}</h3>
+
+	<div id="footer-right">
+        <nav id="sm-icons3" class="sm-icons">
+            {%if settings.sm_twitter %}<a href="{{settings.sm_twitter_link}}" class="fab fa-twitter" target="_blank"></a>{% endif %}
+            {%if settings.sm_facebook %}<a href="{{settings.sm_facebook_link}}" class="fab fa-facebook" target="_blank"></a>{% endif %}
+            {%if settings.sm_pinterest %}<a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest" target="_blank"></a>{% endif %}
+            {%if settings.sm_instagram %}<a href="{{settings.sm_instagram_link}}" class="fab fa-instagram" target="_blank"></a>{% endif %}
+        </nav>
+	</div>
+	{% endif %}
+
+</div>
+
+</div><!-- .row -->
+
+</div><!-- container -->
+
+</footer>
+
+<div class="bottom-footer">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-9">
+<p>
+&copy; <script>document.write(new Date().getFullYear())</script> <a href="/">{{ shop.name }}</a><!-- | {{ powered_by_link }} -->{% if settings.show_designed_by %}{{ 'layout.footer.designed_by' | t }} | <a href="http://www.wetheme.com" title="Designed by WeTheme">WeTheme</a>{% endif %}
+</p>
+</div>
+
+</div><!-- row -->
+
+</div><!-- container -->
+
+</div><!-- bottom-footer -->
+
+{{ 'plugins.js' | asset_url | script_tag }}
+
+{{ 'custom.js' | asset_url | script_tag }}
+
+{% if settings.pop-up-selection == "text" %}
+
+	<div style="display:none;">
+		<div id="envy-auto-popup">
+			<div class="envy-auto-popup{% if settings.show-side-image %}-left{% endif %}">
+				<h3 class="custom-font">{{ settings.pop-up-text-header-text }}</h3>
+				{% if settings.pop-up-text-description-text != empty %}
+					<p>{{ settings.pop-up-text-description-text }}</p>
+				{% endif %}
+				<div id="subs-container" class="clearfix">
+					<div id="mc_embed_signup">
+						<form action="https://havesomefuntoday.us10.list-manage.com/subscribe/post?u=7256c312a0426517dd8622e77&amp;id=39875df3bc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_top" class="validate" novalidate>
+							<input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="{{ 'general.newsletter_form.newsletter_text' | t }}" required>
+							<input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default">
+						</form>
+					</div>
+				</div>
+
+				{% if settings.show-social-media-popup %}
+                <nav id="sm-icons2" class="sm-icons">
+                    {%if settings.sm_twitter %}<a href="{{settings.sm_twitter_link}}" class="fab fa-twitter" target="_blank"></a>{% endif %}
+                    {%if settings.sm_facebook %}<a href="{{settings.sm_facebook_link}}" class="fab fa-facebook" target="_blank"></a>{% endif %}
+                    {%if settings.sm_pinterest %}<a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest" target="_blank"></a>{% endif %}
+                    {%if settings.sm_instagram %}<a href="{{settings.sm_instagram_link}}" class="fab fa-instagram" target="_blank"></a>{% endif %}
+                </nav>
+				{% endif %}
+
+			</div><!-- /.envy-auto-popup{% if settings.show-side-image %}-left{% endif %} -->
+
+			{% if settings.show-side-image %}
+			<div class="envy-auto-popup-right">
+				<img src="{{ 'popup-newsletter-side.png' | asset_url }}" />
+			</div><!-- /.envy-auto-popup-left -->
+			{% endif %}
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	if($(window).width() > 768){
+		$(document).ready(function(){
+			var check_cookie = $.cookie('envy-welcome-popup');
+			if(check_cookie == null){
+				$.cookie('envy-welcome-popup', 'true', { expires: 7 });
+				$.fancybox({
+					href: "#envy-auto-popup",
+					padding: 0
+				});
+			}
+		});
+	};
+	</script>
+
+{% endif %}
+
+{% if settings.pop-up-selection == "image" %}
+<script type="text/javascript">
+if($(window).width() > 768){
+	$(document).ready(function(){
+		var check_cookie = $.cookie('envy-welcome-popup');
+		if(check_cookie == null){
+			$.cookie('envy-welcome-popup', 'true', { expires: 7 });
+			$.fancybox.open([
+			    {
+			        href : "{{ 'pop-up-graphic.jpg' | asset_url }}"
+			    }
+			], {
+			    padding : 0
+				});
+			}
+	});
+};
+</script>
+{% endif %}
+
+{% if settings.show_slider %}
+<script type="text/javascript">
+$(window).load(function() {
+	$('.flexslider').flexslider({
+		animation: "{{ settings.slider-animation }}",
+		directionNav: false,
+		controlNav: false,
+		controlsContainer: ".flexslider-container",
+		startAt: 0,
+		slideshowSpeed: {{ settings.slider-slide-time }}
+  });
+});
+</script>
+{% endif %}
+
+{% if settings.blogfeed_facebook %}
+<!-- Blog Facebook Like Box -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endif %}
+
+{% if product.variants.size > 1 %}
+
+{% include 'saw_compute_discount' with product %}
+
+<script type="text/javascript">
+// <![CDATA[
+var selectCallback = function(variant, selector) {
+
+var comparePrice = $('.compare-at-price');
+
+  if (variant && variant.available == true) {
+    // selected a valid variant
+    jQuery('#purchase').removeClass('disabled').removeAttr('disabled'); // remove unavailable class from add-to-cart button, and re-enable button
+    jQuery('#price-field').html(Shopify.formatMoney(variant.price, "{{shop.money_with_currency_format}}"));  // update price field
+  } else {
+    // variant doesn't exist
+    jQuery('#purchase').addClass('disabled').attr('disabled', 'disabled');      // set add-to-cart button to unavailable class and disable button
+    var message = variant ? {{ 'products.product.sold_out' | t | json }} : {{ 'products.product.unavailable' | t | json }};
+    comparePrice.hide();
+    jQuery('#price-field').text(message); // update price-field message
+  }
+
+  if (variant && variant.available == true) {
+	  if ( variant.compare_at_price > variant.price ) {
+	    comparePrice
+	      .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+	      .show();
+	  } else {
+	    comparePrice.hide();
+	  }
+	}
+
+if (variant && variant.featured_image) {
+        var originalImage = $(".featured-image-div img");
+        var newImage = variant.featured_image;
+        var element = originalImage[0];
+        Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+            $( '.featured-image-div img' ).attr('src', newImageSizedSrc);
+        });
+    }
+
+};
+
+// initialize multi selector for product
+jQuery(function() {
+
+
+           function sawholesale_product_json(product) {
+             var saw_discount_js = {{saw_discount}}
+                 if (saw_discount_js == 1) {
+                 return product
+                 }
+             var saw_product_compare_at_price_js, variant_price
+             for (var vi = 0, vlen = product.variants.length; vi < vlen; vi++) {
+                 saw_product_compare_at_price_js = product.variants[vi].compare_at_price
+                 if (saw_product_compare_at_price_js == null) {
+                   saw_product_compare_at_price_js = product.variants[vi].price
+                 }
+
+                 {% if base_price == 'price' %}
+                     saw_product_compare_at_price_js = product.variants[vi].price
+                 {% endif %}
+
+                 variant_price = saw_product_compare_at_price_js * saw_discount_js
+                 if (variant_price > product.variants[vi].price) {
+                   variant_price = product.variants[vi].price
+                 }
+                 if (typeof window.saw_variants == "object" && typeof window.saw_variants[product.variants[vi].id] == "number") {
+                   	//variant_price = window.saw_variants['"' + product.variants[vi].id + '"']
+                 	variant_price = window.saw_variants[product.variants[vi].id]
+                 }
+
+                 product.variants[vi].price = variant_price
+                 if (saw_product_compare_at_price_js > variant_price) {
+                 	product.variants[vi].compare_at_price = saw_product_compare_at_price_js
+                 }
+             }
+             product.price = product.variants[0].price
+             product.compare_at_price = product.variants[0].compare_at_price
+             product.compare_at_price_min = product.variants[0].compare_at_price_min
+             product.compare_at_price_max = product.variants[0].compare_at_price_max
+
+          	//console.log(product)
+             return product
+          }
+
+
+	new Shopify.OptionSelectors("product-select", { product: sawholesale_product_json({{ product | json }}), onVariantSelected: selectCallback, enableHistoryState: true });
+	$("#product-variants .selector-wrapper select").selectOrDie({
+		customClass: "custom",
+		customID:    "custom"
+	});
+});
+// ]]>
+
+Shopify.Image.preload({{ product.images | json }}, '1024x1024');
+
+</script>
+{% endif %}
+
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+jQuery(function() {
+  jQuery('nav a').each(function() {
+    if (jQuery(this).attr('href')  ===  window.location.pathname) {
+      jQuery(this).addClass('current');
+    }
+  });
+});
+//]]>
+</script>
+		<script type="text/javascript" async defer data-pin-color="red" data-pin-height="28" data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+
+{% if template contains "product" or request.page_type == 'index' %}
+<link rel="stylesheet" href="{{ 'owl.carousel.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'owl.theme.css' | asset_url }}">
+<script src="{{ 'owl.carousel.min.js' | asset_url }}"></script>
+
+<script>
+$(document).ready(function() {
+	$("#product-thumbnails").owlCarousel({
+    	items : 2,
+		itemsDesktop : [1199,3],
+		itemsDesktopSmall : [979,3],
+		pagination:false,
+		navigation:true,
+		responsive:true
+	});
+	$(".featured-products").owlCarousel({
+    	items : 4,
+		itemsDesktop : [1199,3],
+		itemsDesktopSmall : [979,2],
+		pagination:false,
+		navigation:true,
+		responsive:true,
+		navText : ["<img src='{{'arrow-left.svg' | asset_url }}'>,<img src='{{ 'arrow-right.svg' | asset_url }}'>"]
+	});
+	$("#hp-three-promoboxs").owlCarousel({
+    	items : 3,
+		itemsDesktop : [1199,3],
+		itemsDesktopSmall : [768,1],
+		pagination:false,
+		navigation:true,
+		responsive:true,
+		center: true,
+		navText : ["<img src='{{'arrow-left.svg' | asset_url }}'>,<img src='{{ 'arrow-right.svg' | asset_url }}'>"]
+	});                   
+	$(".social-proof-carousel").owlCarousel({
+    	items : 4,
+		itemsDesktop : [1199,3],
+		itemsDesktopSmall : [979,2],
+		pagination:false,
+		navigation:true,
+		responsive:true,
+		center: true
+	});	
+});
+                   
+   
+</script>
+{% endif %}
+{{ 'slick.min.js' | asset_url | script_tag }}
+
+<script>
+
+	$('.main-nav-carousel').slick({
+		infinite: false,
+		slidesToShow: 6,
+		slidesToScroll: 3,
+		dots: false,
+		arrows: false,
+		responsive : [
+			{
+			breakpoint: 600,
+				settings: {
+					slidesToShow: 5,
+					slidesToScroll: 3
+				}
+			},
+			{
+			breakpoint: 500,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 3
+				}
+			},
+			{
+			breakpoint: 300,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			},
+			{
+			breakpoint: 200,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			},
+			{
+			breakpoint: 100,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			},
+		]
+	});
+          
+          $('.fd-wrapper').slick({
+		infinite: false,
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		dots: false,
+		arrows: true,
+		prevArrow : '<button type="button" class="slick-navigation slick-left"></button>',
+		nextArrow : '<button type="button" class="slick-navigation slick-right"></button>',
+		responsive : [
+			{
+			breakpoint: 800,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1
+				}
+			},
+			{
+			breakpoint: 550,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				}
+			}
+		]
+	});
+  
+	$('.ribbon-carousel').slick({
+		autoplay: true,
+		autoplaySpeed: 5000,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		dots: false,
+		arrows: false
+    });
+</script>
+
+
+<script>
+
+jQuery(window).scroll(function() {
+    var scroll = jQuery(window).scrollTop();
+
+     //>=, not <=
+    if (scroll >= 360) {
+
+        jQuery(".product-nav-wrapper-main").addClass("fixed");
+    }
+}); //missing );
+
+  jQuery(window).scroll(function() {
+    var scroll = jQuery(window).scrollTop();
+
+     //>=, not <=
+    if (scroll <= 360) {
+
+        jQuery(".product-nav-wrapper-main").removeClass("fixed");
+    }
+}); //missing );
+
+const toggleElment = (element) => {
+	document.querySelectorAll(".custom-menu-tabs").forEach(function(menu){
+		if (menu != document.querySelector(element) ){
+			menu.classList.add('hidden');
+		}
+	})
+	document.querySelector(element).classList.toggle('hidden');
+}
+
+</script>
+
+{{ 'gocart.js' | asset_url | script_tag }}
+{{ 'quick-add.js' | asset_url | script_tag }}
+<script>
+	var goCart = new GoCart(
+		{
+			cartMode: 'drawer', //drawer or mini-cart  
+			drawerDirection: 'right', //cart drawer from left or right
+			displayModal: false
+		}
+	);
+</script>
+</body>
+</html>
+
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.1) -->
+
+<script type="text/javascript">
+  // Editable fields:
+  var afterpay_min = 0.04;            // As per your Afterpay contract.
+  var afterpay_max = 1000.00;         // As per your Afterpay contract.
+  var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+
+  // Overrides:
+  var afterpay_product_selector = '#price-field';
+  // var afterpay_cart_integration_enabled = true;
+  var afterpay_cart_static_selector = '.col-md-12.cart-bottom-box .title-bar';
+  // var afterpay_variable_price_fallback_selector = '#ProductPrice';
+  // var afterpay_variable_price_fallback = true; // Requires afterpay_product_selector
+  var afterpay_show_currency_code = false;
+  var afterpay_modal_responsive = false;
+
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.1';
+</script>
+
+<script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
+
+<script>
+	$(window).on('load',function(e){
+		$("body").css({'visibility': 'visible'});
+	});
+</script>
+<!-- End Shopify-Afterpay JavaScript Snippet (v1.0.1) -->
+
+<style type="text/css">
+  p.afterpay-paragraph {
+    color: inherit !important;
+    font-family: inherit !important;
+  }
+
+  .entry-content p.afterpay-paragraph {
+    margin: -20px 0 20px;
+  }
+
+  #cartform p.afterpay-paragraph {
+    text-align: right;
+    margin: -20px 0 20px;
+  }
+
+  .afterpay-instalments {
+    font-weight: bold !important;
+  }
+
+  .afterpay-link-inner {
+    font-size: 12px;
+    margin-left: 2px;
+  }
+
+  .afterpay-logo {
+    width: 6em !important;
+    height: auto !important;
+  }
+
+  .afterpay-text2 {
+    margin-right: 1px;
+  }
+
+  @media only screen and (max-width : 480px) {
+    .afterpay-paragraph {
+        font-size: 12px;
+    }
+
+    .afterpay-link-inner {
+        font-size: 12px;
+    }
+
+    .afterpay-logo {
+/*       width: 6em !important;
+      height: auto !important; */
+    }
+  }
+
+</style>
