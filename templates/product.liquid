@@ -114,7 +114,8 @@
 							{% endif %}
 						{% endif %}
 						{{ form | payment_terms }}
-			    		<input type="submit" name="add" value="{{ 'products.product.add_to_cart' | t }}" id="purchase" class="btn btn-success" onclick="pintrk('track', 'addtocart');" />
+						{%- comment -%} btn-success {%- endcomment -%}
+			    		<input type="submit" name="add" value="{{ 'products.product.add_to_cart' | t }}" id="purchase" class="btn js-go-cart-add-to-cart" onclick="pintrk('track', 'addtocart');" />
 					</form>
 				{% else %}
 					<div class="product-out-of-stock">{{ 'products.product.sorry_stock' | t }}</div>
