@@ -28,7 +28,7 @@
 	<div class="hp-title">
 		<a href="{{ product.url | within: collection }}">
 			<div class="indiv-product-title-text">{{product.title}}</div>
-			
+            {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
 			{% if product.compare_at_price_max > product.price and saw_discount == 1 %}
 				<div class="sale-badge">{{ 'products.general.sale' | t }}</div>
 			{% endif %}

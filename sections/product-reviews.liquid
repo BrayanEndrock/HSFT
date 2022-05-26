@@ -1,0 +1,18 @@
+<div class="reviews-feature-template--wrapper">
+    <div class="reviews-feature--container">  
+        {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}           
+    </div>      
+</div>
+
+{% schema %}
+    {
+        "name": "Reviews Feature",
+        "class": "reviews-feature-template"
+    }
+{% endschema %}
+
+<style>
+    .reviews-feature-template .reviews-feature-template--wrapper .reviews-feature--container .jdgm-histogram__bar-content {
+        background: rgb(0, 0, 0);
+    }
+</style>
