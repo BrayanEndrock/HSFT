@@ -9,7 +9,7 @@
 <style> 
     .home-feature-hero--template {
         background-image: url({{ section.settings.hero-desktop | img_url: 'master' }});
-        background-position: right;                       
+        background-position: bottom center;                       
         background-repeat: no-repeat;
         background-size: cover;             
         height: 576px;           
@@ -17,19 +17,19 @@
     @media (min-width: 481px) and (max-width: 768px) {
         .home-feature-hero--template {
             background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
-            background-position: center;                      
+            background-position: initial;                      
             background-repeat: no-repeat;
             background-size: cover;           
-            height: 832px;           
+            height: 1157px;           
         }
     }
     @media screen and (max-width: 480px) {
         .home-feature-hero--template {  
             background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
-            background-position: center;                      
+            background-position: bottom center;                      
             background-repeat: no-repeat;
             background-size: cover;         
-            height: 447px;           
+            height: 635px;           
         }
     }
 </style>
@@ -39,7 +39,7 @@
         margin-top: -64px;  
         @media screen and (max-width: 768px) {
             margin-top: 0;
-            padding: 0 20px;
+            /*padding: 0 20px;*/
         }                    
         .home-feature-hero--template {      
             .home-feature-hero--container {
