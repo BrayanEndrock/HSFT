@@ -908,10 +908,10 @@
       "home-feature-hero": {
         "type": "home-feature-hero",
         "settings": {
-          "hero-desktop": "shopify:\/\/shop_images\/women-hero-banner.png",
-          "hero-mobile": "shopify:\/\/shop_images\/women-mobile-hero-banner.png",
+          "hero-desktop": "shopify:\/\/shop_images\/desktop-hero.png",
+          "hero-mobile": "shopify:\/\/shop_images\/mobile-hero.png",
           "title": "The Beach Bum Gets an Upgrade",
-          "url": "shopify:\/\/collections\/womens"
+          "url": "https:\/\/havesomefuntoday.com\/collections\/bags"
         }
       }
     },
