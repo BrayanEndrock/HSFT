@@ -70,24 +70,25 @@
         </div>
         <!--end go cart message -->
 
-        <!--go cart drawer content-->
-        <div class="go-cart-drawer__content js-go-cart-drawer-content"></div>
-        <!--end go cart drawer content-->
-
-        <!--go cart drawer upsell-->
-        <div class="go-cart-drawer__upsell">
-            <div class="upsell--container">
-                <h4>Best Sellers</h4>
-                <div class="upsell--wrapper">
-                    <div class="upsell-slider">
-                        {%- for product in collections['best-sellers'].products -%}  
-                            {% include 'upsell-product-card' %}
-                        {%- endfor -%}
+        <div class="go-cart-drawer__content--wrapper">
+            <!--go cart drawer content-->
+            <div class="go-cart-drawer__content js-go-cart-drawer-content"></div>
+            <!--end go cart drawer content-->
+            <!--go cart drawer upsell-->
+            <div class="go-cart-drawer__upsell">
+                <div class="upsell--container">
+                    <h4>Best Sellers</h4>
+                    <div class="upsell--wrapper">
+                        <div class="upsell-slider">
+                            {%- for product in collections['best-sellers'].products -%}  
+                                {% include 'upsell-product-card' %}
+                            {%- endfor -%}
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--end go cart drawer upsell-->
         </div>
-        <!--end go cart drawer upsell-->
 
         <!--go cart drawer subtotal-->
         <div class="go-cart-drawer__subtotal">
