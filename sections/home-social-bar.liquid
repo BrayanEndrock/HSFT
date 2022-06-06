@@ -1,0 +1,88 @@
+<div class="header-social">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div id="sm-icons" class="sm-icons col">
+                        {% if settings.sm_twitter %}
+                            <a href="{{settings.sm_twitter_link}}" class="fab fa-twitter" target="_blank"></a>
+                        {% endif %}
+                        {% if settings.sm_facebook %}
+                            <a href="{{settings.sm_facebook_link}}" class="fab fa-facebook" target="_blank"></a>
+                        {% endif %}
+                        {% if settings.sm_pinterest %}
+                            <a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest" target="_blank"></a>
+                        {% endif %}
+                        {% if settings.sm_instagram %}
+                            <a href="{{settings.sm_instagram_link}}" class="fab fa-instagram" target="_blank"></a>
+                        {% endif %}
+                    </div>
+                    <div class="hashtags col">
+                        <a href="{{ section.settings.first-tag-link }}" target="_blank">{{ section.settings.first-tag-label }}</a>
+                        <a href="{{ section.settings.second-tag-link }}" target="_blank">{{ section.settings.second-tag-label }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Home - Social Bar",
+        "class": "home-feature-social-bar",    
+        "settings": [
+            {
+                "type": "url",
+                "id": "first-tag-link",
+                "label": "First IG Tag"
+            },
+            {
+                "type": "text",
+                "id": "first-tag-label",
+                "label": "First IG Label",
+                "default": "#HSFT"
+            },
+            {
+                "type": "url",
+                "id": "second-tag-link",
+                "label": "Second IG Tag"
+            },
+            {
+                "type": "text",
+                "id": "second-tag-label",
+                "label": "Second IG Label",
+                "default": "#HaveSomeFunToday"
+            }
+        ],
+        "presets": [
+            {
+                "name":"Social Bar",
+                "category": "Home"
+            }
+        ]
+    }
+{% endschema %}
+
+{% stylesheet 'scss' %}
+    .home-feature-social-bar {
+        .header-social {
+            background: #e5e5e5;
+            padding: 8px 0;
+            .row {
+                display: flex;
+                align-items: center;
+                @media screen and (max-width: 768px) {
+                    flex-direction: column;
+                    gap: 2px;
+                    .hashtags {
+                        margin-top: 6px;
+                    }  
+                    .text-right {
+                        align-self: flex-end;
+                    }
+                }
+            }
+        }
+    }
+{% endstylesheet %}
