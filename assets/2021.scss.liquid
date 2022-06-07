@@ -77,34 +77,21 @@ header#site-header .fab {
 }
 
 #site-header {
-    .header-social {
-        background: #e5e5e5;
-        padding: 8px 0;
-
-        .row {
-            display: flex;
-            align-items: center;
-
-            @media screen and (max-width: 768px) {
-                flex-direction: column;
-                gap: 2px;
-
-                .hashtags {
-                    margin-top: 6px;
-                }
-
-                .text-right {
-                    align-self: flex-end;
-                }
-            }
-        }
-    }
-
     .mobile-header-row {
         display: flex;
         align-items: center;
         margin-top: 4px;
         margin-bottom: 8px;
+    }
+    .responsive-cart-wrapper {
+        display: grid;
+        /* gap: 1px; */
+        grid-template-columns: repeat(2,1fr);
+        padding: 0 10px 0 0;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
     }
 }
 .caret {
@@ -153,9 +140,11 @@ h1#site-title {
     }
     .header-actions {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: repeat(3, 1fr);
         gap: 0 8px;
         align-items: center;
+        justify-items: center;
+        padding: 0 !important;
         .custom-font {
             width: 24px;
         }
