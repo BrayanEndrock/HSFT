@@ -246,33 +246,35 @@ src="https://ct.pinterest.com/v3/?tid=2621220312197&noscript=1" />
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <div id="mobile-navigation">
-    <nav class="nav">
-      <ul>
-        <li><strong><a href="/cart">{{ 'cart.general.checkout_mobile' | t }}</a></strong></li>
-
-        {% if settings.which-linklist-mobile-menu != '' %}
-        {% for link in linklists[settings.which-linklist-mobile-menu].links %}
-
-        {% assign child_list_handle = link.title | handleize %}
-        {% if linklists[child_list_handle].links != blank %}
-        <li>
-          <a href="{{ link.url }}" title="a">
-            <span class="nav-label">{{ link.title | escape }}</span><span class="caret"></span>
-          </a>
-
-          <ul>
-	      {% for collection in collections %}
-		  	<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
-		  {% endfor %}
-		  </ul>
-
-        </li>
-        {% else %}
-        <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
+  	<div id="mobile-navigation">
+    	<nav class="nav">
+      		<ul>
+        		<li>
+					<strong><a href="/cart">{{ 'cart.general.checkout_mobile' | t }}</a></strong>
+				</li>
+        		{% if settings.which-linklist-mobile-menu != '' %}
+        			{% for link in linklists[settings.which-linklist-mobile-menu].links %}
+        				{% assign child_list_handle = link.title | handleize %}
+        				{% if linklists[child_list_handle].links != blank %}
+							<li>
+								<a href="{{ link.url }}" title="a">
+									<span class="nav-label">{{ link.title | escape }}</span><span class="caret"></span>
+								</a>
+								<ul>
+									{% for collection in collections %}
+										<li>
+											<a href="{{ collection.url }}">{{ collection.title }}</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</li>
+        				{% else %}
+        					<li>
+								<a href="{{ link.url }}">{{ link.title | escape }}</a>
+							</li>
+        				{% endif %}
+        			{% endfor %}
+        		{% endif %}
 
         {% if linklists.mobile-menu-2.links.size > 0 %}
         {% for link in linklists.mobile-menu-2.links %}
@@ -326,53 +328,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {%- section 'go-cart' -%}  
 {%section 'sticky-ribbon'%}
 <header id="site-header" class="clearfix custom-font">
-	<div class="header-social hidden-xs">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="row">
-						<div id="sm-icons" class="sm-icons col">
-							{%if settings.sm_twitter %}<a href="{{settings.sm_twitter_link}}" class="fab fa-twitter"
-								target="_blank"></a>{% endif %}
-							{%if settings.sm_facebook %}<a href="{{settings.sm_facebook_link}}" class="fab fa-facebook"
-								target="_blank"></a>{% endif %}
-							{%if settings.sm_pinterest %}<a href="{{settings.sm_pinterest_link}}" class="fab fa-pinterest"
-								target="_blank"></a>{% endif %}
-							{%if settings.sm_instagram %}<a href="{{settings.sm_instagram_link}}" class="fab fa-instagram"
-								target="_blank"></a>{% endif %}
-						</div>
-						<div class="hashtags col">
-							<a href="https://instagram.com/explore/tags/hsft" target="_blank">#HSFT</a>
-							<a href="https://instagram.com/explore/tags/havesomefuntoday"
-								target="_blank">#HaveSomeFunToday</a>
-						</div>
-					</div>
-				</div>
-
-				{% if shop.customer_accounts_enabled %}
-				<div class="col-md-6 text-right">
-					{% if customer %}
-					{{ 'My Account' | customer_account_link }}
-					{% else %}
-					<!-- {{ 'layout.customer.log_in' | t | customer_login_link }} -->
-					{{ 'Sign In' | customer_login_link }}
-					{% endif %}
-				</div>
-
-				{% endif %}
-			</div>
-		</div>
-	</div>
     <div class="container visible-xs">
         <div class="row mobile-header-row">
-
             <div class="col-xs-2">
                 <a id="responsive-menu-button" href="#sidr-mobile">
-                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-3x"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class=""></path></svg>
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-3x">
+						<path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class=""></path>
+					</svg>
                 </a>
             </div>
-
-            <div class="col-xs-8 text-center">
+            <div class="col-xs-7 text-center">
                 <form id="search" class="xs-search" action="/search">
                     <div id="search-wrapper">
                         <input id="search_text" name="q" type="text" size="20" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="{{ 'layout.header.search_box_text' | t }}"/>
@@ -390,10 +355,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				  </a>
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-3 responsive-cart-wrapper">
                 <a id="responsive-cart-button" href="/cart">
                     <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-bag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-shopping-bag fa-w-14 fa-3x"><path fill="currentColor" d="M352 128C352 57.421 294.579 0 224 0 153.42 0 96 57.421 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 32c52.935 0 96 43.065 96 96H128c0-52.935 43.065-96 96-96zm192 400c0 26.467-21.533 48-48 48H80c-26.467 0-48-21.533-48-48V160h64v48c0 8.837 7.164 16 16 16s16-7.163 16-16v-48h192v48c0 8.837 7.163 16 16 16s16-7.163 16-16v-48h64v272z" class=""></path></svg>
                 </a>
+				{% if shop.customer_accounts_enabled %}
+                	<div class="text-right">
+                    	{% if customer %}
+                        	{{ 'My Account' | customer_account_link }}
+                    	{% else %}
+                        	<!-- {{ 'layout.customer.log_in' | t | customer_login_link }} -->
+                        	{{ 'Sign In' | customer_login_link }}
+                    	{% endif %}
+                	</div>
+            	{% endif %}
             </div>
 
         </div><!-- /.row -->
@@ -421,9 +396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            
             <div class="col-xs-12 col-sm-7 text-center">
                 <ul class="nav navbar-nav" role="navigation">
-
 					{% section 'custom-menu' %}
-
                 </ul>
             </div>
 
@@ -439,6 +412,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</form>
 			</div>
 			{%- include "go-cart-button" -%}
+			{% if shop.customer_accounts_enabled %}
+                <div class="text-right">
+                    {% if customer %}
+                        {{ 'My Account' | customer_account_link }}
+                    {% else %}
+                        <!-- {{ 'layout.customer.log_in' | t | customer_login_link }} -->
+                        {{ 'Sign In' | customer_login_link }}
+                    {% endif %}
+                </div>
+            {% endif %}
 			{% comment %} <a class="custom-font slide-menu" aria-label="{{ 'layout.header.your_cart' | t }}" ><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-bag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-shopping-bag fa-w-14 fa-3x"><path fill="currentColor" d="M352 128C352 57.421 294.579 0 224 0 153.42 0 96 57.421 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 32c52.935 0 96 43.065 96 96H128c0-52.935 43.065-96 96-96zm192 400c0 26.467-21.533 48-48 48H80c-26.467 0-48-21.533-48-48V160h64v48c0 8.837 7.164 16 16 16s16-7.163 16-16v-48h192v48c0 8.837 7.163 16 16 16s16-7.163 16-16v-48h64v272z" class=""></path></svg></a> {% endcomment %}
             </div><!-- /.col-md-4 -->
 
@@ -570,7 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</div>
 		</div>
 	</div>
-
+	{% section 'home-social-bar' %}
 </div>
 
 <footer>

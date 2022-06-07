@@ -1,8 +1,9 @@
 {% for block in section.blocks %} 
     {% if block.settings.url != blank %}
         <li class="dropdown">
+            <div class="badge-menu"><span>New</span></div>
             <a href="{{block.settings.url.url}}" class="dropdown-toggle">
-                <span class="nav-label"> {{block.settings.title}} </span>
+                <span class="nav-label"> {{block.settings.title}}</span>
             </a>
         </li>   
     {% else %}
@@ -34,7 +35,11 @@
                             </li>
                         {% else %}
                             <li>
+                                {% assign link_index = forloop.index %}
                                 <a href="{{ link.url }}" class="subnav-label">
+                                    {% if link_index == 4 %}
+                                        <div class="badge-dropdown-menu"><span>New</span></div>
+                                    {% endif %}
                                     {% if linklists[block.settings.option].handle == 'shop' %}
                                         {% if link.object.metafields.global.menu.value %}
                                             {{ link.object.metafields.global.menu.value | img_url: '80x' | img_tag }}
@@ -53,6 +58,41 @@
     </div>
 {% endfor %}
 </div>
+
+<style>
+    .dropdown:nth-of-type(2) .badge-menu {
+        display: none;
+    }
+    .dropdown .badge-menu {
+        background: #000000;
+        border-radius: 7px;
+        color: #FFF;
+        margin-left: 55px;
+        width: 30px;
+    }
+    .dropdown .badge-menu span {
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 12px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .badge-dropdown-menu {
+        background: #000000;
+        border-radius: 7px;
+        color: #FFF;
+        position: absolute;
+        right: 0;
+        width: 26px;
+    }
+    .badge-dropdown-menu span {
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 12px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+</style>
 
 {% schema %}
 {

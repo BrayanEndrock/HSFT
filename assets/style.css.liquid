@@ -755,7 +755,16 @@ margin-right: 0
 line-height:40px;
 font-size:13px;
 }
-
+.sidr .sidr-inner .sidr-class-nav ul li:nth-of-type(2)  ul li:nth-of-type(5) a::after {
+	background: #000000;
+    border-radius: 7px;
+    color: #FFF;
+	content: "New";
+	margin-left: 10px;
+	padding: 2px 4px;
+	position: relative;
+    width: 26px;
+}
 .sidr ul li ul li:last-child {
 border-bottom:none;
 }
@@ -1954,7 +1963,6 @@ footer{
 		background-color: {{ settings.header-background-colour }};
 	{% endif %}
 	padding: 10px 0;
-	margin-top: 10px;
 	color: {{ settings.header-text-colour }};
 }
 
@@ -3365,10 +3373,6 @@ header#site-header .cart-link a {
 #hashtags a {
 	color: #fe2f73;
 	margin-right: 7px;
-}
-
-#search_submit {
-	padding-right: 0;
 }
 
 /* homepage */
