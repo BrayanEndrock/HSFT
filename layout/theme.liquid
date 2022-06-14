@@ -519,49 +519,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			{{ content_for_layout }}
 		{% endif %}
 	</div>
-	
-	<div id="instagram-feed">
-		<style>
-		#instagram-feed {
-			padding: 56px 0 64px;
-			background: #f1ecec;
-		}
-		#instagram-feed .title-bar {
-			padding: 0;
-		}
-		#instagram-feed h2 { 
-			font-weight: 400;
-			font-size: 24px;
-			background: #f1ecec;
-			letter-spacing: 0.06em;
-			text-transform: uppercase;
-			color: #000000;
-			display: block;
-			padding: 0;
-		}
-		#instagram-feed h2 small {
-			display: block;
-			font-weight: normal;
-			font-size: 18px;
-			letter-spacing: 0.06em;
-			text-transform: uppercase;
-			color: #000000;
-		}
-
-		#rap__med__instabox {
-			padding: 10px !important;
-		}
-		</style>
-		<div  class="container">
-		<div class="title-bar custom-font">
-			<h2>Instagram<small>FOLLOW US! <a href="http://instagram.com/hsft_official" target="_blank">@HSFT_OFFICIAL</a></small></h2>
-		</div>
-    	<div id="insta-feed">
-			<div id="rap__med__instagram"></div>
-			<script async src="https://theraptormedia.com/instagram/embed.js" data-id="hfst-couture.myshopify.com" defer="defer"></script>
-		</div>
-		</div>
-	</div>
+	{% section 'home-feature-instagram-feed' %}
 	{% section 'home-social-bar' %}
 </div>
 

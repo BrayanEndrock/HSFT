@@ -913,15 +913,6 @@
           "title": "The Beach Bum Gets an Upgrade",
           "url": "https:\/\/havesomefuntoday.com\/collections\/bags"
         }
-      },
-      "home-social-bar": {
-        "type": "home-social-bar",
-        "settings": {
-          "first-tag-link": "https:\/\/instagram.com\/explore\/tags\/hsft",
-          "first-tag-label": "#HSFT",
-          "second-tag-link": "https:\/\/instagram.com\/explore\/tags\/havesomefuntoday",
-          "second-tag-label": "#HaveSomeFunToday"
-        }
       }
     },
     "content_for_index": []
