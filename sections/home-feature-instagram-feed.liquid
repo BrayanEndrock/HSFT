@@ -1,0 +1,176 @@
+<section class="home-feature-instagram-feed__template">
+    <div class="home-feature-instagram-feed__template--container">
+        <div id="instagram-feed">
+            <div class="title__wrapper">
+                <h2>{{ section.settings.title }}</h2>
+                <div class="subtitle__wrapper">
+                    <h3>{{ section.settings.subtitle }}</h3>
+                    <a href="{{ section.settings.link }}" target="_blank">{{ section.settings.label }}</a>
+                </div>
+            </div>
+            <div id="feed-18715" class="instafeed-shopify"></div>
+            <div class="cta__wrapper">
+                <button id="showMoreTrigger"><span>{{ section.settings.trigger-label }}</span></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    const showMoreTrigger = document.getElementById("showMoreTrigger");
+    showMoreTrigger.addEventListener('click', event => {
+        if (window.screen.width >= 769) {
+            document.querySelector("#feed-18715 a:nth-of-type(9)").style.display = "inline";
+            document.querySelector("#feed-18715 a:nth-of-type(10)").style.display = "inline";
+            document.querySelector("#feed-18715 a:nth-of-type(11)").style.display = "inline";
+            document.querySelector("#feed-18715 a:nth-of-type(12)").style.display = "inline";
+        } else if (window.screen.width <= 768) {
+            document.querySelector("#feed-18715 a:nth-of-type(5)").style.display = "inline";
+            document.querySelector("#feed-18715 a:nth-of-type(6)").style.display = "inline";
+            document.querySelector("#feed-18715 a:nth-of-type(7)").style.display = "inline";
+            document.querySelector("#feed-18715 a:last-of-type").style.display = "inline";
+        }
+        showMoreTrigger.style.display = "none";
+    });
+</script>
+
+<style>
+    #instagram-feed {
+        padding: 56px 0 64px;
+        background: #f1ecec;
+    }
+    #instagram-feed .title__wrapper {
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+    }
+    #instagram-feed .title__wrapper .subtitle__wrapper {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    #instagram-feed .title__wrapper .subtitle__wrapper a {
+        margin: 0;
+    }
+    #instagram-feed h2 { 
+        font-weight: 400;
+        font-size: 24px;
+        background: #f1ecec;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #000000;
+        display: block;
+        padding: 0;
+    }
+    #instagram-feed h3 {
+        display: block;
+        font-weight: normal;
+        font-size: 18px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #000000;
+        margin: 0 10px 0 0;
+    }
+    #instagram-feed #feed-18715 {
+        padding: 0 60px;
+    }
+    #instagram-feed .cta__wrapper {
+        margin-top: 40px;
+        text-align: center;
+    }
+    #instagram-feed .cta__wrapper button {
+        background-color: #000000;
+        border: 1px solid #000000;
+        padding: 12px 32px;
+    }
+    #instagram-feed .cta__wrapper button span {
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 34px;
+        text-transform: uppercase;
+    }
+    #instagram-feed .cta__wrapper button:hover {
+        background-color: #fff;
+        border: 1px solid #000000;
+        transition-duration: 0.5s;
+    }
+    #instagram-feed .cta__wrapper button:hover span {
+        color: #000000;
+    }
+    @media screen and (min-width: 769px) {
+        #feed-18715 a:nth-of-type(9),
+        #feed-18715 a:nth-of-type(10),
+        #feed-18715 a:nth-of-type(11),
+        #feed-18715 a:last-of-type {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        #instagram-feed {
+            padding: 30px 0 20px;
+        }
+        #instagram-feed #feed-18715 {
+            padding: 0 20px;
+        }
+        #instagram-feed .cta__wrapper button {
+            padding: 8px 32px;
+        }
+        #instagram-feed .cta__wrapper button span {
+            font-size: 14px;
+            line-height: 34px;
+        }
+        #feed-18715 a:nth-of-type(5),
+        #feed-18715 a:nth-of-type(6),
+        #feed-18715 a:nth-of-type(7),
+        #feed-18715 a:last-of-type {
+            display: none;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Home - Instafeed",
+        "class": "home-feature-instagram-feed",    
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Instagram"
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "label": "Subtitle",
+                "default": "FOLLOW US!"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Instagram Link"
+            },
+            {
+                "type": "text",
+                "id": "label",
+                "label": "CTA Label",
+                "default": "@HSFT_OFFICIAL"
+            },
+            {
+                "type": "text",
+                "id": "trigger-label",
+                "label": "Trigger Label",
+                "default": "Show More"
+            }
+        ],
+        "presets": [
+            {
+                "name":"Instafeed",
+                "category": "Home"
+            }
+        ]
+    }
+{% endschema %}
