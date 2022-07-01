@@ -1,0 +1,89 @@
+<!-- /sections/product-recently-viewed.liquid -->
+<div class="product-feature-recently-viewed__template">
+    <div class="product-feature-recently-viewed__template--container">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="recently-viewed-wrapper page-width">
+            <ul class="recently-viewed-grid recently-viewed-grid__slider"><!-- Recently viewed products will appear here --></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setRecentlyViewedProducts() {
+        const productData = {
+            productTitle: "{{ product.title }}",
+            productImg: "{{ product.featured_media | img_url: '300x' }}",
+            productPrice: "{{ product.price | money }}",
+            productUrl: "{{ product.url }}",
+            productImageAltText: "{{product.featured_media.alt | escape }}"
+        };
+        const productList = [];
+        let jsonResp, jsonRespArr, jsonRespArrStr;
+        const numberOfProducts = 8;
+        productList.push(productData);
+        const currProductPageTitle = productData.productTitle;
+        const productDataString = JSON.stringify(productList);
+        const localData = localStorage.getItem("recentlyViewedProduct");
+        if (localData === null) {
+            localStorage.setItem("recentlyViewedProduct", productDataString);
+        } else if (localData) {
+            const oldProductData = localStorage.getItem("recentlyViewedProduct");
+            const countProductData = (oldProductData.match(/productTitle/g) || []).length;
+            const sameProduct = oldProductData.includes(currProductPageTitle);
+            if (countProductData < numberOfProducts && sameProduct == false) {
+                jsonResp = JSON.parse(oldProductData);
+                jsonRespArr = jsonResp.concat(productList);
+                jsonRespArrStr = JSON.stringify(jsonRespArr);
+                localStorage.setItem("recentlyViewedProduct", jsonRespArrStr);
+            } else if (countProductData >= numberOfProducts && sameProduct == false) {
+                jsonResp = JSON.parse(oldProductData);
+                jsonResp.shift();
+                jsonRespArr = jsonResp.concat(productList);
+                jsonRespArr = JSON.stringify(jsonRespArr);
+                localStorage.setItem("recentlyViewedProduct", jsonRespArr);
+            }
+        }
+    }
+    setRecentlyViewedProducts();
+    const localViewed = localStorage.recentlyViewedProduct;
+    function getRecentlyViewedProducts() {
+        const productData = JSON.parse(localStorage.getItem("recentlyViewedProduct"));
+        const recentlyViewedHtml = [];
+        productData.map(item => {
+            recentlyViewedHtml.unshift(`
+                <li class="recently-viewed-grid-item">
+                    <div class="recently-viewed__box">
+                        <a href="${item.productUrl}"> 
+                            <img class="recently-viewed-img" src='${item.productImg}' loading="lazy" alt="${item.productImageAltText}"/>
+                        </a>
+                        <h3><a class="recently-viewed-a" href="${item.productUrl}">${item.productTitle}</a></h3>
+                        <p class="recently-viewed-price">${item.productPrice}</p>
+                        <a href="${item.productUrl}" class="btn__view-more">View More<svg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='6.5' cy='6.5' r='6' stroke='black'/><rect x='6' y='4' width='1' height='5' fill='black'/><rect x='9' y='6' width='1' height='5' transform='rotate(90 9 6)' fill='black'/></svg></a>
+                    </div>
+                </li>
+            `);
+        });
+        const newProductData = `${recentlyViewedHtml.join("")}`;
+        const fullContent = document.getElementsByClassName("recently-viewed-grid");
+        fullContent[0].innerHTML = newProductData;  
+    }
+    document.addEventListener("DOMContentLoaded", function (event) {
+        getRecentlyViewedProducts();
+    });
+</script>
+
+{% schema %}    
+    {
+        "name": "Recently Viewed",
+        "tag": "section",
+        "class": "product-feature-recently-viewed",     
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Recently Viewed"
+            }
+        ]
+    }
+{% endschema %}
