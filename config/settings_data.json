@@ -769,7 +769,7 @@
           "57e1c8b2-1f30-4bcf-b95c-6f291731a6a4": {
             "type": "ribbon",
             "settings": {
-              "free_shipping_text": "<p>Free shipping on orders over $150 or more in the continental US<\/p>"
+              "free_shipping_text": "<p>End of season SALE! Enjoy an extra 25% Off our Sale collection. Use code <a href=\"\/collections\/warehouse-sale\" title=\"Sale\">EOS<\/a><\/p>"
             }
           },
           "459ede49-9c3d-4b1e-8f78-f3d0fb00935a": {
@@ -908,10 +908,29 @@
       "home-feature-hero": {
         "type": "home-feature-hero",
         "settings": {
-          "hero-desktop": "shopify:\/\/shop_images\/desktop-hero.png",
-          "hero-mobile": "shopify:\/\/shop_images\/mobile-hero.png",
+          "hero-desktop": "shopify:\/\/shop_images\/home-hero.png",
+          "hero-mobile": "shopify:\/\/shop_images\/mobile-hero_c108fa4b-7865-4eda-ae16-43a17a165bbb.png",
           "title": "The Beach Bum Gets an Upgrade",
-          "url": "https:\/\/havesomefuntoday.com\/collections\/bags"
+          "url": "https:\/\/havesomefuntoday.com\/collections\/warehouse-sale"
+        }
+      },
+      "home-feature-instagram-feed": {
+        "type": "home-feature-instagram-feed",
+        "settings": {
+          "title": "Instagram",
+          "subtitle": "FOLLOW US!",
+          "link": "",
+          "label": "@HSFT_OFFICIAL",
+          "trigger-label": "Show More"
+        }
+      },
+      "home-social-bar": {
+        "type": "home-social-bar",
+        "settings": {
+          "first-tag-link": "",
+          "first-tag-label": "#HSFT",
+          "second-tag-link": "",
+          "second-tag-label": "#HaveSomeFunToday"
         }
       }
     },
