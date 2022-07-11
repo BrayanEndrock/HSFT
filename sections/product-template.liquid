@@ -1,0 +1,142 @@
+<script src="{{ 'swipe.js' | asset_url }}"></script>
+<article id="shopify-section-{{product.id}}" class="product hentry">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+				<a href="/" title="{{ 'general.breadcrumbs.back_home' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+				{% if collection %}
+					<span aria-hidden="true">&rsaquo;</span>
+					{% if collection.handle %}
+						{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+						{{ collection.title | link_to: url }}
+					{% endif %}
+				{% endif %}
+				<span aria-hidden="true">&rsaquo;</span>
+				<span>{{ product.title }}</span>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+		{% include 'saw_compute_discount' with product %}
+		<div class="col-md-6 col-sm-6 product-images">
+			{% if product.compare_at_price_max > product.price %}
+				<div class="sale-badge">{{ 'products.general.sale' | t }}</div>
+			{% endif %}
+
+			<!-- The first image pulled from the product is a large image (480x480), subsequent images are "compact" which is 160x160 -->
+			<div id="product_images">
+				{% for image in product.images %}
+					{% if forloop.first %}
+						<!-- <a href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}" id="zoom1" class="cloud-zoom" rel="position: 'inside', showTitle: false">
+							<img src="{{ image | product_img_url: 'original'}}" alt="{{ image.alt | escape }}" class="product-main-image"/>
+						</a> -->
+						{% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+						<!-- BIG image on desktop -->
+						<div class="featured-image-div">
+							<img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" class="product-main-image" data-pin-no-hover="true" />
+						</div>
+					{% endif %}
+				{% endfor %}
+				{% if product.images.size > 1 %}
+					<div class="row">
+						<ul id="product-thumbnails">
+							{% for image in product.images %}
+								<li class="prodthumb col-md---4 col-sm---4{% cycle ' alpha clearcolumn', '', '', ' omega' %}">
+									<a href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}" class="image-swap">
+										<img data-pin-no-hover="true" src="{{ image | product_img_url: 'medium'}}" alt="{{ image.alt | escape }}" />
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+			</div><!-- /#product_images -->
+			<div id="mobile-product-images">
+				<div id="slider" class="swipe">
+					<div class='swipe-wrap'>
+						{% for image in product.images %}
+							<div>
+								<img src="{{ image | product_img_url: 'grande'}}" alt="{{ image.alt | escape }}" />
+								<div class="swipe-hand">
+									{{ 'swipe.png' | asset_url | img_tag }}
+								</div>
+							</div>
+						{% endfor %}
+					</div><!-- /.swipe-wrap -->
+				</div>
+			</div><!-- /#mobile-product-images -->
+		</div><!-- /.product-images -->
+		<!-- </div> -->
+		<div class="col-md-6 col-sm-6">
+			<section class="entry-content">
+				<h1 class="custom-font product-description-header">{{ product.title }}</h1>
+				{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+				<div class="product-description-wrapper">{{ product.description }}</div>  
+				{% if product.available %}
+					<form action="/cart/add" method="post" id="add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}">
+						{% if product.variants.size > 1  %}
+							<div id="product-variants">
+								<select id="product-select" name='id' class="form-control">
+									{% for variant in product.variants %}
+										<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% if saw_discount == 1 %}
+								<!-- original prices here -->
+								{% if product.compare_at_price_max > product.price %}
+									<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+								{% endif %}
+								<h3 class="custom-font" id="price-field"></h3>
+							{% else %}
+								<h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
+								<h3 class="custom-font" id="price-field"></h3>
+							{% endif %}
+						{% else %}
+							<div style="visibility: hidden; height: 1px;">
+								<select id="product-select" name='id' class="form-control">
+									{% for variant in product.variants %}
+										<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% if saw_discount == 1 %}
+							<!-- original prices here -->
+								{% if product.compare_at_price_max > product.price_min %}
+									<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+								{% endif %}
+								<h3 class="custom-font product-description-header">{{ product.price | money }}</h3>
+							{% else %}
+								<h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
+								<h3 class="custom-font product-description-header">{{ saw_product_price | money }}</h3>
+							{% endif %}
+						{% endif %}
+						{{ form | payment_terms }}
+						{%- comment -%} btn-success {%- endcomment -%}
+			    		<input type="submit" name="add" value="{{ 'products.product.add_to_cart' | t }}" id="purchase" class="btn js-go-cart-add-to-cart" onclick="pintrk('track', 'addtocart');" />
+					</form>
+				{% else %}
+					<div class="product-out-of-stock">{{ 'products.product.sorry_stock' | t }}</div>
+				{% endif %}
+				{% include 'getsocial-inline-bar' %}
+				<div class="sharethis-inline-share-buttons" style="margin-top: 13px;"></div>
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
+				{% if settings.show_fb_comments %}
+					<div class="fb-comments" data-href="{{ shop.url }}{{ product.url }}" data-num-posts="3"></div>
+				{% endif %}
+			</section>
+		</div><!-- /.col-md-6.col-sm-6 -->
+	</div><!-- /.row -->
+</article>
+{{ 'pdp-select.js' | asset_url | script_tag }}
+<script type="application/json" id="ProductJson-{{ product.id }}">
+    {{ product | json }}
+</script>
+<script>window.mySwipe = Swipe(document.getElementById('slider'));</script>
