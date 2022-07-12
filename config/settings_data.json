@@ -932,6 +932,53 @@
           "second-tag-link": "",
           "second-tag-label": "#HaveSomeFunToday"
         }
+      },
+      "home-feature-iconography": {
+        "type": "home-feature-iconography",
+        "blocks": {
+          "8e8b0fb1-43b5-40e3-af30-920aaca244e5": {
+            "type": "Icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/four-seasons.png"
+            }
+          },
+          "c12d1df0-0b4f-4ff4-9cc7-f601a3f2856a": {
+            "type": "Icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/mandarin-oriental.png"
+            }
+          },
+          "ce151922-516a-4b28-836e-312226d36511": {
+            "type": "Icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/bahamar.png"
+            }
+          },
+          "40c0cea9-fc90-427a-ba73-70e410461efe": {
+            "type": "Icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/fontainbleau.png"
+            }
+          },
+          "0ee82957-5b43-4942-900f-da6c98d5e8e7": {
+            "type": "Icon",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/cliff-house.png"
+            }
+          }
+        },
+        "block_order": [
+          "8e8b0fb1-43b5-40e3-af30-920aaca244e5",
+          "c12d1df0-0b4f-4ff4-9cc7-f601a3f2856a",
+          "ce151922-516a-4b28-836e-312226d36511",
+          "40c0cea9-fc90-427a-ba73-70e410461efe",
+          "0ee82957-5b43-4942-900f-da6c98d5e8e7"
+        ],
+        "settings": {
+          "background-color": "#F6F6F6",
+          "font-color": "#000",
+          "title": "Find Us At"
+        }
       }
     },
     "content_for_index": []

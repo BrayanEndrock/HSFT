@@ -1,0 +1,112 @@
+<!-- /sections/home-feature-iconography.liquid -->
+<div class="home-feature-iconography__template">
+    <div class="home-feature-iconography__template--conatiner">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="iconography__grid">
+            {% for block in section.blocks %}     
+                <div class="icon__box">
+                    <img 
+                        class="lazyload"
+                        src="{{ block.settings.icon | img_url: '168x136' }}"   
+                        srcset="{{ block.settings.icon | img_url: '168x136' }} 1x, {{ block.settings.icon | img_url: '336x272', scale: 2 }} 2x"
+                        alt="{{ block.settings.icon.alt }}"
+                    >
+                </div>  
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .home-feature-iconography {
+        background-color: {{ section.settings.background-color }};
+    }
+    .home-feature-iconography .home-feature-iconography__template {
+        padding: 50px 0 71px;
+    }
+    .home-feature-iconography .home-feature-iconography__template .home-feature-iconography__template--conatiner h2 {
+        color: {{ section.settings.font-color }};
+        font-style: normal;
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        line-height: 38px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .home-feature-iconography .home-feature-iconography__template .iconography__grid {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        justify-content: center;
+        margin-top: 32px;
+    }
+    @media screen and (max-width: 768px) {
+        .home-feature-iconography .home-feature-iconography__template {
+            padding: 43px 0 50px;
+        }
+        .home-feature-iconography .home-feature-iconography__template .home-feature-iconography__template--conatiner h2 {
+            font-size: 24px;
+            line-height: 29px;
+        }
+        .home-feature-iconography .home-feature-iconography__template .iconography__grid {
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .home-feature-iconography .home-feature-iconography__template .iconography__grid .icon__box img {
+            height: 78px;
+            width: 96px;
+        }
+    }
+</style>
+
+{% schema %}
+    {
+        "name": "Home Feature Iconography",        
+        "class": "home-feature-iconography",
+        "tag": "section",    
+        "settings": [
+            {
+                "type": "color",
+                "id": "background-color",
+                "label": "Background Color",
+                "default": "#F6F6F6"
+            },
+            {
+                "type": "color",
+                "id": "font-color",
+                "label": "Font Color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Find Us At"
+            }
+        ],
+        "blocks": [    
+            {
+                "type": "Icon",
+                "name": "Icon",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "icon",
+                        "label": "Iconography - Icon"
+                    }
+                ]
+            }    
+        ],
+        "presets": [
+            {
+                "category": "Home",   
+                "name": "Iconography"   
+            }     
+        ]
+    }
+{% endschema %}
