@@ -1,10 +1,39 @@
 <!-- /templates/product.liquid -->
-<script src="{{ 'swipe.js' | asset_url }}"></script>
+{{ 'product-template.css' | asset_url | stylesheet_tag }}
 {% section 'product-template' %}
 {% section 'product-recently-viewed' %}
 {% section 'product-reviews' %}
-<script type="application/json" id="ProductJson-{{ product.id }}">
-    {{ product | json }}
+<script type="text/javascript">
+	$(document).ready(function() {
+	  setTimeout(() => {
+		const recentlyViewedSlider = $('.recently-viewed-grid__slider');
+		let getSliderSettings = () => {
+		  return {
+			dots: false,           
+			arrows: true,          
+			infinite: true,
+			autoplay: false,
+			slidesToShow: 4,                   
+			slidesToScroll: 1,                          
+			prevArrow: "<button class='slick-prev slick-arrow' aria-label='Previous' type='button' style='display: inline-block;'><svg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 1L1 9.47059L8.11111 17' stroke='black'/></svg></button>",
+			nextArrow: "<button class='slick-next slick-arrow' aria-label='Next' type='button' style='display: inline-block;'><svg width='10' height='18' viewBox='0 0 10 18' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 17L9 8.52941L1.88889 0.999999' stroke='black'/></svg></button>",
+			responsive: [       
+			  {
+				breakpoint: 768,
+				settings: {
+				  slidesToShow: 2,                                                                   
+				  slidesToScroll: 1,                                 
+				  adaptiveHeight: true,
+				  infinite: true,
+				  arrows: true,
+				  autoplay: false                                                                      
+				}                 
+			  }
+			]    
+		  }
+		}
+		recentlyViewedSlider.slick(getSliderSettings());
+		console.log('Upsell Slick Initialized');
+	  }, 2000);
+	});
 </script>
-{{ 'pdp-select.js' | asset_url | script_tag }}
-<script>window.mySwipe = Swipe(document.getElementById('slider'));</script>

@@ -1,4 +1,4 @@
-<!-- /sections/product-template.liquid -->
+<script src="{{ 'swipe.js' | asset_url }}"></script>
 <article id="shopify-section-{{product.id}}" class="product hentry">
 	<div class="row">
 		<div class="col-md-12">
@@ -72,74 +72,48 @@
 				{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
 				<div class="product-description-wrapper">{{ product.description }}</div>  
 				{% if product.available %}
-					<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-						{% comment %}
-						Add product variants as a dropdown.
-							- By default, each variant (or combination of variants) will display as its own <option>
-							- To separate these into multiple steps, which we suggest, use option_selection.js (see below)
-						You can leverage jQuery to add a callback on page load and each time the select element changes:
-							- Include option_selection.js (as seen at the bottom of this file)
-							- This allows you to use JavaScript anytime the variant dropdown changes
-							- This also separates out your variant options (ie. size, color, etc.) to separate select elements
-						For more information on products with multiple options, visit:
-							- http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
-						{% endcomment %}
-						<select name="id" id="productSelect" class="product-single__variants">
-							{% for variant in product.variants %}
-							{% if variant.available %}
-
-								{% comment %}
-								Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-								{% endcomment %}
-								<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-
+					<form action="/cart/add" method="post" id="add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}">
+						{% if product.variants.size > 1  %}
+							<div id="product-variants">
+								<select id="product-select" name='id' class="form-control">
+									{% for variant in product.variants %}
+										<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% if saw_discount == 1 %}
+								<!-- original prices here -->
+								{% if product.compare_at_price_max > product.price %}
+									<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+								{% endif %}
+								<h3 class="custom-font" id="price-field"></h3>
 							{% else %}
-								<option disabled="disabled">
-								{{ variant.title }} - {{ 'products.product.sold_out' | t }}
-								</option>
+								<h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
+								<h3 class="custom-font" id="price-field"></h3>
 							{% endif %}
-							{% endfor %}
-						</select>
-						{%- unless product.has_only_default_variant -%}
-							{%- for option in product.options_with_values -%}
-								<fieldset id="ProductSelect-option-{{ forloop.index0 }}" name="{{ option.name | handleize }}">
-									<legend>
-									{{ option.name | escape }}
-									</legend>
-									{%- for value in option.values -%}
-									<!-- Check to see if there's a product size option. If there is a size, check to see if there's any availble for purchase. If not, set the variat control in a "disabled" state. -->
-									{%- assign variant_label_state = true -%}
-									{%- if product.options.size == 1 -%}
-										{%- unless product.variants[forloop.index0].available -%}
-										{%- assign variant_label_state = false -%}
-										{%- endunless -%}
-									{%- endif -%}
-									<input type="radio"
-										{% if option.selected_value == value %} checked="checked"{% endif %}
-										{% unless variant_label_state %} disabled="disabled"{% endunless %}
-										value="{{ value | escape }}"
-										data-index="option{{ forloop.index }}"
-										name="{{ option.name | handleize }}"
-										id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-									<label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-										{{ value | escape }}
-									</label>
-									{%- endfor -%}
-								</fieldset>
-							{%- endfor -%}
-						{%- endunless -%}
-						{% if saw_discount == 1 %}
-							<!-- original prices here -->
-							{% if product.compare_at_price_max > product.price %}
-								<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
-							{% endif %}
-							<h3 class="custom-font" id="price-field"></h3>
 						{% else %}
-							<h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
-							<h3 class="custom-font" id="price-field"></h3>
+							<div style="visibility: hidden; height: 1px;">
+								<select id="product-select" name='id' class="form-control">
+									{% for variant in product.variants %}
+										<option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% if saw_discount == 1 %}
+							<!-- original prices here -->
+								{% if product.compare_at_price_max > product.price_min %}
+									<h5 class="custom-font compare-at-price">{{ product.compare_at_price_max | money }}</h5>
+								{% endif %}
+								<h3 class="custom-font product-description-header">{{ product.price | money }}</h3>
+							{% else %}
+								<h5 class="custom-font compare-at-price">{{ saw_product_compare_at_price | money }}</h5>
+								<h3 class="custom-font product-description-header">{{ saw_product_price | money }}</h3>
+							{% endif %}
 						{% endif %}
+						{{ form | payment_terms }}
+						{%- comment -%} btn-success {%- endcomment -%}
 			    		<input type="submit" name="add" value="{{ 'products.product.add_to_cart' | t }}" id="purchase" class="btn js-go-cart-add-to-cart" onclick="pintrk('track', 'addtocart');" />
-				  	</form>
+					</form>
 				{% else %}
 					<div class="product-out-of-stock">{{ 'products.product.sorry_stock' | t }}</div>
 				{% endif %}
@@ -160,28 +134,8 @@
 		</div><!-- /.col-md-6.col-sm-6 -->
 	</div><!-- /.row -->
 </article>
-
-<script>
-	var selectCallback = function(variant, selector) {
-	  timber.productPage({
-		money_format: "{{ shop.money_format }}",
-		variant: variant,
-		selector: selector
-	  });
-	};
-	jQuery(function($) {
-	  new Shopify.OptionSelectors('productSelect', {
-		product: {{ product | json }},
-		onVariantSelected: selectCallback,
-		enableHistoryState: true
-	  });
-	  // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-	  {% if product.options.size == 1 and product.options.first != 'Title' %}
-		$('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
-	  {% endif %}
-	  // Hide selectors if we only have 1 variant and its title contains 'Default'.
-	  {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-		$('.selector-wrapper').hide();
-	  {% endif %}
-	});
-  </script>
+{{ 'pdp-select.js' | asset_url | script_tag }}
+<script type="application/json" id="ProductJson-{{ product.id }}">
+    {{ product | json }}
+</script>
+<script>window.mySwipe = Swipe(document.getElementById('slider'));</script>
