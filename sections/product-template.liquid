@@ -22,7 +22,6 @@
 			{% if product.compare_at_price_max > product.price %}
 				<div class="sale-badge">{{ 'products.general.sale' | t }}</div>
 			{% endif %}
-
 			<!-- The first image pulled from the product is a large image (480x480), subsequent images are "compact" which is 160x160 -->
 			<div id="product_images">
 				{% for image in product.images %}
