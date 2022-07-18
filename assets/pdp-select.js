@@ -1,71 +1,66 @@
 const selectVariantByClickingImage = {
 	// Create variant images from productJson object
 	_createVariantImage: function (product) {
-	  const variantImageObject = {};
-	  product.variants.forEach((variant) => {
-		if (
-		  typeof variant.featured_image !== 'undefined' &&
-		  variant.featured_image !== null
-		) {
-		  const variantImage = variant.featured_image.src
-			.split('?')[0]
-			.replace(/http(s)?:/, '');
-		  variantImageObject[variantImage] =
-			variantImageObject[variantImage] || {};
-		  product.options.forEach((option, index) => {
-			  console.log(variant);
-			const optionValue = variant.options[index];
-			const optionKey = `option-${index}`;
-			if (
-			  typeof variantImageObject[variantImage][optionKey] === 'undefined'
-			) {
-			  variantImageObject[variantImage][optionKey] = optionValue;
-			} else {
-			  const oldValue = variantImageObject[variantImage][optionKey];
-			  if (oldValue !== null && oldValue !== optionValue) {
-				variantImageObject[variantImage][optionKey] = null;
-			  }
+		const variantImageObject = {};
+	  	product.variants.forEach((variant) => {
+			if (typeof variant.featured_image !== 'undefined' && variant.featured_image !== null) {
+		  		const variantImage = variant.featured_image.src
+				.split('?')[0]
+				.replace(/http(s)?:/, '');
+		  		variantImageObject[variantImage] =
+				variantImageObject[variantImage] || {};
+		  		product.options.forEach((option, index) => {
+			  		console.log(variant);
+					const optionValue = variant.options[index];
+					const optionKey = `option-${index}`;
+					if (typeof variantImageObject[variantImage][optionKey] === 'undefined') {
+			 	 		variantImageObject[variantImage][optionKey] = optionValue;
+					} else {
+			  			const oldValue = variantImageObject[variantImage][optionKey];
+			  			if (oldValue !== null && oldValue !== optionValue) {
+							variantImageObject[variantImage][optionKey] = null;
+			  			}
+					}
+		  		});
 			}
-		  });
-		}
-	  });
-	  return variantImageObject;
+		});
+		return variantImageObject;
 	},
 	_updateVariant: function (event, id, product, variantImages) {
-	  const arrImage = event.target.src
+		const arrImage = event.target.src
 		.split('?')[0]
 		.replace(/http(s)?:/, '')
 		.split('.');
-	  const strExtention = arrImage.pop();
-	  const strRemaining = arrImage.pop().replace(/_[a-zA-Z0-9@]+$/, '');
-	  const strNewImage = `${arrImage.join('.')}.${strRemaining}.${strExtention}`;
-	  if (typeof variantImages[strNewImage] !== 'undefined') {
-		product.variants.forEach((option, index) => {
-		  const optionValue = variantImages[strNewImage][`option-${index}`];
-		  if (optionValue !== null && optionValue !== undefined) {
-			console.log(`Opción ${optionValue}`);
-			const selects = document.querySelectorAll('#'+ id + ' [class*=form-control]');
-			const sodSelects = document.querySelectorAll('#product-select-option-0');
-			const options = selects[index].options;
-			const sodOptions = sodSelects[index].options;
-			for (let option, n = 0; (option = options[n]); n += 1) {
-			  if (option.text.includes(optionValue)) {
-				selects[index].selectedIndex = n;
-				selects[index].dispatchEvent(new Event('change'));
-				break;
-			  }
-			}
-			for (let option, n = 0; (option = sodOptions[n]); n += 1) {
-			  if (option.text.includes(optionValue)) {
-				sodSelects[index].selectedIndex = n;
-				sodSelects[index].dispatchEvent(new Event('change'));
-				$('#product-select-option-0').selectOrDie("update");
-				break;
-			  }
-			}
-		  }
-		});
-	  }
+		const strExtention = arrImage.pop();
+	  	const strRemaining = arrImage.pop().replace(/_[a-zA-Z0-9@]+$/, '');
+	  	const strNewImage = `${arrImage.join('.')}.${strRemaining}.${strExtention}`;
+	  	if (typeof variantImages[strNewImage] !== 'undefined') {
+			product.variants.forEach((option, index) => {
+		  		const optionValue = variantImages[strNewImage][`option-${index}`];
+		  		if (optionValue !== null && optionValue !== undefined) {
+					console.log(`Opción ${optionValue}`);
+					const selects = document.querySelectorAll('#'+ id + ' [class*=form-control]');
+					const sodSelects = document.querySelectorAll('#product-select-option-0');
+					const options = selects[index].options;
+					const sodOptions = sodSelects[index].options;
+					for (let option, n = 0; (option = options[n]); n += 1) {
+			  			if (option.text.includes(optionValue)) {
+							selects[index].selectedIndex = n;
+							selects[index].dispatchEvent(new Event('change'));
+							break;
+			  			}
+					}
+					for (let option, n = 0; (option = sodOptions[n]); n += 1) {
+			  			if (option.text.includes(optionValue)) {
+							sodSelects[index].selectedIndex = n;
+							sodSelects[index].dispatchEvent(new Event('change'));
+							$('#product-select-option-0').selectOrDie("update");
+							break;
+			  			}
+					}
+		  		}
+			});
+	  	}
 	},
 	_selectVariant: function() {
 	  const productJson = document.querySelectorAll('[id^=ProductJson-');
