@@ -975,9 +975,18 @@
           "0ee82957-5b43-4942-900f-da6c98d5e8e7"
         ],
         "settings": {
-          "background-color": "#F6F6F6",
-          "font-color": "#000",
+          "background-color": "#f6f6f6",
+          "font-color": "#000000",
           "title": "Find Us At"
+        }
+      },
+      "home-feature-eos-hero": {
+        "type": "home-feature-eos-hero",
+        "settings": {
+          "hero-desktop": "shopify:\/\/shop_images\/end-of-season-hero.png",
+          "hero-mobile": "shopify:\/\/shop_images\/end-of-season-mobile-hero.png",
+          "title": "END OF SEASON",
+          "url": "shopify:\/\/collections\/warehouse-sale"
         }
       }
     },
