@@ -509,7 +509,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="{{ template }}__template" id="main" role="main">
 
 	{% if template == 'index' %}
-		{% section 'home-feature-hero' %}
+		{% capture actual %}{{ "now" | date: "%s" }}{% endcapture %}
+		{% capture start %}{{ '24-07-2022 00:01' | date: "%s" }}{% endcapture%}
+		{% capture finish %}{{ '31-07-2022 23:59' | date: "%s" }}{% endcapture%}
+		
+		{% assign actual = actual | plus: 0 %}
+		{% assign start = start | plus: 0 %}
+		{% assign finish = finish | plus: 0 %}
+		
+		{% if actual > start and finish > actual %}
+			{% section 'home-feature-eos-hero' %}  
+		{% else %}
+			{% section 'home-feature-hero' %}
+		{% endif %}
 	{% endif %}
 
 	<div class="container">

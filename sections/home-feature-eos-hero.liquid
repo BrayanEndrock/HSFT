@@ -1,48 +1,57 @@
 <a href="{{ section.settings.url }}">
-    <div class="home-feature-hero--template" data-title="{{ section.settings.title }}">
-        <div class="home-feature-hero--container">
-            <h1>{{ section.settings.title }}</h1>  
+    <div class="home-feature-eos-hero__template" data-title="{{ section.settings.title }}">
+        <div class="home-feature-eos-hero__template--container">
+            <h1>{{ section.settings.title }}</h1>
         </div> 
     </div> 
 </a>
 <style> 
-    .home-feature-hero--template {
+    .home-feature-eos-hero__template {
         background-image: url({{ section.settings.hero-desktop | img_url: 'master' }});
-        background-position: right;                       
+        background-position: center bottom;                       
         background-repeat: no-repeat;
         background-size: cover;             
-        height: 576px;           
+        height: 660px;           
+    }
+    @media (min-width: 1441px) {
+        .home-feature-eos-hero__template {
+            background-image: url({{ section.settings.hero-desktop | img_url: 'master' }});
+            background-position: center bottom;                       
+            background-repeat: no-repeat;
+            background-size: cover;             
+            height: 860px;           
+        }
     }
     @media (min-width: 481px) and (max-width: 768px) {
-        .home-feature-hero--template {
+        .home-feature-eos-hero__template {
             background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
-            background-position: center;                      
+            background-position: center bottom;                      
             background-repeat: no-repeat;
             background-size: cover;           
-            height: 832px;           
+            height: 492px;           
         }
     }
     @media screen and (max-width: 480px) {
-        .home-feature-hero--template {  
+        .home-feature-eos-hero__template {  
             background-image: url({{ section.settings.hero-mobile | img_url: 'master' }}); 
-            background-position: center;                      
+            background-position: center bottom;                      
             background-repeat: no-repeat;
             background-size: cover;         
-            height: 560px;           
+            height: 255px;           
         }
     }
 </style>
 {% stylesheet 'scss' %}
-    .home-feature-hero {
+    .home-feature-eos-hero {  
         margin-top: -64px;  
         @media screen and (max-width: 768px) {
             margin-top: 0;
             padding: 0;
         }                    
-        .home-feature-hero--template {      
-            .home-feature-hero--container {
+        .home-feature-eos-hero__template {      
+            .home-feature-eos-hero__template--container {
                 h1 {
-                    display: none;
+                    display: none;    
                 }
             }
         }
@@ -50,8 +59,9 @@
 {% endstylesheet %}
 {% schema %}
     {
-        "name": "Home Feature Hero",
-        "class": "home-feature-hero",    
+        "name": "EOS Hero",
+        "class": "home-feature-eos-hero",
+        "tag": "section",    
         "settings": [
             {
                 "type": "image_picker",
