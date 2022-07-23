@@ -834,7 +834,7 @@ jQuery(function() {
 
 
 	new Shopify.OptionSelectors("product-select", { product: sawholesale_product_json({{ product | json }}), onVariantSelected: selectCallback, enableHistoryState: true });
-	$("#product-variants fieldset input").selectOrDie({
+	$("#product-variants .selector-wrapper select").selectOrDie({
 		customClass: "custom",
 		customID:    "custom"
 	});
