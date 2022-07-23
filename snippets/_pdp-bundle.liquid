@@ -1,0 +1,74 @@
+{{ 'component-product-upsell.css' | asset_url | stylesheet_tag }}
+{%- assign  upsellProductHandle = upsellProductHandle | handleize -%}
+{%- assign productUpsell = all_products[upsellProductHandle] -%}
+
+<div class="product-upsell">
+    <h3>Styled it with</h3>
+    <div class="product-upsell__wrapper">
+        <div class="product-upsell__image">
+            <img 
+                class="lazyload"
+                data-srcset="{{ productUpsell.featured_image |  img_url: '200x224'}} 1x, {{ productUpsell.featured_image |  img_url: '400x448'}} 2x"
+                alt="{{ productUpsell.featured_image.alt | escape }}"
+            >
+        </div>
+        <div class="product-upsell__body">
+            <h4>{{ productUpsell.title }}</h4>
+            <div class="price">
+                {%- if productUpsell.price_min < productUpsell.compare_at_price_min -%}
+                    <div class="retail">
+                        <span data-price="product-upsell__retail"><del>{{ productUpsell.compare_at_price | money }}</del> {{ shop.currency }}</span>
+                    </div>
+                {%- endif -%}
+                <div class="deal">
+                    <span data-price="product-upsell__deal">{{ productUpsell.price_min | money }} {{ shop.currency }}</span>
+                </div>
+            </div>
+            {% for variant in product.variants %}
+                    {% if variant.available %}
+                        <span class="quick-atc__variant" data-variant-id="{{ variant.id }}">{{ variant.title | replace: "Small","S" | replace: "Medium","M" | replace: "Large","L" | replace: "X-Large","XL" | replace: "X-L","XL" }}</span>
+                    {% endif %}
+                {% endfor %}
+            <div class="product-upsell__actions">
+                <button class="btn btn__upsell-product" data-variant-id="{{ productUpsell.first_available_variant.id }}">
+                    {%- if productUpsell.available -%}
+                        {{- 'products.product.add_to_cart' | t -}}
+                    {%- else -%} 
+                        {{- 'products.product.sold_out' | t -}} 
+                    {%- endif -%}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    if(document.querySelectorAll('.add-to-cart-bundle').lenght > 0 ) {
+        const atcPlp = document.querySelector('.add-to-cart-bundle');
+        atcPlp.addEventListener('click',function(e) {
+            e.preventDefault()
+            let formData = {
+                'items': [{
+                'id': e.target.getAttribute('data-variant-id'),
+                'quantity': 1,
+                "properties" : {
+                        "_ship_date": e.target.getAttribute('data-shipping')
+                    }
+                }]
+            };
+            fetch(window.Shopify.routes.root + 'cart/add.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                goCart.fetchAndOpenCart();
+                return response.json();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });       
+        })
+    }
+</script>

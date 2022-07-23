@@ -1,0 +1,66 @@
+.product-upsell {
+    background-color: #F7F7F7;
+    margin-top: 30px;
+    padding: 16px 28px 24px;
+}
+.product-upsell h3 {
+    color: #1A1A1A;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+}
+.product-upsell .product-upsell__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 16px;
+}
+.product-upsell__image {
+    margin-right: 28px;
+}
+.product-upsell__image img {
+    display: block;
+    margin: 0 auto;
+}
+.product-upsell__body h4 {
+    color: #000000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+}
+.product-upsell__body .price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.product-upsell__body .price span {
+    color: #000000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+.product-upsell__body .price .retail {
+    margin-right: 10px;
+}
+.product-upsell__actions .btn__upsell-product {
+    background-color: #000000;
+    border-color: #000000;
+    color: #fff;
+    outline: none;
+    width: 100%;
+}
+.product-upsell__actions .btn__upsell-product:hover {
+    background-color: transparent;
+    border-color: #000000;
+    color: #000000;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+}
