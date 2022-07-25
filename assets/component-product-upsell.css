@@ -15,15 +15,24 @@
 .product-upsell .product-upsell__wrapper {
     display: flex;
     flex-direction: row;
+    gap: 20px;
     justify-content: flex-start;
     margin-top: 16px;
 }
 .product-upsell__image {
-    margin-right: 28px;
+    width: 40%;
 }
 .product-upsell__image img {
     display: block;
+    height: 100%;
     margin: 0 auto;
+    width: 100%;
+}
+.product-upsell__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
 }
 .product-upsell__body h4 {
     color: #000000;
@@ -36,7 +45,7 @@
 }
 .product-upsell__body .price {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
     margin-top: 10px;
 }
 .product-upsell__body .price span {
@@ -47,20 +56,181 @@
     line-height: 24px;
     text-transform: uppercase;
 }
-.product-upsell__body .price .retail {
-    margin-right: 10px;
+.product-upsell__label--options {
+    color: #1A1A1A;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
 }
-.product-upsell__actions .btn__upsell-product {
+.product-upsell__body--variants {
+    display: flex;
+    justify-content: space-between;
+}
+.product-upsell__body--variants.scroll {
+    overflow-x: scroll;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    gap: 8px;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+.product-upsell__body--variants.scroll::-webkit-scrollbar {
+    height: 4px;
+}
+.product-upsell__body--variants.scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.product-upsell__body--variants.scroll::-webkit-scrollbar-thumb {
+    background: #000;
+}
+.product-upsell__body--variants.scroll::-webkit-scrollbar-thumb:hover {
+    background: #000;
+}
+.product-upsell__body--variants.scroll .variant__selector {
+    min-width: fit-content;
+}
+.product-upsell__body--variants .variant__selector {
+    background-color: transparent;
+    border: 1px solid #E9E9E9;
+    color: #333333;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 16px;
+    padding: 8px 20px;
+    width: fit-content;
+}
+.product-upsell__body--variants .variant__selector:hover {
     background-color: #000000;
     border-color: #000000;
     color: #fff;
-    outline: none;
-    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+.product-upsell__body--variants .variant__selector.selector__actived {
+    background-color: #000000;
+    border-color: #000000;
+    color: #fff;
+}
+.product-upsell__actions {
+    margin-top: 10px;
+}
+.product-upsell__actions .btn__upsell-product {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #fff !important;
+    outline: none !important;
+    padding: 10px 20px !important;
+    width: 100% !important;
 }
 .product-upsell__actions .btn__upsell-product:hover {
+    background-color: transparent !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+    outline: none !important;
+    transition: all 0.5s ease-in-out !important;
+}
+.product-upsell-mobile__actions {
+    margin-top: 18px;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--variants .variant__selector {
     background-color: transparent;
+    border: 1px solid #E9E9E9;
+    color: #333333;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 16px;
+    padding: 8px 23px;
+    width: fit-content;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--variants .variant__selector:hover {
+    background-color: #000000;
     border-color: #000000;
-    color: #000000;
-    outline: none;
+    color: #fff;
     transition: all 0.5s ease-in-out;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--variants .variant__selector.selector__actived {
+    background-color: #000000;
+    border-color: #000000;
+    color: #fff;
+}
+.product-upsell-mobile__actions--variants {
+    display: flex;
+    justify-content: space-between;
+}
+.product-upsell-mobile__actions--variants.scroll {
+    overflow-x: scroll;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    gap: 8px;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+.product-upsell-mobile__actions--variants.scroll::-webkit-scrollbar {
+    height: 4px;
+}
+.product-upsell-mobile__actions--variants.scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.product-upsell-mobile__actions--variants.scroll::-webkit-scrollbar-thumb {
+    background: #000;
+}
+.product-upsell-mobile__actions--variants::-webkit-scrollbar-thumb:hover {
+    background: #000;
+}
+.product-upsell-mobile__actions--variants.scroll .variant__selector {
+    min-width: fit-content;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--button {
+    margin-top: 10px;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--button .btn__upsell-product {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #fff !important;
+    outline: none !important;
+    padding: 10px 20px !important;
+    width: 100% !important;
+}
+.product-upsell-mobile__actions .product-upsell-mobile__actions--button .btn__upsell-product:hover {
+    background-color: transparent !important;
+    border-color: #000000 !important;
+    color: #000000 !important;
+    outline: none !important;
+    transition: all 0.5s ease-in-out !important;
+}
+@media screen and (max-width: 768px) {
+    .product-upsell {
+        padding: 8px 12px 16px;
+    }
+    .product-upsell h3 {
+        font-size: 24px;
+        line-height: 40px;
+    }
+    .product-upsell .product-upsell__wrapper {
+        gap: 14px;
+    }
+    .product-upsell__body h4 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .product-upsell__body .price {
+        gap: 10px;
+        margin-top: 4px;
+    }
+    .product-upsell__label--options {
+        display: none;
+    }
+    .product-upsell__body--variants {
+        display: none;
+    }
+    .product-upsell__actions {
+        display: none;
+    }
+}
+@media screen and (min-width: 769px) {
+    .product-upsell-mobile__actions {
+        display: none;
+    }
 }

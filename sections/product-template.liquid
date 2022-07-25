@@ -134,7 +134,7 @@
 				{% endif %}
 				{% assign upsellProduct = product.metafields.global.upsell_product.value %}
 				{% if upsellProduct.handle != blank %}
-                	{% render '_pdp-bundle', upsellProductHandle: upsellProduct.handle %}
+                	{% render '_pdp-upsell', upsellProductHandle: upsellProduct.handle %}
 				{% endif %}
 			</section>
 		</div><!-- /.col-md-6.col-sm-6 -->

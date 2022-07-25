@@ -1,0 +1,117 @@
+{{ 'component-product-upsell.css' | asset_url | stylesheet_tag }}
+{%- assign  upsellProductHandle = upsellProductHandle | handleize -%}
+{%- assign productUpsell = all_products[upsellProductHandle] -%}
+
+<div class="product-upsell">
+    <h3>Styled it with</h3>
+    <div class="product-upsell__wrapper">
+        <div class="product-upsell__image">
+            <a href="{{ productUpsell.url }}">
+                <img 
+                    class="lazyload"
+                    data-srcset="{{ productUpsell.featured_image |  img_url: '200x224'}} 1x, {{ productUpsell.featured_image |  img_url: '400x448'}} 2x"
+                    alt="{{ productUpsell.featured_image.alt | escape }}"
+                >
+            </a>
+        </div>
+        <div class="product-upsell__body">
+            <div class="product-upsell__body--heading">
+                <h4>{{ productUpsell.title }}</h4>
+                <div class="price">
+                    {%- if productUpsell.price_min < productUpsell.compare_at_price_min -%}
+                        <div class="retail">
+                            <span data-price="product-upsell__retail"><del>{{ productUpsell.compare_at_price | money }}</del> {{ shop.currency }}</span>
+                        </div>
+                    {%- endif -%}
+                    <div class="deal">
+                        <span data-price="product-upsell__deal">{{ productUpsell.price_min | money }} {{ shop.currency }}</span>
+                    </div>
+                </div>
+                {% if productUpsell.variants.size > 1 %}
+                    <h6 class="product-upsell__label--options">Options</h6>
+                {% endif %}
+                <div class="product-upsell__body--variants {% if productUpsell.variants.size > 5 %}scroll{% endif %}">
+                    {% for variant in productUpsell.variants %}
+                        {% if variant.available %}
+                            {% if productUpsell.variants.size > 1 %}   
+                                <div class="variant__selector" data-variant-id="{{ variant.id }}" data-featured-image="{% if variant.featured_image.src != blank %}{{ variant.featured_image.src | img_url: '200x224' }}{% else %}{{ productUpsell.featured_image |  img_url: '200x224'}}{% endif %}">
+                                    {{ variant.title | replace: "Small","S" | replace: "Medium","M" | replace: "Large","L" | replace: "X-Large","XL" | replace: "X-L","XL" }}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="product-upsell__actions">
+                <button class="btn btn__upsell-product quick-atc__variant {% unless productUpsell.available%}disabled{%endunless%}" data-variant-id="{{ productUpsell.selected_or_first_available_variant.id }}">
+                    {%- unless productUpsell.available -%}
+                        {{- 'products.product.sold_out' | t -}} 
+                    {%- else -%} 
+                        {{- 'products.product.add_to_cart' | t -}}
+                    {%- endunless -%}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="product-upsell-mobile__actions">
+        <div class="product-upsell-mobile__actions--variants {% if productUpsell.variants.size > 5 %}scroll{% endif %}">
+            {% for variant in productUpsell.variants %}
+                {% if variant.available %}
+                    {% if productUpsell.variants.size > 1 %}   
+                        <div class="variant__selector" data-variant-id="{{ variant.id }}" data-featured-image="{% if variant.featured_image.src != blank %}{{ variant.featured_image.src | img_url: '200x224' }}{% else %}{{ productUpsell.featured_image |  img_url: '200x224'}}{% endif %}">
+                            {{ variant.title | replace: "Small","S" | replace: "Medium","M" | replace: "Large","L" | replace: "X-Large","XL" | replace: "X-L","XL" }}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="product-upsell-mobile__actions--button">
+            <button class="btn btn__upsell-product quick-atc__variant {% unless productUpsell.available%}disabled{%endunless%}" data-variant-id="{{ productUpsell.selected_or_first_available_variant.id }}">
+                {%- unless productUpsell.available -%}
+                    {{- 'products.product.sold_out' | t -}} 
+                {%- else -%} 
+                    {{- 'products.product.add_to_cart' | t -}}
+                {%- endunless -%}
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    const selectorVariant = document.querySelectorAll('.product-upsell__body--variants .variant__selector');
+
+    selectorVariant.forEach(element => {
+        element.addEventListener('click', function (e) {
+            document.querySelectorAll('.product-upsell__body--variants .variant__selector.selector__actived').forEach(element => {
+                element.classList.remove('selector__actived')
+            });
+            e.target.classList.add('selector__actived');
+
+            var variantID = e.target.getAttribute('data-variant-id');
+            document.querySelector('.product-upsell__actions .btn__upsell-product').dataset.variantId = variantID;
+
+            var featuredImage = e.target.getAttribute('data-featured-image');
+            document.querySelector('.product-upsell__image img').dataset.srcset = featuredImage;
+            document.querySelector('.product-upsell__image img').src = featuredImage;
+            document.querySelector('.product-upsell__image img').srcset = featuredImage;
+        });
+    });
+
+    const mobileSelectorVariant = document.querySelectorAll('.product-upsell-mobile__actions--variants .variant__selector');
+
+    mobileSelectorVariant.forEach(element => {
+        element.addEventListener('click', function (e) {
+            document.querySelectorAll('.product-upsell-mobile__actions--variants .variant__selector.selector__actived').forEach(element => {
+                element.classList.remove('selector__actived');
+            });
+            e.target.classList.add('selector__actived');
+
+            var variantID = e.target.getAttribute('data-variant-id');
+            document.querySelector('.product-upsell-mobile__actions--button .btn__upsell-product').dataset.variantId = variantID;
+
+            var featuredImage = e.target.getAttribute('data-featured-image');
+            document.querySelector('.product-upsell__image img').dataset.srcset = featuredImage;
+            document.querySelector('.product-upsell__image img').src = featuredImage;
+            document.querySelector('.product-upsell__image img').srcset = featuredImage;
+        });
+    });
+</script>
